@@ -1,0 +1,19 @@
+title: "Enrique Álvarez — Ciberseguridad"
+description: "Proyectos, notas y avances."
+theme: minima
+
+author:
+  name: "Enrique Álvarez"
+
+# Páginas que aparecerán en el menú superior
+header_pages:
+  - about.md
+  - projects.md
+  - contact.md
+
+# Opcional: esquema de colores del tema minima
+minima:
+  skin: classic   # otras opciones: dark, solarized-light, solarized-dark
+
+# Opcional: configuración básica de enlaces y cosas del sitio
+url: "https://TUUSUARIO.github.io"
