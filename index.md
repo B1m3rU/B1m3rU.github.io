@@ -7,3 +7,5 @@ title: "En construcción"
 
 Estoy montando mi blog de proyectos de ciberseguridad.  
 Muy pronto estará disponible con contenidos reales.
+Por ahora te enseño a mi vaquita.
+image: /assets/img/Michi1.jpg
