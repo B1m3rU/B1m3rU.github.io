@@ -6,7 +6,6 @@ categories: [proyectos]
 tags: [michi, prueba]
 author: "Enrique Álvarez González"
 # Opcional: imagen destacada si más adelante usas un tema que la soporte
-# image: /assets/img/Michi1.jpg
 ---
 
 ## 1. Objetivo
