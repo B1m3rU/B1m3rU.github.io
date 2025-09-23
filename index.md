@@ -1,4 +1,6 @@
-# Bienvenido a mi blog de Ciberseguridad
+---
+layout: home
+title: "Inicio"
+--- 
 
-Este es mi primer sitio con **GitHub Pages** 🚀  
-Muy pronto empezaré a publicar mis proyectos aquí. Serán enfocados principalmente a mi desarrollo personal-profesional, en el sector de la ciberseguridad.
+Bienvenido/a a mi blog/portfolio de ciberseguridad. Aquí publico mis proyectos, prácticas y apuntes.
