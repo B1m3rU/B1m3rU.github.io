@@ -1,7 +1,9 @@
 ---
-layout: home
-title: "Inicio"
---- 
+layout: page
+title: "En construcción"
+---
 
-Bienvenido/a a mi blog de ciberseguridad.  
-Aquí iré publicando proyectos, apuntes y avances.
+# 🚧 Sitio en construcción 🚧
+
+Estoy montando mi blog de proyectos de ciberseguridad.  
+Muy pronto estará disponible con contenidos reales.
