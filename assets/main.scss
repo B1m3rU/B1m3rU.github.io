@@ -1,0 +1,60 @@
+---
+# Este front matter es obligatorio para que Jekyll procese SCSS
+---
+
+/* 1) Importa el CSS base de minima (oscuro) */
+@import "minima";
+
+/* 2) Paleta accesible (contraste alto) */
+:root {
+  --bg: #0b0f1a;        /* fondo principal muy oscuro */
+  --panel: #0e1624;     /* paneles/cajas */
+  --text: #e6f7ff;      /* texto claro legible */
+  --muted: #9db7c8;     /* texto secundario */
+  --neon-blue: #00e5ff; /* acento cian */
+  --neon-green: #2af598;/* acento verde */
+}
+
+/* 3) Fondo con suaves manchas "tech" y texto legible */
+body {
+  background:
+    radial-gradient(600px at 10% 10%, rgba(0,229,255,.06), transparent 60%),
+    radial-gradient(800px at 90% 20%, rgba(42,245,152,.06), transparent 60%),
+    var(--bg);
+  color: var(--text);
+}
+
+/* 4) Enlaces y navegación */
+a, a:visited { color: var(--neon-green); }
+a:hover { color: var(--neon-blue); text-decoration: underline; }
+
+.site-title, .site-title:visited { color: var(--neon-blue); }
+.site-nav .page-link { color: var(--text); }
+
+/* 5) Bloques, código y tablas */
+blockquote {
+  border-left: 4px solid var(--neon-blue);
+  color: var(--text);
+}
+pre, code {
+  background: var(--panel);
+}
+table {
+  background: var(--panel);
+}
+
+/* 6) Pequeños detalles de tarjetas/box */
+.post-list > li,
+.page-content .wrapper {
+  /* opcional: suavizar contraste en áreas amplias */
+}
+
+/* 7) Imágenes centradas en páginas de aviso */
+.center-img {
+  display: block;
+  margin: 1rem auto;
+  max-width: 640px;
+  width: 100%;
+  border: 1px solid rgba(0,229,255,.15);
+  border-radius: 8px;
+}
