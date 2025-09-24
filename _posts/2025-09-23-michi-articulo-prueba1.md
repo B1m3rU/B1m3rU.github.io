@@ -2,7 +2,7 @@
 layout: post
 title: "Título del proyecto: Michi artículo de prueba 1"
 description: "<Artículo de prueba más profesional>"
-categories: [post]
+categories: [posts]
 tags: [michi, prueba]
 author: "Enrique Álvarez González"
 # Opcional: imagen destacada si más adelante usas un tema que la soporte
