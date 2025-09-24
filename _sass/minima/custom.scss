@@ -10,11 +10,16 @@
 
 /* Fondo con gradientes suaves, estilo espacial */
 body {
+  /* Propiedades del primer bloque */
   background:
     radial-gradient(800px at 20% 20%, rgba(57,255,20,0.08), transparent 60%),
     radial-gradient(1000px at 80% 40%, rgba(0,229,255,0.06), transparent 70%),
     var(--bg);
   color: var(--text);
+
+  /* Propiedades del segundo bloque */
+  position: relative;
+  overflow-x: hidden;
 }
 
 /* Títulos */
