@@ -1,6 +1,6 @@
 title: "B1m3rU"
 description: "Proyectos, notas y avances."
-theme: hacker
+theme: minima
 
 author: "Enrique Álvarez González"
 
@@ -12,7 +12,7 @@ header_pages:
 
 # Opcional: esquema de colores del tema minima
 minima:
-  skin: classic   # otras opciones: dark, solarized-light, solarized-dark
+  skin: solarized-dark   # otras opciones: dark, solarized-light, solarized-dark
 
 # Opcional: configuración básica de enlaces y cosas del sitio
 url: "https://b1m3ru.github.io/"
