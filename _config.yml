@@ -9,6 +9,7 @@ header_pages:
   - about.md
   - maquinas.md
   - contact.md
+  - post.md
 
 Opcional: esquema de colores del tema minima
 minima:
