@@ -7,7 +7,7 @@ author: "Enrique Álvarez González"
 # Páginas que aparecerán en el menú superior
 header_pages:
   - about.md
-  - machines.md
+  - maquinas.md
   - contact.md
 
 # Opcional: esquema de colores del tema minima
