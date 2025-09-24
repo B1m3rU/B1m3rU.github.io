@@ -8,16 +8,16 @@
   --neon-blue: #00e5ff;   /* acento cian para contraste */
 }
 
-/* Fondo con gradientes suaves, estilo espacial */
+/* Fondo con gradientes, estilo espacial y animación */
 body {
-  /* Propiedades del primer bloque */
+  /* Propiedades de fondo y color */
   background:
     radial-gradient(800px at 20% 20%, rgba(57,255,20,0.08), transparent 60%),
     radial-gradient(1000px at 80% 40%, rgba(0,229,255,0.06), transparent 70%),
     var(--bg);
   color: var(--text);
 
-  /* Propiedades del segundo bloque */
+  /* Propiedades para la animación de estrellas */
   position: relative;
   overflow-x: hidden;
 }
@@ -70,11 +70,6 @@ table {
    Fondo estrellado animado — Minimalista
    =========================== */
 
-body {
-  position: relative;
-  overflow-x: hidden;
-}
-
 /* Capas */
 body::before, body::after {
   content: "";
@@ -104,6 +99,4 @@ body::after {
 
 @keyframes moveStars {
   from { transform: translate(0, 0); }
-  to   { transform: translate(-200px, -200px); }
-}
-
+  to   { transform: translate(-
