@@ -1,6 +1,6 @@
 ---
 layout: page
-title: "Machines"
+title: "Máquinas"
 permalink: /maquinas/
 ---
 
