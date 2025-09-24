@@ -1,60 +1,68 @@
 ---
-# Este front matter es obligatorio para que Jekyll procese SCSS
+# Necesario para que Jekyll lo procese
 ---
 
-/* 1) Importa el CSS base de minima (oscuro) */
 @import "minima";
 
-/* 2) Paleta accesible (contraste alto) */
+/* Paleta inspirada en verde espacial */
 :root {
-  --bg: #0b0f1a;        /* fondo principal muy oscuro */
-  --panel: #0e1624;     /* paneles/cajas */
-  --text: #e6f7ff;      /* texto claro legible */
-  --muted: #9db7c8;     /* texto secundario */
-  --neon-blue: #00e5ff; /* acento cian */
-  --neon-green: #2af598;/* acento verde */
+  --bg: #020b0a;          /* fondo casi negro con tinte verde */
+  --panel: #041a17;       /* paneles más claros, verde oscuro */
+  --text: #d9fef9;        /* texto casi blanco, con toque verdoso */
+  --muted: #8bb7ad;       /* texto secundario gris verdoso */
+  --neon-green: #39ff14;  /* verde neón brillante */
+  --neon-blue: #00e5ff;   /* acento cian para contraste */
 }
 
-/* 3) Fondo con suaves manchas "tech" y texto legible */
+/* Fondo con gradientes suaves, estilo espacial */
 body {
   background:
-    radial-gradient(600px at 10% 10%, rgba(0,229,255,.06), transparent 60%),
-    radial-gradient(800px at 90% 20%, rgba(42,245,152,.06), transparent 60%),
+    radial-gradient(800px at 20% 20%, rgba(57,255,20,0.08), transparent 60%),
+    radial-gradient(1000px at 80% 40%, rgba(0,229,255,0.06), transparent 70%),
     var(--bg);
   color: var(--text);
 }
 
-/* 4) Enlaces y navegación */
-a, a:visited { color: var(--neon-green); }
-a:hover { color: var(--neon-blue); text-decoration: underline; }
-
-.site-title, .site-title:visited { color: var(--neon-blue); }
-.site-nav .page-link { color: var(--text); }
-
-/* 5) Bloques, código y tablas */
-blockquote {
-  border-left: 4px solid var(--neon-blue);
-  color: var(--text);
+/* Títulos */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--neon-green);
+  text-shadow: 0 0 8px rgba(57,255,20,0.4);
 }
+
+/* Enlaces */
+a, a:visited { color: var(--neon-blue); }
+a:hover { color: var(--neon-green); text-decoration: underline; }
+
+/* Header y navegación */
+.site-title, .site-title:visited { color: var(--neon-green); }
+.site-nav .page-link { color: var(--text); }
+.site-nav .page-link:hover { color: var(--neon-blue); }
+
+/* Bloques destacados */
+blockquote {
+  border-left: 4px solid var(--neon-green);
+  color: var(--text);
+  background: rgba(57,255,20,0.05);
+  padding-left: 1em;
+}
+
+/* Código y tablas */
 pre, code {
   background: var(--panel);
+  color: var(--neon-green);
 }
 table {
   background: var(--panel);
+  color: var(--text);
 }
 
-/* 6) Pequeños detalles de tarjetas/box */
-.post-list > li,
-.page-content .wrapper {
-  /* opcional: suavizar contraste en áreas amplias */
-}
-
-/* 7) Imágenes centradas en páginas de aviso */
+/* Centrar imágenes con borde sutil */
 .center-img {
   display: block;
   margin: 1rem auto;
   max-width: 640px;
   width: 100%;
-  border: 1px solid rgba(0,229,255,.15);
+  border: 1px solid rgba(57,255,20,0.2);
   border-radius: 8px;
+  box-shadow: 0 0 15px rgba(57,255,20,0.1);
 }
