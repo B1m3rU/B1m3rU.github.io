@@ -12,7 +12,7 @@ header_pages:
 
 # Opcional: esquema de colores del tema minima
 minima:
-  skin: solarized-dark   # otras opciones: dark, solarized-light, solarized-dark
+  skin: classic
 
 # Opcional: configuración básica de enlaces y cosas del sitio
 url: "https://b1m3ru.github.io/"
