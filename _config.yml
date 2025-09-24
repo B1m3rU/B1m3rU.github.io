@@ -16,3 +16,7 @@ minima:
 
 # Opcional: configuración básica de enlaces y cosas del sitio
 url: "https://b1m3ru.github.io/"
+
+# Forzar a que Jekyll use nuestra hoja de estilos personalizada
+sass:
+  sass_dir: assets
