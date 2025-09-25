@@ -80,7 +80,7 @@ figure.highlight {
   line-height: 1.55;
   overflow-x: auto;
   white-space: pre;
-  box-shadow: none; /* elimina la línea/inset */
+  box-shadow: none;
 }
 
 /* Evita doble fondo/borde dentro del <pre><code> */
@@ -107,14 +107,12 @@ code:not(pre code) {
 
 /* =========================================================
    BASH: único lenguaje con coloreado personalizado
-   (todo lo demás usa los colores originales del tema Minima/Rouge)
+   (todo lo demás usa los colores originales de Minima/Rouge)
    ========================================================= */
 pre code.language-bash,
-pre code.language-shell {
-  color: #dfe5e8; /* base suave para bash */
-}
+pre code.language-shell { color: #dfe5e8; }
 
-/* Comando / builtins (cd, echo, exit, nmap, etc.) */
+/* Comando / builtins */
 .highlight code.language-bash .nb,
 .highlight code.language-shell .nb,
 .highlight code.language-bash .nc,
@@ -122,17 +120,13 @@ pre code.language-shell {
 .highlight code.language-bash .nf,
 .highlight code.language-shell .nf,
 .highlight code.language-bash .k,
-.highlight code.language-shell .k {
-  color: var(--green);
-}
+.highlight code.language-shell .k { color: var(--green); }
 
-/* Operadores y signos: | > >> && || - */
+/* Operadores (|, >, >>, &&, ||, -) */
 .highlight code.language-bash .o,
 .highlight code.language-shell .o,
 .highlight code.language-bash .ow,
-.highlight code.language-shell .ow {
-  color: #8fd3ff;
-}
+.highlight code.language-shell .ow { color: #8fd3ff; }
 
 /* Strings y rutas */
 .highlight code.language-bash .s,
@@ -140,29 +134,23 @@ pre code.language-shell {
 .highlight code.language-bash .s1,
 .highlight code.language-shell .s1,
 .highlight code.language-bash .s2,
-.highlight code.language-shell .s2 {
-  color: #ffd479;
-}
+.highlight code.language-shell .s2 { color: #ffd479; }
 
-/* Números y constantes (T4, puertos, etc.) */
+/* Números (T4, puertos, etc.) */
 .highlight code.language-bash .m,
 .highlight code.language-shell .m,
 .highlight code.language-bash .mi,
 .highlight code.language-shell .mi,
 .highlight code.language-bash .mf,
-.highlight code.language-shell .mf {
-  color: #ff9cac;
-}
+.highlight code.language-shell .mf { color: #ff9cac; }
 
-/* Variables/env: $HOME, ${var} */
+/* Variables/env ($HOME, ${var}) */
 .highlight code.language-bash .nv,
 .highlight code.language-shell .nv,
 .highlight code.language-bash .vg,
 .highlight code.language-shell .vg,
 .highlight code.language-bash .vi,
-.highlight code.language-shell .vi {
-  color: #7fe7c4;
-}
+.highlight code.language-shell .vi { color: #7fe7c4; }
 
 /* Comentarios */
 .highlight code.language-bash .c,
@@ -205,5 +193,10 @@ pre code.language-shell::before {
 /* Selección de texto */
 ::selection { background: rgba(126, 199, 255, 0.28); color: #fff; }
 
-/* Responsive */
-@media (max-width
+/* ===== Responsive ===== */
+@media screen and (max-width: 560px) {
+  pre.highlight,
+  .highlight,
+  figure.highlight { padding: 10px 12px; font-size: 0.92em; }
+  .center-img { max-width: 100%; }
+}
