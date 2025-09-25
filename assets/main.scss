@@ -10,10 +10,10 @@
   --text:  #e0e0e0;   /* texto principal ligeramente gris, no blanco puro */
   --muted:     #9aa6b2;   /* texto secundario */
   --green-neon:#39ff14;   /* verde neón SOLO para acentos puntuales */
-  --green: #39ff14;   /* antes ~#7fd98a; ahora un pelín más “vivo” alternativa: #9ffb78 o #98ff70 a8ff84 */
-  --blue:  #00e5ff;   /* enlaces, lo mantenemos 7ec7ff */
-  --code-bg: #0b1116; /* fondo de terminal un poco más profundo */
-  --code-bd: #324052; /* borde más definido */
+  --green: #39ff14;       /* acento principal */
+  --blue:  #00e5ff;       /* enlaces */
+  --code-bg: #0b1116;     /* fondo de terminal */
+  --code-bd: #324052;     /* borde */
 }
 
 /* ===== Tipografía general (lectura) ===== */
@@ -36,13 +36,29 @@ body {
   color: var(--text);
 }
 
-/* ===== 2) Títulos con el nuevo verde ===== */
-h1, h2, h3 { color: var(--green); } 
+/* ===== Títulos con el verde ===== */
+h1, h2, h3 { color: var(--green); }
 
-
-/* Enlaces */
-a { color: var(--blue); }
-a:hover, a:focus { text-decoration: underline; }
+/* ===== Enlaces (mejor hover y accesibilidad) ===== */
+a {
+  color: var(--blue);
+  text-decoration: none;
+  transition: color .15s ease, text-decoration-color .15s ease;
+  text-decoration-color: transparent;
+}
+a:hover,
+a:focus {
+  color: var(--blue);
+  text-decoration: underline;
+  text-underline-offset: .2em;
+  text-decoration-thickness: 2px;
+}
+a:focus-visible,
+.site-nav .page-link:focus-visible {
+  outline: 2px solid var(--green-neon);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
 
 /* Separadores/contendedores del tema */
 .post-list > li, .post, .page, .site-nav {
@@ -56,47 +72,34 @@ code, kbd, samp, pre, .highlighter-rouge {
   font-size: 0.95em;
 }
 
-/* ===== 3) Bloques de código (terminal/bash) ===== */
-/* Fondo, texto, borde y radios coherentes */
+/* ===== Bloques de código ===== */
+/* Caja única (sin doble marco) */
 .highlight,
 pre.highlight,
 figure.highlight {
   background: var(--code-bg) !important;
   color: #e6edf3;
   border: 1px solid var(--code-bd);
-  border-radius: 10px;
-  box-shadow: 0 0 0 1px rgba(50,64,82,0.2) inset; /* sutil */
-}
-
-/* Elimina doble borde/fondo del <code> dentro del <pre> */
-pre code {
-  background: transparent !important;
-  border: none !important;
-  display: block;
-  padding: 0; /* el padding lo pone el <pre> */
-}
-
-/* Padding, interlineado y scroll horizontal para líneas largas */
-pre.highlight {
+  border-radius: 12px;
   padding: 12px 14px;
   line-height: 1.55;
   overflow-x: auto;
   white-space: pre;
-  font-size: 0.96em; /* un pelín más grande que antes */
+}
+/* Evita doble fondo/borde del <code> interno */
+pre code,
+.highlight code {
+  background: transparent !important;
+  border: 0 !important;
+  padding: 0 !important;
+  display: block;
+  box-shadow: none;
 }
 
-/* Prompt visual opcional en bloques bash/zsh */
-code.language-bash::before,
-code.language-shell::before {
-  content: "$ ";
-  color: #9fb3c8;
-}
-
-/* ===== 4) Código en línea (backticks simples) ===== */
-/* Evita “caja blanca” del tema y usa chip oscuro legible */
+/* Código en línea (backticks simples) */
 :not(pre) > code,
 code:not(pre code) {
-  background: #20262d;                 /* chip oscuro */
+  background: #20262d;
   color: #e6edf3;
   border: 1px solid var(--code-bd);
   padding: 0.1em 0.4em;
@@ -105,14 +108,46 @@ code:not(pre code) {
   font-size: 0.95em;
 }
 
-/* ===== 5) Acento sutil para flags/comandos (opcional genérico) ===== */
-/* Algunos tokens comunes que Rouge marca como “keyword/builtin” */
-.highlight .k, .highlight .kd, .highlight .kn, .highlight .kp, .highlight .kr,
-.highlight .nb, .highlight .nc, .highlight .nf {
-  color: #a8d1ff; /* azul suave para resaltar opciones como -sV, -sC */
+/* ===== Coloreado Rouge (mejora bash) ===== */
+.highlight { color: #dfe5e8; }                 /* texto base */
+
+/* Palabras clave / builtins / comandos */
+.highlight .k,  /* keyword */
+.highlight .kd, .highlight .kn, .highlight .kp, .highlight .kr,
+.highlight .nb, /* name.builtin (cd, exit, echo…) */
+.highlight .nc, .highlight .nf {
+  color: var(--green);                         /* comando en verde */
 }
 
-/* Imágenes centradas con borde sutil */
+/* Nombres/identificadores */
+.highlight .n, .highlight .nn, .highlight .nx { color: #c2d3df; }
+
+/* Operadores (|, >, &&, ||) y signos */
+.highlight .o, .highlight .ow { color: #8fd3ff; }
+
+/* Strings y rutas */
+.highlight .s, .highlight .s1, .highlight .s2 { color: #ffd479; }
+
+/* Números y constantes */
+.highlight .m, .highlight .mi, .highlight .mf, .highlight .kc { color: #ff9cac; }
+
+/* Comentarios */
+.highlight .c, .highlight .c1, .highlight .cm { color: var(--muted); font-style: italic; }
+
+/* Variables/env ($VAR, ${}) */
+.highlight .nv, .highlight .vg, .highlight .vi { color: #7fe7c4; }
+
+/* Prompt estilo terminal (si lo quieres visible) SOLO en bloques */
+pre code.language-bash::before,
+pre code.language-shell::before {
+  content: "$ ";
+  color: #9fb3c8;
+}
+
+/* Elimina fondos residuales de temas Rouge */
+.highlight .gd, .highlight .gi, .highlight .gr { background: transparent; }
+
+/* ===== Utilidades ===== */
 .center-img {
   display: block;
   margin: 1rem auto;
@@ -123,18 +158,10 @@ code:not(pre code) {
   box-shadow: 0 0 15px rgba(127, 217, 138, 0.12);
 }
 
-/* Secciones de portada (si las usas) */
 .home-section {
   margin: 2rem 0 2.5rem;
   padding-bottom: 0.5rem;
   border-bottom: 1px dashed #2b3038;
-}
-
-/* Enlaces con indicación clara al navegar con TAB */
-a:focus-visible, .site-nav .page-link:focus-visible {
-  outline: 2px solid #7ec7ff;
-  outline-offset: 2px;
-  border-radius: 4px;
 }
 
 /* Selección de texto (clic y arrastrar) */
@@ -145,7 +172,8 @@ a:focus-visible, .site-nav .page-link:focus-visible {
 
 /* En pantallas pequeñas reduce padding/tamaño del código */
 @media (max-width: 560px) {
-  pre.highlight { padding: 10px 12px; font-size: 0.92em; }
+  pre.highlight,
+  .highlight,
+  figure.highlight { padding: 10px 12px; font-size: 0.92em; }
   .center-img { max-width: 100%; }
 }
-
