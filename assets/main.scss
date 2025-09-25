@@ -10,7 +10,7 @@
   --text:      #dfe5e8;   /* texto principal */
   --muted:     #9aa6b2;   /* texto secundario */
   --green-neon:#39ff14;   /* verde neón SOLO para acentos puntuales */
-  --green: ##a8ff84;   /* antes ~#7fd98a; ahora un pelín más “vivo” */
+  --green: #a8ff84;   /* antes ~#7fd98a; ahora un pelín más “vivo” alternativa: #9ffb78 o #98ff70 */
   --blue:  #7ec7ff;   /* enlaces, lo mantenemos */
   --code-bg: #0b1116; /* fondo de terminal un poco más profundo */
   --code-bd: #324052; /* borde más definido */
@@ -37,7 +37,7 @@ body {
 }
 
 /* ===== 2) Títulos con el nuevo verde ===== */
-h1, h2, h3 { color: var(--green); } /* alternativa: #9ffb78 o #98ff70 */
+h1, h2, h3 { color: var(--green); } 
 
 
 /* Enlaces */
