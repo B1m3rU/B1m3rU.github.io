@@ -55,6 +55,37 @@ table{ background: var(--panel); color: var(--text); }
   border:1px solid rgba(181,232,83,.25); border-radius:8px;
   box-shadow:0 0 15px rgba(181,232,83,.08);
 }
+/* === Ajustes de código y resaltado (Rouge) === */
+pre, code { background: var(--panel); }
+.highlight, .highlight pre, pre.highlight {
+  background: var(--panel) !important;
+  color: var(--text);
+  border-radius: 6px;
+  padding: .6rem .8rem;
+  overflow-x: auto;
+}
+code.highlighter-rouge,
+.highlighter-rouge code {
+  background: var(--panel);
+  color: var(--hacker-green);   /* texto de código en verde "terminal" */
+  padding: .15rem .35rem;
+  border-radius: .35rem;
+}
+
+/* Opcional: bordes sutiles para tablas */
+table {
+  background: var(--panel);
+  border-collapse: collapse;
+}
+table th, table td {
+  border: 1px solid rgba(255,255,255,.08);
+  padding: .5rem .6rem;
+}
+
+/* === Colores de subtítulos === */
+h1 { color: var(--hacker-green); }      /* título principal */
+h2 { color: #63c0f5; }                  /* subtítulo (secciones: 1, 2, 3, …) */
+h3 { color: #b5e853; }                  /* sub-subsecciones */
 // ---
 // # Necesario para que Jekyll lo procese
 // ---
