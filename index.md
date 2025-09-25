@@ -4,7 +4,7 @@ title: "Inicio"
 ---
 
 <section class="intro" markdown="1">
-## WIP — Blog en construcción
+# WIP — Blog en construcción
 
 Estoy preparando contenidos técnicos sobre ciberseguridad: laboratorios, herramientas y notas.  
 Mientras tanto, este es un espacio personal donde iré publicando pruebas y resúmenes.
