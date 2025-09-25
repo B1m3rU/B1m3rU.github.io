@@ -9,11 +9,11 @@
   --panel:     #1b1f22;   /* paneles/cabecera más claros */
   --text:      #dfe5e8;   /* texto principal */
   --muted:     #9aa6b2;   /* texto secundario */
-  --green:     #7fd98a;   /* verde suave para títulos (menos fosforito) */
   --green-neon:#39ff14;   /* verde neón SOLO para acentos puntuales */
-  --blue:      #7ec7ff;   /* azul suave para enlaces */
-  --code-bg:   #0f1318;   /* fondo bloques de código */
-  --code-bd:   #2c3440;   /* borde bloques de código */
+  --green: #9afc71;   /* antes ~#7fd98a; ahora un pelín más “vivo” */
+  --blue:  #7ec7ff;   /* enlaces, lo mantenemos */
+  --code-bg: #0b1116; /* fondo de terminal un poco más profundo */
+  --code-bd: #324052; /* borde más definido */
 }
 
 /* ===== Tipografía general (lectura) ===== */
@@ -36,15 +36,9 @@ body {
   color: var(--text);
 }
 
-/* Títulos menos chillones */
-h1, h2, h3 {
-  color: var(--green);
-  font-weight: 700;
-}
-h4, h5, h6 {
-  color: var(--muted);
-  font-weight: 600;
-}
+/* ===== 2) Títulos con el nuevo verde ===== */
+h1, h2, h3 { color: var(--green); }
+h4, h5, h6 {color: var(--muted);font-weight: 600;}
 
 /* Enlaces */
 a { color: var(--blue); }
@@ -62,29 +56,60 @@ code, kbd, samp, pre, .highlighter-rouge {
   font-size: 0.95em;
 }
 
-/* Bloques de código legibles */
+/* ===== 3) Bloques de código (terminal/bash) ===== */
+/* Fondo, texto, borde y radios coherentes */
 .highlight,
 pre.highlight,
-pre code,
 figure.highlight {
   background: var(--code-bg) !important;
   color: #e6edf3;
   border: 1px solid var(--code-bd);
-  border-radius: 8px;
-}
-pre.highlight,
-pre code {
-  padding: 0.9rem 1rem;
-  line-height: 1.5;
-  overflow-x: auto;
-  white-space: pre;
+  border-radius: 10px;
+  box-shadow: 0 0 0 1px rgba(50,64,82,0.2) inset; /* sutil */
 }
 
-/* Prompt visual opcional en shell */
+/* Elimina doble borde/fondo del <code> dentro del <pre> */
+pre code {
+  background: transparent !important;
+  border: none !important;
+  display: block;
+  padding: 0; /* el padding lo pone el <pre> */
+}
+
+/* Padding, interlineado y scroll horizontal para líneas largas */
+pre.highlight {
+  padding: 12px 14px;
+  line-height: 1.55;
+  overflow-x: auto;
+  white-space: pre;
+  font-size: 0.96em; /* un pelín más grande que antes */
+}
+
+/* Prompt visual opcional en bloques bash/zsh */
 code.language-bash::before,
 code.language-shell::before {
   content: "$ ";
   color: #9fb3c8;
+}
+
+/* ===== 4) Código en línea (backticks simples) ===== */
+/* Evita “caja blanca” del tema y usa chip oscuro legible */
+:not(pre) > code,
+code:not(pre code) {
+  background: #20262d;                 /* chip oscuro */
+  color: #e6edf3;
+  border: 1px solid var(--code-bd);
+  padding: 0.1em 0.4em;
+  border-radius: 6px;
+  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 0.95em;
+}
+
+/* ===== 5) Acento sutil para flags/comandos (opcional genérico) ===== */
+/* Algunos tokens comunes que Rouge marca como “keyword/builtin” */
+.highlight .k, .highlight .kd, .highlight .kn, .highlight .kp, .highlight .kr,
+.highlight .nb, .highlight .nc, .highlight .nf {
+  color: #a8d1ff; /* azul suave para resaltar opciones como -sV, -sC */
 }
 
 /* Imágenes centradas con borde sutil */
