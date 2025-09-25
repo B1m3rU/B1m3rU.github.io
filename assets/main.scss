@@ -12,7 +12,6 @@
   --green-neon:#39ff14;
   --green:#39ff14;
   --blue:#00e5ff;
-  /* GitHub Dark aprox */
   --code-bg:#0d1117;     /* fondo bloque */
   --code-bd:#30363d;     /* borde bloque */
 }
@@ -28,14 +27,23 @@ body{
 .site-title,.site-nav .page-link{color:var(--text);}
 h1,h2,h3{color:var(--green);}
 
-/* Enlaces */
+/* ===== Enlaces ===== */
 a{
   color:var(--blue); text-decoration:none;
   transition:color .15s, text-decoration-color .15s;
   text-decoration-color:transparent;
 }
-a:hover,a:focus{ text-decoration:underline; text-underline-offset:.2em; text-decoration-thickness:2px; }
-a:focus-visible,.site-nav .page-link:focus-visible{ outline:2px solid var(--green-neon); outline-offset:2px; border-radius:4px; }
+a:hover,a:focus{
+  color:var(--blue);
+  text-decoration:underline;
+  text-underline-offset:.2em;
+  text-decoration-thickness:2px;
+}
+a:focus-visible,.site-nav .page-link:focus-visible{
+  outline:2px solid var(--green-neon);
+  outline-offset:2px;
+  border-radius:4px;
+}
 
 .post-list>li,.post,.page,.site-nav{ background:transparent; border:none; }
 
@@ -45,38 +53,35 @@ code,kbd,samp,pre,.highlighter-rouge{
   font-size:.95em;
 }
 
-/* ===== BLOQUES DE CÓDIGO (look GitHub Dark) ===== */
-/* — selectores de alta especificidad para ganar a cualquier tema Rouge — */
-.highlighter-rouge,
-.highlighter-rouge .highlight,
-.highlighter-rouge .highlight pre,
-.highlight,
-.highlight pre,
-pre.highlight,
-figure.highlight{
-  background:var(--code-bg) !important;
-  color:#c9d1d9;                  /* color base */
-  border:1px solid var(--code-bd);
-  border-radius:12px;
-  padding:12px 14px;
-  line-height:1.55;
-  overflow-x:auto;
-  white-space:pre;
-  box-shadow:none;
-  scrollbar-width:thin;                  /* Firefox */
-  scrollbar-color:rgba(255,255,255,.18) transparent;
+/* ===== BLOQUES DE CÓDIGO (una sola caja) ===== */
+.highlighter-rouge {
+  background: var(--code-bg) !important;
+  border: 1px solid var(--code-bd);
+  border-radius: 12px;
+  padding: 12px 14px;
+  margin: 1rem 0;
+  overflow-x: auto;
 }
-.highlight::-webkit-scrollbar{ height:8px; }        /* Chrome/Edge */
-.highlight::-webkit-scrollbar-track{ background:transparent; }
-.highlight::-webkit-scrollbar-thumb{ background:rgba(255,255,255,.18); border-radius:8px; }
 
-/* Evita “doble caja” del <code> interno */
-pre code,.highlight code{
-  background:transparent !important;
-  border:0 !important;
-  padding:0 !important;
-  display:block;
-  box-shadow:none;
+/* Quitar bordes/fondos de wrappers internos */
+.highlighter-rouge .highlight,
+.highlighter-rouge pre,
+.highlighter-rouge code {
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  box-shadow: none !important;
+}
+
+/* Texto base dentro del bloque */
+.highlighter-rouge code {
+  color: #c9d1d9;
+  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+  font-size: 0.95em;
+  line-height: 1.55;
+  display: block;
+  white-space: pre;
 }
 
 /* ===== Código en línea ===== */
@@ -86,26 +91,27 @@ pre code,.highlight code{
   color:inherit;
   padding:.1em .4em;
   border-radius:6px;
+  font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono","Courier New",monospace;
+  font-size:.95em;
 }
 
-/* ===== Paleta mínima de tokens (parecida a GitHub Dark) ===== */
+/* ===== Paleta mínima de tokens ===== */
 /* Comentarios */
 .highlight .c,.highlight .c1,.highlight .cm{ color:#8b949e; font-style:italic; }
-/* Palabras clave (if, for, def, SELECT, WHERE…) */
+/* Palabras clave */
 .highlight .k,.highlight .kr,.highlight .kn,.highlight .kc,.highlight .kd{ color:#ff7b72; }
 /* Strings */
 .highlight .s,.highlight .s1,.highlight .s2{ color:#a5d6ff; }
-/* Números / constantes */
+/* Números */
 .highlight .m,.highlight .mi,.highlight .mf,.highlight .mh,.highlight .il{ color:#79c0ff; }
-/* Funciones / nombres / títulos */
+/* Funciones / nombres */
 .highlight .nf,.highlight .nc,.highlight .nn,.highlight .na,.highlight .nt{ color:#d2a8ff; }
-/* Builtins (print, echo, cd…) */
+/* Builtins */
 .highlight .nb{ color:#79c0ff; }
-/* Operadores y signos */
+/* Operadores */
 .highlight .o,.highlight .ow,.highlight .p{ color:#c9d1d9; }
 
-/* ===== Bash: sólo asegurar buen contraste (no prompt automático) ===== */
-/* Usa ```bash en los posts */
+/* ===== Bash ===== */
 pre code.language-bash, pre code.language-shell{ color:#c9d1d9; }
 
 /* ===== Utilidades ===== */
@@ -121,9 +127,9 @@ pre code.language-bash, pre code.language-shell{ color:#c9d1d9; }
 
 /* ===== Responsive ===== */
 @media screen and (max-width:560px){
-  .highlighter-rouge,.highlighter-rouge .highlight,.highlighter-rouge .highlight pre,
-  .highlight,.highlight pre,pre.highlight,figure.highlight{
-    padding:10px 12px; font-size:.92em;
+  .highlighter-rouge {
+    padding: 10px 12px;
+    font-size: .92em;
   }
   .center-img{ max-width:100%; }
 }
