@@ -1,56 +1,7 @@
-<!-- Fuente monoespaciada tipo terminal (JetBrains Mono) -->
+<!-- JetBrains Mono -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
 
-<!-- Botón "Copiar" para bloques de código -->
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  const blocks = document.querySelectorAll(".highlighter-rouge");
-
-  blocks.forEach(block => {
-    // evitar botones duplicados
-    if (block.querySelector(".code-copy-btn")) return;
-
-    const btn = document.createElement("button");
-    btn.type = "button";
-    btn.className = "code-copy-btn";
-    btn.setAttribute("aria-label", "Copiar código");
-    btn.textContent = "Copiar";
-
-    btn.addEventListener("click", async () => {
-      const codeEl = block.querySelector("pre, code");
-      const text = codeEl ? codeEl.innerText : block.innerText;
-
-      // intento moderno
-      try {
-        await navigator.clipboard.writeText(text);
-        btn.textContent = "¡Copiado!";
-        btn.disabled = true;
-        setTimeout(() => { btn.textContent = "Copiar"; btn.disabled = false; }, 1500);
-        return;
-      } catch (e) { /* fallback abajo */ }
-
-      // fallback clásico (execCommand)
-      const ta = document.createElement("textarea");
-      ta.value = text;
-      ta.style.position = "fixed";
-      ta.style.top = "-9999px";
-      document.body.appendChild(ta);
-      ta.focus(); ta.select();
-      try {
-        document.execCommand("copy");
-        btn.textContent = "¡Copiado!";
-      } catch (err) {
-        console.error("Error al copiar:", err);
-        btn.textContent = "Error";
-      } finally {
-        document.body.removeChild(ta);
-        setTimeout(() => { btn.textContent = "Copiar"; }, 1500);
-      }
-    });
-
-    block.appendChild(btn);
-  });
-});
-</script>
+<!-- Copiar código -->
+<script defer src="{{ '/assets/js/copy-code.js' | relative_url }}"></script>
