@@ -7,7 +7,7 @@ tags: [htb, thm, placeholder]
 ---
 
 ## 1. Objetivo
-Crear una entrada de prueba para comprobar el listado de **Máquinas** en la portada y en la página `/maquinas/`.
+Crear una entrada de prueba para comprobar el listado de **Máquinas** en la portada y en la página [Máquinas](/maquinas/).
 
 ## 2. Entorno
 - Plataformas: HTB / TryHackMe (pruebas genéricas)
