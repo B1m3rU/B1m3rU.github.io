@@ -20,8 +20,10 @@ Crear una entrada de prueba para comprobar el listado de **Máquinas** en la por
 
 ### 4.1 Descubrimiento de hosts
 
-```bash
-nmap -sV -sC 192.168.1.1 T4 vvv
+```liquid
+{% highlight bash %}
+nmap -sV -sC 192.168.1.1 -T4 -vvv
+{% endhighlight %}
 ```
 ```python
 # --- CONFIGURACIÓN DEL LOGGING ---
