@@ -37,8 +37,8 @@ body {
 }
 
 /* ===== 2) Títulos con el nuevo verde ===== */
-h1, h2, h3 { color: var(--green); }
-h4, h5, h6 {color: var(--muted);font-weight: 600;}
+h1, h2, h3 { color: #a8ff84; } /* alternativa: #9ffb78 o #98ff70 */
+
 
 /* Enlaces */
 a { color: var(--blue); }
@@ -129,3 +129,23 @@ code:not(pre code) {
   padding-bottom: 0.5rem;
   border-bottom: 1px dashed #2b3038;
 }
+
+/* Enlaces con indicación clara al navegar con TAB */
+a:focus-visible, .site-nav .page-link:focus-visible {
+  outline: 2px solid #7ec7ff;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Selección de texto (clic y arrastrar) */
+::selection {
+  background: rgba(126, 199, 255, 0.28);
+  color: #ffffff;
+}
+
+/* En pantallas pequeñas reduce padding/tamaño del código */
+@media (max-width: 560px) {
+  pre.highlight { padding: 10px 12px; font-size: 0.92em; }
+  .center-img { max-width: 100%; }
+}
+
