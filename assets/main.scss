@@ -84,15 +84,16 @@ code,kbd,samp,pre,.highlighter-rouge{
   white-space: pre;
 }
 
-/* ===== Código en línea ===== */
-:not(pre)>code, code:not(pre code){
-  background:#20262d;
-  border:1px solid var(--code-bd);
-  color:inherit;
-  padding:.1em .4em;
-  border-radius:6px;
-  font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono","Courier New",monospace;
-  font-size:.95em;
+/* Código en línea estilo GitHub Dark */
+:not(pre) > code,
+code:not(pre code) {
+  background: rgba(110, 118, 129, 0.4); /* gris translúcido GitHub Dark */
+  border: 1px solid #30363d;
+  color: #c9d1d9;         /* texto claro */
+  padding: 0.15em 0.35em; /* compacto */
+  border-radius: 6px;
+  font-size: 0.92em;      /* un pelín más pequeño que el texto */
+  box-shadow: none;
 }
 
 /* ===== Paleta mínima de tokens ===== */
@@ -134,7 +135,7 @@ pre code.language-bash, pre code.language-shell{ color:#c9d1d9; }
   .center-img{ max-width:100%; }
 }
 
-/* ===== Botón copiar código ===== */
+/* Botón copiar código */
 .code-copy-btn {
   position: absolute;
   top: 8px;
@@ -146,13 +147,10 @@ pre code.language-bash, pre code.language-shell{ color:#c9d1d9; }
   padding: 2px 8px;
   border-radius: 6px;
   cursor: pointer;
-  opacity: 0.6;
+  opacity: 0.0;                 /* oculto por defecto */
   transition: opacity 0.2s;
 }
-.code-copy-btn:hover { opacity: 1; }
+.highlighter-rouge { position: relative; }
+.highlighter-rouge:hover .code-copy-btn { opacity: 1; }  /* aparece al hover */
 .code-copy-btn:active { background: #444c56; }
 
-/* Aseguramos que los bloques tengan posición relativa */
-.highlighter-rouge {
-  position: relative;
-}
