@@ -56,7 +56,7 @@ title: "Inicio"
         </li>
       {% endfor %}
     </ul>
-    <p><a href="/proyectos/">Ver todas las entradas →</a></p>
+    <p><a href="/post/">Ver todas las entradas →</a></p>
   {% else %}
     <p>No hay entradas generales aún.</p>
   {% endif %}
