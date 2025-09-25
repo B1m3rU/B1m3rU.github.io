@@ -3,20 +3,20 @@
 
 @import "minima";
 
-/* ===== Paleta suave verde/azul en oscuro ===== */
+/* ===== Paleta oscura ===== */
 :root {
-  --bg:    #1e1f20;   /* gris oscuro estilo ChatGPT */
-  --panel: #2a2d31;   /* un poco más claro para cabeceras/paneles */
-  --text:  #e0e0e0;   /* texto principal ligeramente gris, no blanco puro */
-  --muted:     #9aa6b2;   /* texto secundario */
-  --green-neon:#39ff14;   /* verde neón SOLO para acentos puntuales */
-  --green: #39ff14;       /* acento principal */
-  --blue:  #00e5ff;       /* enlaces */
-  --code-bg: #0b1116;     /* fondo de terminal */
-  --code-bd: #324052;     /* borde */
+  --bg:    #1e1f20;
+  --panel: #2a2d31;
+  --text:  #e0e0e0;
+  --muted: #9aa6b2;
+  --green-neon: #39ff14;
+  --green: #39ff14;
+  --blue:  #00e5ff;
+  --code-bg: #0b1116;
+  --code-bd: #324052;
 }
 
-/* ===== Tipografía general (lectura) ===== */
+/* ===== Tipografía global ===== */
 body {
   background: var(--bg);
   color: var(--text);
@@ -25,21 +25,17 @@ body {
   line-height: 1.6;
 }
 
-/* Cabecera / pie integrados con el fondo */
 .site-header,
 .site-footer {
   background: var(--panel);
   border: none;
 }
 .site-title,
-.site-nav .page-link {
-  color: var(--text);
-}
+.site-nav .page-link { color: var(--text); }
 
-/* ===== Títulos con el verde ===== */
 h1, h2, h3 { color: var(--green); }
 
-/* ===== Enlaces (mejor hover y accesibilidad) ===== */
+/* ===== Enlaces con hover/foco claro ===== */
 a {
   color: var(--blue);
   text-decoration: none;
@@ -60,33 +56,34 @@ a:focus-visible,
   border-radius: 4px;
 }
 
-/* Separadores/contendedores del tema */
+/* Contenedores del tema */
 .post-list > li, .post, .page, .site-nav {
   background: transparent;
   border: none;
 }
 
-/* ===== Tipografía para código (JetBrains Mono) ===== */
+/* ===== Tipografía mono ===== */
 code, kbd, samp, pre, .highlighter-rouge {
   font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", "Courier New", monospace;
   font-size: 0.95em;
 }
 
-/* ===== Bloques de código ===== */
-/* Caja única (sin doble marco) */
+/* ===== Bloques de código (sin doble marco) ===== */
 .highlight,
 pre.highlight,
 figure.highlight {
   background: var(--code-bg) !important;
-  color: #e6edf3;
+  /* no fijamos 'color' aquí para NO pisar la paleta de Rouge del tema */
   border: 1px solid var(--code-bd);
   border-radius: 12px;
   padding: 12px 14px;
   line-height: 1.55;
   overflow-x: auto;
   white-space: pre;
+  box-shadow: none; /* elimina la línea/inset */
 }
-/* Evita doble fondo/borde del <code> interno */
+
+/* Evita doble fondo/borde dentro del <pre><code> */
 pre code,
 .highlight code {
   background: transparent !important;
@@ -96,55 +93,96 @@ pre code,
   box-shadow: none;
 }
 
-/* Código en línea (backticks simples) */
+/* ===== Código en línea ===== */
 :not(pre) > code,
 code:not(pre code) {
   background: #20262d;
-  color: #e6edf3;
   border: 1px solid var(--code-bd);
+  color: inherit;
   padding: 0.1em 0.4em;
   border-radius: 6px;
   font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", "Courier New", monospace;
   font-size: 0.95em;
 }
 
-/* ===== Coloreado Rouge (mejora bash) ===== */
-.highlight { color: #dfe5e8; }                 /* texto base */
-
-/* Palabras clave / builtins / comandos */
-.highlight .k,  /* keyword */
-.highlight .kd, .highlight .kn, .highlight .kp, .highlight .kr,
-.highlight .nb, /* name.builtin (cd, exit, echo…) */
-.highlight .nc, .highlight .nf {
-  color: var(--green);                         /* comando en verde */
+/* =========================================================
+   BASH: único lenguaje con coloreado personalizado
+   (todo lo demás usa los colores originales del tema Minima/Rouge)
+   ========================================================= */
+pre code.language-bash,
+pre code.language-shell {
+  color: #dfe5e8; /* base suave para bash */
 }
 
-/* Nombres/identificadores */
-.highlight .n, .highlight .nn, .highlight .nx { color: #c2d3df; }
+/* Comando / builtins (cd, echo, exit, nmap, etc.) */
+.highlight code.language-bash .nb,
+.highlight code.language-shell .nb,
+.highlight code.language-bash .nc,
+.highlight code.language-shell .nc,
+.highlight code.language-bash .nf,
+.highlight code.language-shell .nf,
+.highlight code.language-bash .k,
+.highlight code.language-shell .k {
+  color: var(--green);
+}
 
-/* Operadores (|, >, &&, ||) y signos */
-.highlight .o, .highlight .ow { color: #8fd3ff; }
+/* Operadores y signos: | > >> && || - */
+.highlight code.language-bash .o,
+.highlight code.language-shell .o,
+.highlight code.language-bash .ow,
+.highlight code.language-shell .ow {
+  color: #8fd3ff;
+}
 
 /* Strings y rutas */
-.highlight .s, .highlight .s1, .highlight .s2 { color: #ffd479; }
+.highlight code.language-bash .s,
+.highlight code.language-shell .s,
+.highlight code.language-bash .s1,
+.highlight code.language-shell .s1,
+.highlight code.language-bash .s2,
+.highlight code.language-shell .s2 {
+  color: #ffd479;
+}
 
-/* Números y constantes */
-.highlight .m, .highlight .mi, .highlight .mf, .highlight .kc { color: #ff9cac; }
+/* Números y constantes (T4, puertos, etc.) */
+.highlight code.language-bash .m,
+.highlight code.language-shell .m,
+.highlight code.language-bash .mi,
+.highlight code.language-shell .mi,
+.highlight code.language-bash .mf,
+.highlight code.language-shell .mf {
+  color: #ff9cac;
+}
+
+/* Variables/env: $HOME, ${var} */
+.highlight code.language-bash .nv,
+.highlight code.language-shell .nv,
+.highlight code.language-bash .vg,
+.highlight code.language-shell .vg,
+.highlight code.language-bash .vi,
+.highlight code.language-shell .vi {
+  color: #7fe7c4;
+}
 
 /* Comentarios */
-.highlight .c, .highlight .c1, .highlight .cm { color: var(--muted); font-style: italic; }
+.highlight code.language-bash .c,
+.highlight code.language-shell .c,
+.highlight code.language-bash .c1,
+.highlight code.language-shell .c1,
+.highlight code.language-bash .cm,
+.highlight code.language-shell .cm {
+  color: var(--muted);
+  font-style: italic;
+}
 
-/* Variables/env ($VAR, ${}) */
-.highlight .nv, .highlight .vg, .highlight .vi { color: #7fe7c4; }
-
-/* Prompt estilo terminal (si lo quieres visible) SOLO en bloques */
+/* Prompt opcional sólo en bloques bash/shell */
 pre code.language-bash::before,
 pre code.language-shell::before {
   content: "$ ";
   color: #9fb3c8;
 }
 
-/* Elimina fondos residuales de temas Rouge */
+/* Limpieza de fondos residuales */
 .highlight .gd, .highlight .gi, .highlight .gr { background: transparent; }
 
 /* ===== Utilidades ===== */
@@ -153,7 +191,7 @@ pre code.language-shell::before {
   margin: 1rem auto;
   max-width: 640px;
   width: 100%;
-  border: 1px solid rgba(127, 217, 138, 0.25); /* usa el verde suave */
+  border: 1px solid rgba(127, 217, 138, 0.25);
   border-radius: 8px;
   box-shadow: 0 0 15px rgba(127, 217, 138, 0.12);
 }
@@ -164,16 +202,8 @@ pre code.language-shell::before {
   border-bottom: 1px dashed #2b3038;
 }
 
-/* Selección de texto (clic y arrastrar) */
-::selection {
-  background: rgba(126, 199, 255, 0.28);
-  color: #ffffff;
-}
+/* Selección de texto */
+::selection { background: rgba(126, 199, 255, 0.28); color: #fff; }
 
-/* En pantallas pequeñas reduce padding/tamaño del código */
-@media (max-width: 560px) {
-  pre.highlight,
-  .highlight,
-  figure.highlight { padding: 10px 12px; font-size: 0.92em; }
-  .center-img { max-width: 100%; }
-}
+/* Responsive */
+@media (max-width
