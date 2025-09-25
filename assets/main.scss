@@ -1,3 +1,60 @@
+---
+---
+@import "minima";
+
+/* Paleta tipo Hacker (inspirada en pages-themes/hacker) */
+:root{
+  --bg:          #151515;   /* fondo carbón */
+  --panel:       #1b1b1b;   /* bloques/código */
+  --text:        #eaeaea;   /* texto principal */
+  --muted:       #c8c8c8;   /* texto secundario */
+  --hacker-green:#b5e853;   /* verde terminal */
+  --link-blue:   #63c0f5;   /* azul enlaces */
+}
+
+/* Tipografía global monoespaciada */
+html, body {
+  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+body{
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* Títulos en verde terminal */
+h1, h2, h3, h4, h5, h6{
+  color: var(--hacker-green);
+  font-weight: 700;
+  letter-spacing: .2px;
+}
+
+/* Enlaces azul Hacker; hover a verde */
+a, a:visited { color: var(--link-blue); }
+a:hover      { color: var(--hacker-green); text-decoration: underline; }
+
+/* Header / título del sitio / navegación */
+.site-title, .site-title:visited { color: var(--hacker-green); }
+.site-nav .page-link { color: var(--text); }
+.site-nav .page-link:hover { color: var(--link-blue); }
+
+/* Bloques de cita y código */
+blockquote{
+  border-left: 4px solid var(--hacker-green);
+  color: var(--muted);
+  background: #181818;
+}
+pre, code { background: var(--panel); color: var(--hacker-green); }
+
+/* Tablas */
+table{ background: var(--panel); color: var(--text); }
+
+/* Imagen centrada utilitaria (para tu portada) */
+.center-img{
+  display:block; margin:1rem auto; max-width:640px; width:100%;
+  border:1px solid rgba(181,232,83,.25); border-radius:8px;
+  box-shadow:0 0 15px rgba(181,232,83,.08);
+}
 // ---
 // # Necesario para que Jekyll lo procese
 // ---
@@ -66,60 +123,3 @@
 //   border-radius: 8px;
 //   box-shadow: 0 0 15px rgba(57,255,20,0.1);
 // }
----
----
-@import "minima";
-
-/* Paleta tipo Hacker (inspirada en pages-themes/hacker) */
-:root{
-  --bg:          #151515;   /* fondo carbón */
-  --panel:       #1b1b1b;   /* bloques/código */
-  --text:        #eaeaea;   /* texto principal */
-  --muted:       #c8c8c8;   /* texto secundario */
-  --hacker-green:#b5e853;   /* verde terminal */
-  --link-blue:   #63c0f5;   /* azul enlaces */
-}
-
-/* Tipografía global monoespaciada */
-html, body {
-  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-}
-
-body{
-  background: var(--bg);
-  color: var(--text);
-}
-
-/* Títulos en verde terminal */
-h1, h2, h3, h4, h5, h6{
-  color: var(--hacker-green);
-  font-weight: 700;
-  letter-spacing: .2px;
-}
-
-/* Enlaces azul Hacker; hover a verde */
-a, a:visited { color: var(--link-blue); }
-a:hover      { color: var(--hacker-green); text-decoration: underline; }
-
-/* Header / título del sitio / navegación */
-.site-title, .site-title:visited { color: var(--hacker-green); }
-.site-nav .page-link { color: var(--text); }
-.site-nav .page-link:hover { color: var(--link-blue); }
-
-/* Bloques de cita y código */
-blockquote{
-  border-left: 4px solid var(--hacker-green);
-  color: var(--muted);
-  background: #181818;
-}
-pre, code { background: var(--panel); color: var(--hacker-green); }
-
-/* Tablas */
-table{ background: var(--panel); color: var(--text); }
-
-/* Imagen centrada utilitaria (para tu portada) */
-.center-img{
-  display:block; margin:1rem auto; max-width:640px; width:100%;
-  border:1px solid rgba(181,232,83,.25); border-radius:8px;
-  box-shadow:0 0 15px rgba(181,232,83,.08);
-}
