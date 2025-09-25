@@ -133,3 +133,26 @@ pre code.language-bash, pre code.language-shell{ color:#c9d1d9; }
   }
   .center-img{ max-width:100%; }
 }
+
+/* ===== Botón copiar código ===== */
+.code-copy-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: #2d333b;
+  border: 1px solid #444c56;
+  color: #c9d1d9;
+  font-size: 0.8rem;
+  padding: 2px 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity 0.2s;
+}
+.code-copy-btn:hover { opacity: 1; }
+.code-copy-btn:active { background: #444c56; }
+
+/* Aseguramos que los bloques tengan posición relativa */
+.highlighter-rouge {
+  position: relative;
+}
