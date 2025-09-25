@@ -30,3 +30,6 @@ markdown: kramdown
 kramdown:
   input: GFM
 highlighter: rouge
+
+rouge:
+  theme: github-dark        # igual al render de GitHub en oscuro
