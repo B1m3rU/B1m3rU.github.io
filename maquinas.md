@@ -4,4 +4,18 @@ title: "Máquinas"
 permalink: /maquinas/
 ---
 
-Aquí recopilo mis proyectos destacados (máquinas o herramientas). Cada tarjeta enlaza a un post con detalles técnicos (herramientas, pasos, resultados).
+Listado de todas las máquinas (HTB/THM, etc.).
+
+{% assign maquinas_posts = site.posts | where_exp:"post","post.categories contains 'maquinas'" %}
+{% if maquinas_posts.size > 0 %}
+<ul>
+  {% for post in maquinas_posts %}
+  <li>
+    <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+    <small> — {{ post.date | date: "%d %b %Y" }}</small>
+  </li>
+  {% endfor %}
+</ul>
+{% else %}
+<p>No hay entradas de máquinas aún.</p>
+{% endif %}
