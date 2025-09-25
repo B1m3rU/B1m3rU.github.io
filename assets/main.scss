@@ -5,17 +5,15 @@
 
 /* ===== Paleta suave verde/azul en oscuro ===== */
 :root {
-  --bg:        #151515;   /* fondo carbón cómodo */
-  --panel:     #1b1f22;   /* paneles/cabecera más claros */
-  --text:      #dfe5e8;   /* texto principal */
+  --bg:    #1e1f20;   /* gris oscuro estilo ChatGPT */
+  --panel: #2a2d31;   /* un poco más claro para cabeceras/paneles */
+  --text:  #e0e0e0;   /* texto principal ligeramente gris, no blanco puro */
   --muted:     #9aa6b2;   /* texto secundario */
   --green-neon:#39ff14;   /* verde neón SOLO para acentos puntuales */
   --green: #39ff14;   /* antes ~#7fd98a; ahora un pelín más “vivo” alternativa: #9ffb78 o #98ff70 a8ff84 */
   --blue:  #00e5ff;   /* enlaces, lo mantenemos 7ec7ff */
   --code-bg: #0b1116; /* fondo de terminal un poco más profundo */
   --code-bd: #324052; /* borde más definido */
-  --neon-green: #39ff14;  /* verde neón brillante */
-  --neon-blue: #00e5ff;   /* acento cian para contraste */
 }
 
 /* ===== Tipografía general (lectura) ===== */
