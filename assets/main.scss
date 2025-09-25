@@ -13,6 +13,11 @@
   --neon-blue: #00e5ff;   /* acento cian para contraste */
 }
 
+/* Tipografía global monoespaciada */
+html, body {
+  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
 /* Fondo con gradientes suaves, estilo espacial */
 body {
   background:
