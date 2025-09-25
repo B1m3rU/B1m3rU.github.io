@@ -23,3 +23,20 @@ Crear una entrada de prueba para comprobar el listado de **Máquinas** en la por
 ```bash
 nmap -sV -sC 192.168.1.1 T4 vvv
 ```
+```python
+# --- CONFIGURACIÓN DEL LOGGING ---
+# Ahora usamos la ruta absoluta para el archivo de log.
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - [SUPERVISOR] - %(levelname)s - %(message)s',
+    handlers=[
+        logging.FileHandler(ruta_log_supervisor, encoding='utf-8'), # <-- RUTA CORREGIDA
+        logging.StreamHandler()
+    ]
+)
+```
+```sql
+SELECT *
+FROM PRUEBA_DB
+WHERE ANY_ANYACA = '2012-13' AND TCO_CODALF = 'JUN';
+```
