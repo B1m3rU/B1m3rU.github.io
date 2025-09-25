@@ -37,7 +37,7 @@ body {
 }
 
 /* ===== 2) Títulos con el nuevo verde ===== */
-h1, h2, h3 { color: var(green); } /* alternativa: #9ffb78 o #98ff70 */
+h1, h2, h3 { color: var(--green); } /* alternativa: #9ffb78 o #98ff70 */
 
 
 /* Enlaces */
