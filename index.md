@@ -19,15 +19,6 @@ title: "Inicio"
   </p>
 </section>
 
-<!-- === Sección: Sobre mí (resumen) === -->
-<section class="home-section">
-  <h2>Sobre mí (resumen)</h2>
-  <p>
-    Soy Enrique (B1m3rU). Ingeniero y entusiasta de la ciberseguridad. Aquí verás mis máquinas, 
-    notas y proyectos. <a href="/sobre/">Leer más →</a>
-  </p>
-</section>
-
 <!-- === Últimas máquinas (posts con categoría 'maquinas') === -->
 <section class="home-section">
   <h2>Últimas — Máquinas</h2>
