@@ -25,3 +25,8 @@ plugins:
   - jekyll-sitemap
 
 url: "https://b1m3ru.github.io"
+
+markdown: kramdown
+kramdown:
+  input: GFM
+highlighter: rouge
