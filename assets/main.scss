@@ -4,94 +4,126 @@
 @import "minima";
 
 /* ===== Paleta oscura ===== */
-:root {
-  --bg:    #1e1f20;
-  --panel: #2a2d31;
-  --text:  #e0e0e0;
-  --muted: #9aa6b2;
-  --green-neon: #39ff14;
-  --green: #39ff14;
-  --blue:  #00e5ff;
-  --code-bg: #0b1116;
-  --code-bd: #324052;
+:root{
+  --bg:#1e1f20;
+  --panel:#2a2d31;
+  --text:#e0e0e0;
+  --muted:#9aa6b2;
+  --green-neon:#39ff14;
+  --green:#39ff14;
+  --blue:#00e5ff;
+  /* GitHub Dark aprox */
+  --code-bg:#0d1117;     /* fondo bloque */
+  --code-bd:#30363d;     /* borde bloque */
 }
 
-/* ===== Tipografía global ===== */
-body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji", sans-serif;
-  font-size: 17px;
-  line-height: 1.6;
+/* ===== Global ===== */
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji",sans-serif;
+  font-size:17px; line-height:1.6;
 }
+.site-header,.site-footer{background:var(--panel);border:none;}
+.site-title,.site-nav .page-link{color:var(--text);}
+h1,h2,h3{color:var(--green);}
 
-.site-header,
-.site-footer {
-  background: var(--panel);
-  border: none;
+/* Enlaces */
+a{
+  color:var(--blue); text-decoration:none;
+  transition:color .15s, text-decoration-color .15s;
+  text-decoration-color:transparent;
 }
-.site-title,
-.site-nav .page-link { color: var(--text); }
+a:hover,a:focus{ text-decoration:underline; text-underline-offset:.2em; text-decoration-thickness:2px; }
+a:focus-visible,.site-nav .page-link:focus-visible{ outline:2px solid var(--green-neon); outline-offset:2px; border-radius:4px; }
 
-h1, h2, h3 { color: var(--green); }
-
-/* ===== Enlaces con hover/foco claro ===== */
-a {
-  color: var(--blue);
-  text-decoration: none;
-  transition: color .15s ease, text-decoration-color .15s ease;
-  text-decoration-color: transparent;
-}
-a:hover,
-a:focus {
-  color: var(--blue);
-  text-decoration: underline;
-  text-underline-offset: .2em;
-  text-decoration-thickness: 2px;
-}
-a:focus-visible,
-.site-nav .page-link:focus-visible {
-  outline: 2px solid var(--green-neon);
-  outline-offset: 2px;
-  border-radius: 4px;
-}
-
-/* Contenedores del tema */
-.post-list > li, .post, .page, .site-nav {
-  background: transparent;
-  border: none;
-}
+.post-list>li,.post,.page,.site-nav{ background:transparent; border:none; }
 
 /* ===== Tipografía mono ===== */
-code, kbd, samp, pre, .highlighter-rouge {
-  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", "Courier New", monospace;
-  font-size: 0.95em;
+code,kbd,samp,pre,.highlighter-rouge{
+  font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono","Courier New",monospace;
+  font-size:.95em;
 }
+
+/* ===== BLOQUES DE CÓDIGO (look GitHub Dark) ===== */
+/* — selectores de alta especificidad para ganar a cualquier tema Rouge — */
+.highlighter-rouge,
+.highlighter-rouge .highlight,
+.highlighter-rouge .highlight pre,
+.highlight,
+.highlight pre,
+pre.highlight,
+figure.highlight{
+  background:var(--code-bg) !important;
+  color:#c9d1d9;                  /* color base */
+  border:1px solid var(--code-bd);
+  border-radius:12px;
+  padding:12px 14px;
+  line-height:1.55;
+  overflow-x:auto;
+  white-space:pre;
+  box-shadow:none;
+  scrollbar-width:thin;                  /* Firefox */
+  scrollbar-color:rgba(255,255,255,.18) transparent;
+}
+.highlight::-webkit-scrollbar{ height:8px; }        /* Chrome/Edge */
+.highlight::-webkit-scrollbar-track{ background:transparent; }
+.highlight::-webkit-scrollbar-thumb{ background:rgba(255,255,255,.18); border-radius:8px; }
+
+/* Evita “doble caja” del <code> interno */
+pre code,.highlight code{
+  background:transparent !important;
+  border:0 !important;
+  padding:0 !important;
+  display:block;
+  box-shadow:none;
+}
+
+/* ===== Código en línea ===== */
+:not(pre)>code, code:not(pre code){
+  background:#20262d;
+  border:1px solid var(--code-bd);
+  color:inherit;
+  padding:.1em .4em;
+  border-radius:6px;
+}
+
+/* ===== Paleta mínima de tokens (parecida a GitHub Dark) ===== */
+/* Comentarios */
+.highlight .c,.highlight .c1,.highlight .cm{ color:#8b949e; font-style:italic; }
+/* Palabras clave (if, for, def, SELECT, WHERE…) */
+.highlight .k,.highlight .kr,.highlight .kn,.highlight .kc,.highlight .kd{ color:#ff7b72; }
+/* Strings */
+.highlight .s,.highlight .s1,.highlight .s2{ color:#a5d6ff; }
+/* Números / constantes */
+.highlight .m,.highlight .mi,.highlight .mf,.highlight .mh,.highlight .il{ color:#79c0ff; }
+/* Funciones / nombres / títulos */
+.highlight .nf,.highlight .nc,.highlight .nn,.highlight .na,.highlight .nt{ color:#d2a8ff; }
+/* Builtins (print, echo, cd…) */
+.highlight .nb{ color:#79c0ff; }
+/* Operadores y signos */
+.highlight .o,.highlight .ow,.highlight .p{ color:#c9d1d9; }
+
+/* ===== Bash: sólo asegurar buen contraste (no prompt automático) ===== */
+/* Usa ```bash en los posts */
+pre code.language-bash, pre code.language-shell{ color:#c9d1d9; }
 
 /* ===== Utilidades ===== */
-.center-img {
-  display: block;
-  margin: 1rem auto;
-  max-width: 640px;
-  width: 100%;
-  border: 1px solid rgba(127, 217, 138, 0.25);
-  border-radius: 8px;
-  box-shadow: 0 0 15px rgba(127, 217, 138, 0.12);
+.center-img{
+  display:block; margin:1rem auto; max-width:640px; width:100%;
+  border:1px solid rgba(127,217,138,.25); border-radius:8px;
+  box-shadow:0 0 15px rgba(127,217,138,.12);
 }
-
-.home-section {
-  margin: 2rem 0 2.5rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 1px dashed #2b3038;
-}
+.home-section{ margin:2rem 0 2.5rem; padding-bottom:.5rem; border-bottom:1px dashed #2b3038; }
 
 /* Selección de texto */
-::selection { background: rgba(126, 199, 255, 0.28); color: #fff; }
+::selection{ background:rgba(126,199,255,.28); color:#fff; }
 
 /* ===== Responsive ===== */
-@media screen and (max-width: 560px) {
-  pre.highlight,
-  .highlight,
-  figure.highlight { padding: 10px 12px; font-size: 0.92em; }
-  .center-img { max-width: 100%; }
+@media screen and (max-width:560px){
+  .highlighter-rouge,.highlighter-rouge .highlight,.highlighter-rouge .highlight pre,
+  .highlight,.highlight pre,pre.highlight,figure.highlight{
+    padding:10px 12px; font-size:.92em;
+  }
+  .center-img{ max-width:100%; }
 }
