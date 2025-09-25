@@ -3,70 +3,104 @@
 
 @import "minima";
 
-/* Paleta inspirada en verde espacial */
+/* ===== Paleta suave verde/azul en oscuro ===== */
 :root {
-  --bg:    #151515;       /* fondo carbón */
-  --panel: #041a17;       /* paneles más claros, verde oscuro */
-  --text:  #d9fef9;       /* texto casi blanco, con toque verdoso */
-  --muted: #8bb7ad;       /* texto secundario gris verdoso */
-  --neon-green: #39ff14;  /* verde neón brillante */
-  --neon-blue: #00e5ff;   /* acento cian para contraste */
+  --bg:        #151515;   /* fondo carbón cómodo */
+  --panel:     #1b1f22;   /* paneles/cabecera más claros */
+  --text:      #dfe5e8;   /* texto principal */
+  --muted:     #9aa6b2;   /* texto secundario */
+  --green:     #7fd98a;   /* verde suave para títulos (menos fosforito) */
+  --green-neon:#39ff14;   /* verde neón SOLO para acentos puntuales */
+  --blue:      #7ec7ff;   /* azul suave para enlaces */
+  --code-bg:   #0f1318;   /* fondo bloques de código */
+  --code-bd:   #2c3440;   /* borde bloques de código */
 }
 
-/* Tipografía global monoespaciada */
-html, body {
-  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-}
-
-/* Fondo con gradientes suaves, estilo espacial */
+/* ===== Tipografía general (lectura) ===== */
 body {
-  background:
-    radial-gradient(800px at 20% 20%, rgba(57,255,20,0.08), transparent 60%),
-    radial-gradient(1000px at 80% 40%, rgba(0,229,255,0.06), transparent 70%),
-    var(--bg);
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji", sans-serif;
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+/* Cabecera / pie integrados con el fondo */
+.site-header,
+.site-footer {
+  background: var(--panel);
+  border: none;
+}
+.site-title,
+.site-nav .page-link {
   color: var(--text);
 }
 
-/* Títulos */
-h1, h2, h3, h4, h5, h6 {
-  color: var(--neon-green);
-  text-shadow: 0 0 8px rgba(57,255,20,0.4);
+/* Títulos menos chillones */
+h1, h2, h3 {
+  color: var(--green);
+  font-weight: 700;
+}
+h4, h5, h6 {
+  color: var(--muted);
+  font-weight: 600;
 }
 
 /* Enlaces */
-a, a:visited { color: var(--neon-blue); }
-a:hover { color: var(--neon-green); text-decoration: underline; }
+a { color: var(--blue); }
+a:hover, a:focus { text-decoration: underline; }
 
-/* Header y navegación */
-.site-title, .site-title:visited { color: var(--neon-green); }
-.site-nav .page-link { color: var(--text); }
-.site-nav .page-link:hover { color: var(--neon-blue); }
-
-/* Bloques destacados */
-blockquote {
-  border-left: 4px solid var(--neon-green);
-  color: var(--text);
-  background: rgba(57,255,20,0.05);
-  padding-left: 1em;
+/* Separadores/contendedores del tema */
+.post-list > li, .post, .page, .site-nav {
+  background: transparent;
+  border: none;
 }
 
-/* Código y tablas */
-pre, code {
-  background: var(--panel);
-  color: var(--neon-green);
-}
-table {
-  background: var(--panel);
-  color: var(--text);
+/* ===== Tipografía para código (JetBrains Mono) ===== */
+code, kbd, samp, pre, .highlighter-rouge {
+  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 0.95em;
 }
 
-/* Centrar imágenes con borde sutil */
+/* Bloques de código legibles */
+.highlight,
+pre.highlight,
+pre code,
+figure.highlight {
+  background: var(--code-bg) !important;
+  color: #e6edf3;
+  border: 1px solid var(--code-bd);
+  border-radius: 8px;
+}
+pre.highlight,
+pre code {
+  padding: 0.9rem 1rem;
+  line-height: 1.5;
+  overflow-x: auto;
+  white-space: pre;
+}
+
+/* Prompt visual opcional en shell */
+code.language-bash::before,
+code.language-shell::before {
+  content: "$ ";
+  color: #9fb3c8;
+}
+
+/* Imágenes centradas con borde sutil */
 .center-img {
   display: block;
   margin: 1rem auto;
   max-width: 640px;
   width: 100%;
-  border: 1px solid rgba(57,255,20,0.2);
+  border: 1px solid rgba(127, 217, 138, 0.25); /* usa el verde suave */
   border-radius: 8px;
-  box-shadow: 0 0 15px rgba(57,255,20,0.1);
+  box-shadow: 0 0 15px rgba(127, 217, 138, 0.12);
+}
+
+/* Secciones de portada (si las usas) */
+.home-section {
+  margin: 2rem 0 2.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px dashed #2b3038;
 }
