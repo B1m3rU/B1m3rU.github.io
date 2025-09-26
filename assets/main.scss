@@ -135,22 +135,35 @@ pre code.language-bash, pre code.language-shell{ color:#c9d1d9; }
   .center-img{ max-width:100%; }
 }
 
-/* Botón copiar código */
-.code-copy-btn {
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  background: #2d333b;
-  border: 1px solid #444c56;
-  color: #c9d1d9;
-  font-size: 0.8rem;
-  padding: 2px 8px;
-  border-radius: 6px;
-  cursor: pointer;
-  opacity: 0.0;                 /* oculto por defecto */
-  transition: opacity 0.2s;
+/* Botón Copiar (visible al pasar el ratón) */
+.code-copy-btn{
+  position:absolute;
+  top:8px; right:8px;
+  background:#2d333b;
+  border:1px solid #444c56;
+  color:#c9d1d9;
+  font-size:.8rem;
+  padding:2px 8px;
+  border-radius:6px;
+  cursor:pointer;
+  opacity:0;                 /* oculto por defecto */
+  transition:opacity .2s;
 }
-.highlighter-rouge { position: relative; }
-.highlighter-rouge:hover .code-copy-btn { opacity: 1; }  /* aparece al hover */
-.code-copy-btn:active { background: #444c56; }
+.highlighter-rouge:hover .code-copy-btn,
+.highlight:hover .code-copy-btn,
+figure.highlight:hover .code-copy-btn { opacity:1; }
+.code-copy-btn:active{ background:#444c56; }
+
+/* Código en línea estilo GitHub (chips pequeños, no caja grande) */
+:not(pre) > code,
+code:not(pre code){
+  background:rgba(110,118,129,.4);
+  border:1px solid #30363d;
+  color:#c9d1d9;
+  padding:.15em .35em;
+  border-radius:6px;
+  font-size:.92em;
+  box-shadow:none;
+}
+
 
