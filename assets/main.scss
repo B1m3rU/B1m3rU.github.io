@@ -1,182 +1,136 @@
 ---
 ---
 
-/* ====== Tema B1M3RU · Dark legible con acentos ciber ====== */
+@import "minima";
 
-/* 1) Tokens de color (HSL para matizar fácilmente) */
-:root {
-  /* Base oscura tipo GitHub Dark pero un poco más “nocturna” */
-  --bg:            #0e1116;  /* body */
-  --panel:         #121821;  /* cabecera, tarjetas, aside */
-  --panel-2:       #0b1017;  /* code, blockquote */
-  --border:        #232a36;
-  --shadow:        rgba(0,0,0,.35);
+/* ===== Paleta base ===== */
+:root{
+  --bg:#1e1f20;
+  --panel:#2a2d31;
+  --text:#e0e0e0;
+  --muted:#9aa6b2;
 
-  /* Texto */
-  --text:          #e6edf3;  /* principal */
-  --text-mute:     #9aa7b5;  /* secundario */
-  --text-dim:      #6b7785;
+  --green:#39ff14;           /* títulos */
+  --link:#22f6a8;            /* enlaces contenido */
+  --link-hover:#62ffd0;
+  --link-glow:rgba(34,246,168,.35);
 
-  /* Marca (coherente con tu logo) */
-  --brand:         #18f3a4;  /* verde-teal neón */
-  --brand-600:     #12c883;  /* hover/activo */
-  --brand-700:     #0ea36a;  /* foco/fondo suave */
-  --cyan:          #33e1f7;  /* acento secundario */
-  --cyan-600:      #12b9d2;
-
-  /* Estado y utilidades */
-  --success:       #35d49a;
-  --warning:       #f5b14b;
-  --danger:        #ff6b72;
-  --link:          #5ce9c7;  /* enlaces legibles, no tan chillón */
-  --link-hover:    #8af1dc;
-  --visited:       #57c9ff;
-
-  /* Código (buen contraste sin deslumbrar) */
-  --code-bg:       #0b1420;
-  --code-border:   #1b2b3a;
-  --code-text:     #cfe7ff;
-  --code-kw:       #93c5fd;
-  --code-fn:       #7dd3fc;
-  --code-str:      #a7f3d0;
-  --code-num:      #fca5a5;
-  --code-com:      #6b7280;
+  --code-bg:#0d1117;         /* bloque de código */
+  --code-bd:#30363d;
 }
 
-/* 2) Base tipográfica */
-html { scroll-behavior: smooth; }
-body {
-  background: var(--bg);
-  color: var(--text);
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
+/* ===== Global ===== */
+body{
+  background:var(--bg);
+  color:var(--text);
+  font: 17px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji",sans-serif;
 }
 
-/* 3) Contenedores y tarjetas (Minima overrides) */
-.site-header, .site-footer, .page-content .wrapper, .post, .posts, .home {
-  background: transparent;
-}
-.site-header, .site-nav, .post, .page-content .wrapper {
-  box-shadow: 0 8px 24px var(--shadow);
-  border: 1px solid var(--border);
-  background: var(--panel);
-  border-radius: 14px;
-}
-.site-header { backdrop-filter: saturate(120%) blur(6px); }
+/* Cabecera/Pie */
+.site-header,.site-footer{ background:var(--panel); border:none; }
+.site-title,.site-nav .page-link{ color:var(--text); }
+h1,h2,h3{ color:var(--green); }
 
-/* 4) Títulos con acento sutil (no molesta en lectura) */
-h1, h2, h3 {
-  color: var(--text);
-  position: relative;
+/* Separadores suaves de portada/listas */
+hr, .post-list + .post-list { border:0; height:1px; background:#323842; opacity:.6; }
+
+/* ===== Enlaces CABECERA (no cambian color) ===== */
+.site-title,.site-title a,.site-nav .page-link{
+  color:var(--text) !important;
+  text-decoration:none !important;
 }
-h1::after, h2::after {
-  content: "";
-  display: block;
-  width: 56px; height: 3px;
-  margin-top: .5rem;
-  border-radius: 3px;
-  background: linear-gradient(90deg, var(--brand), var(--cyan));
-  opacity: .9;
+.site-title:hover,.site-title a:hover,.site-nav .page-link:hover{
+  color:var(--text) !important;
+  text-decoration:underline;
+  text-underline-offset:.2em;
+  text-decoration-thickness:2px;
 }
 
-/* 5) Enlaces: siempre subrayados (accesibles), color marca */
-a {
-  color: var(--link);
-  text-decoration: underline;
-  text-decoration-thickness: .08em;
-  text-underline-offset: 2px;
-}
-a:hover { color: var(--link-hover); }
-a:visited { color: var(--visited); }
-
-/* 6) Navegación: quitar “cambio raro” al pasar el ratón */
-.site-nav .page-link {
-  color: var(--text);
-  transition: color .15s ease, text-shadow .2s ease;
-}
-.site-nav .page-link:hover {
-  color: var(--brand);
-  text-shadow: 0 0 12px color-mix(in oklab, var(--brand) 30%, transparent);
-}
-
-/* 7) Botones y etiquetas */
-button, .btn, .site-nav .page-link.current {
-  background: linear-gradient(135deg, color-mix(in oklab, var(--brand) 85%, #000 15%), var(--cyan));
-  color: #081014;
-  border: 0;
-  border-radius: 10px;
-  padding: .5rem .9rem;
-  font-weight: 600;
-  box-shadow: 0 6px 18px rgba(24, 243, 164, .18);
-}
-button:hover, .btn:hover {
-  filter: brightness(1.06);
-}
-button:focus-visible, .btn:focus-visible, a:focus-visible, .page-link:focus-visible {
-  outline: 2px solid var(--cyan);
-  outline-offset: 3px;
-  border-radius: 8px;
+/* ===== Enlaces CONTENIDO (verde logo) ===== */
+.page, .post, .home, .page-content {
+  a:not(.site-title):not(.page-link){
+    color:var(--link);
+    text-decoration:none;
+    text-decoration-color:transparent;
+    transition:color .15s, text-shadow .15s, text-decoration-color .15s;
+  }
+  a:not(.site-title):not(.page-link):hover,
+  a:not(.site-title):not(.page-link):focus{
+    color:var(--link-hover);
+    text-decoration:underline;
+    text-underline-offset:.18em;
+    text-decoration-thickness:2px;
+    text-shadow:0 0 6px var(--link-glow);
+  }
+  a:not(.site-title):not(.page-link):focus-visible{
+    outline:2px solid var(--link-hover);
+    outline-offset:2px;
+    border-radius:4px;
+  }
 }
 
-/* 8) Bloques de código (Rouge/Minima) */
-.highlight, pre, code {
-  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
-}
-pre, .highlight {
-  background: var(--code-bg);
-  border: 1px solid var(--code-border);
-  color: var(--code-text);
-  border-radius: 12px;
-  padding: 1rem 1rem;
-  overflow: auto;
-}
-/* tokens comunes de Rouge */
-.highlight .k, .highlight .kd, .highlight .kn, .highlight .kp { color: var(--code-kw); }
-.highlight .nf, .highlight .fm { color: var(--code-fn); }
-.highlight .s, .highlight .sb, .highlight .s2 { color: var(--code-str); }
-.highlight .mi, .highlight .m, .highlight .mh { color: var(--code-num); }
-.highlight .c, .highlight .c1, .highlight .cm { color: var(--code-com); font-style: italic; }
+/* ===== Listas más legibles ===== */
+ul { padding-left: 1.2rem; }
+li { margin: .25rem 0; }
 
-/* 9) Botón “Copiar” siempre visible y con estilo de marca */
-.highlight { position: relative; }
-.copy-code-btn {
-  position: absolute; top: 10px; right: 10px;
-  background: #0f1720;
-  color: var(--text);
-  border: 1px solid var(--border);
-  padding: .25rem .55rem;
-  border-radius: 8px;
-  font-size: .8rem;
-  opacity: .95;
-}
-.copy-code-btn:hover { color: var(--brand); border-color: var(--brand-600); }
-
-/* 10) Listas, tablas, bloques */
-blockquote {
-  background: var(--panel-2);
-  border-left: 4px solid var(--brand-700);
-  color: var(--text);
-}
-table {
-  width: 100%;
-  border-collapse: collapse;
-  border: 1px solid var(--border);
-}
-th, td { padding: .6rem .7rem; border-bottom: 1px solid var(--border); }
-thead th {
-  background: linear-gradient(180deg, var(--panel), var(--panel-2));
-  color: var(--text);
+/* ===== Tipografía monoespaciada ===== */
+code,kbd,samp,pre,.highlighter-rouge{
+  font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono","Courier New",monospace;
+  font-size:.95em;
 }
 
-/* 11) Footer discreto */
-.site-footer { color: var(--text-dim); }
-.site-footer a { color: var(--text-mute); }
-.site-footer a:hover { color: var(--brand); }
+/* ===== BLOQUES DE CÓDIGO (1 sola caja) ===== */
+.highlighter-rouge{
+  background:var(--code-bg) !important;
+  border:1px solid var(--code-bd);
+  border-radius:12px;
+  padding:12px 14px;
+  margin:1rem 0;
+  overflow-x:auto;
+  position:relative; /* botón Copiar */
+}
+.highlighter-rouge .highlight,
+.highlighter-rouge pre,
+.highlighter-rouge code{
+  background:transparent !important;
+  border:none !important;
+  padding:0 !important;
+  margin:0 !important;
+  box-shadow:none !important;
+}
+.highlighter-rouge code{
+  color:#c9d1d9;
+  line-height:1.55;
+  display:block;
+  white-space:pre;
+}
 
-/* 12) Logotipo en cabecera con glow muy suave (opcional) */
-.site-title, .site-title a {
-  color: var(--brand);
-  text-decoration: none;
-  letter-spacing: .5px;
-  text-shadow: 0 0 10px color-mix(in oklab, var(--brand) 25%, transparent);
+/* ===== Código en línea (chip pequeño estilo GitHub) ===== */
+:not(pre)>code, code:not(pre code){
+  background:rgba(110,118,129,.4) !important;
+  border:1px solid #30363d !important;
+  color:#c9d1d9 !important;
+  padding:.1em .35em !important;
+  border-radius:6px !important;
+  font-size:.92em !important;
+  line-height:1;
+  display:inline !important;
+  box-shadow:none !important;
+}
+
+/* ===== Botón Copiar (siempre visible) ===== */
+.code-copy-btn{
+  position:absolute; top:8px; right:8px; z-index:2;
+  background:#2d333b; border:1px solid #444c56; color:#c9d1d9;
+  font-size:.8rem; padding:2px 8px; border-radius:6px; cursor:pointer; opacity:1;
+}
+.code-copy-btn:active{ background:#444c56; }
+
+/* ===== Utilidades ===== */
+.post-list>li,.post,.page,.site-nav{ background:transparent; border:none; }
+::selection{ background:rgba(126,199,255,.28); color:#fff; }
+
+/* ===== Responsive ===== */
+@media screen and (max-width:560px){
+  .highlighter-rouge{ padding:10px 12px; font-size:.92em; }
 }
