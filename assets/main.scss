@@ -1,211 +1,168 @@
 ---
 ---
+
 @import "minima";
 
-/* ====== Tema B1M3RU · Dark legible con acentos ciber ====== */
-
-/* 1) Tokens de color (HSL para matizar fácilmente) */
-:root {
-  /* Base oscura tipo GitHub Dark pero un poco más “nocturna” */
-  --bg:            #0e1116;  /* body */
-  --panel:         #121821;  /* cabecera, tarjetas, aside */
-  --panel-2:       #0b1017;  /* code, blockquote */
-  --border:        #232a36;
-  --shadow:        rgba(0,0,0,.35);
-
-  /* Texto */
-  --text:          #e6edf3;  /* principal */
-  --text-mute:     #9aa7b5;  /* secundario */
-  --text-dim:      #6b7785;
-
-  /* Marca (coherente con tu logo) */
-  --brand:         #18f3a4;  /* verde-teal neón */
-  --brand-600:     #12c883;  /* hover/activo */
-  --brand-700:     #0ea36a;  /* foco/fondo suave */
-  --cyan:          #33e1f7;  /* acento secundario */
-  --cyan-600:      #12b9d2;
-
-  /* Estado y utilidades */
-  --success:       #35d49a;
-  --warning:       #f5b14b;
-  --danger:        #ff6b72;
-  --link:          #5ce9c7;  /* enlaces legibles, no tan chillón */
-  --link-hover:    #8af1dc;
-  --visited:       #57c9ff;
-
-  /* Código (buen contraste sin deslumbrar) */
-  --code-bg:       #0b1420;
-  --code-border:   #1b2b3a;
-  --code-text:     #cfe7ff;
-  --code-kw:       #93c5fd;
-  --code-fn:       #7dd3fc;
-  --code-str:      #a7f3d0;
-  --code-num:      #fca5a5;
-  --code-com:      #6b7280;
+/* ===== Paleta oscura ===== */
+:root{
+  --bg:#1e1f20;
+  --panel:#2a2d31;
+  --text:#e0e0e0;
+  --muted:#9aa6b2;
+  --green-neon:#39ff14;
+  --green:#39ff14;
+  --blue:#00e5ff;
+  --code-bg:#0d1117;     /* fondo bloque */
+  --code-bd:#30363d;     /* borde bloque */
 }
 
-/* 2) Base tipográfica */
-html { scroll-behavior: smooth; }
-body {
-  background: var(--bg);
-  color: var(--text);
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
+/* ===== Global ===== */
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji",sans-serif;
+  font-size:17px; line-height:1.6;
+}
+.site-header,.site-footer{background:var(--panel);border:none;}
+.site-title,.site-nav .page-link{color:var(--text);}
+h1,h2,h3{color:var(--green);}
+
+/* ===== Enlaces ===== */
+a{
+  color:var(--blue); text-decoration:none;
+  transition:color .15s, text-decoration-color .15s;
+  text-decoration-color:transparent;
+}
+a:hover,a:focus{
+  color:var(--blue);
+  text-decoration:underline;
+  text-underline-offset:.2em;
+  text-decoration-thickness:2px;
+}
+a:focus-visible,.site-nav .page-link:focus-visible{
+  outline:2px solid var(--green-neon);
+  outline-offset:2px;
+  border-radius:4px;
 }
 
-/* 3) Contenedores y tarjetas (Minima overrides) */
-.site-header, .site-footer, .page-content .wrapper, .post, .posts, .home {
-  background: transparent;
-}
-.site-header, .site-nav, .post, .page-content .wrapper {
-  box-shadow: 0 8px 24px var(--shadow);
-  border: 1px solid var(--border);
-  background: var(--panel);
-  border-radius: 14px;
-}
-.site-header { backdrop-filter: saturate(120%) blur(6px); }
+.post-list>li,.post,.page,.site-nav{ background:transparent; border:none; }
 
-/* 4) Títulos con acento sutil (no molesta en lectura) */
-h1, h2, h3 {
-  color: var(--text);
-  position: relative;
-}
-h1::after, h2::after {
-  content: "";
-  display: block;
-  width: 56px; height: 3px;
-  margin-top: .5rem;
-  border-radius: 3px;
-  background: linear-gradient(90deg, var(--brand), var(--cyan));
-  opacity: .9;
+/* ===== Tipografía mono ===== */
+code,kbd,samp,pre,.highlighter-rouge{
+  font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono","Courier New",monospace;
+  font-size:.95em;
 }
 
-/* 5) Enlaces: siempre subrayados (accesibles), color marca */
-a {
-  color: var(--link);
-  text-decoration: underline;
-  text-decoration-thickness: .08em;
-  text-underline-offset: 2px;
-}
-a:hover { color: var(--link-hover); }
-a:visited { color: var(--visited); }
-
-/* 6) Navegación: quitar “cambio raro” al pasar el ratón */
-.site-nav .page-link {
-  color: var(--text);
-  transition: color .15s ease, text-shadow .2s ease;
-}
-.site-nav .page-link:hover {
-  color: var(--brand);
-  text-shadow: 0 0 12px color-mix(in oklab, var(--brand) 30%, transparent);
-}
-
-/* 7) Botones y etiquetas */
-button, .btn, .site-nav .page-link.current {
-  background: linear-gradient(135deg, color-mix(in oklab, var(--brand) 85%, #000 15%), var(--cyan));
-  color: #081014;
-  border: 0;
-  border-radius: 10px;
-  padding: .5rem .9rem;
-  font-weight: 600;
-  box-shadow: 0 6px 18px rgba(24, 243, 164, .18);
-}
-button:hover, .btn:hover {
-  filter: brightness(1.06);
-}
-button:focus-visible, .btn:focus-visible, a:focus-visible, .page-link:focus-visible {
-  outline: 2px solid var(--cyan);
-  outline-offset: 3px;
-  border-radius: 8px;
-}
-
-/* 8) Bloques de código (Rouge/Minima) */
-.highlight, pre, code {
-  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
-}
-pre, .highlight {
-  background: var(--code-bg);
-  border: 1px solid var(--code-border);
-  color: var(--code-text);
+/* ===== BLOQUES DE CÓDIGO (una sola caja) ===== */
+.highlighter-rouge {
+  background: var(--code-bg) !important;
+  border: 1px solid var(--code-bd);
   border-radius: 12px;
-  padding: 1rem 1rem;
-  overflow: auto;
-}
-/* tokens comunes de Rouge */
-.highlight .k, .highlight .kd, .highlight .kn, .highlight .kp { color: var(--code-kw); }
-.highlight .nf, .highlight .fm { color: var(--code-fn); }
-.highlight .s, .highlight .sb, .highlight .s2 { color: var(--code-str); }
-.highlight .mi, .highlight .m, .highlight .mh { color: var(--code-num); }
-.highlight .c, .highlight .c1, .highlight .cm { color: var(--code-com); font-style: italic; }
-
-/* 9) Botón “Copiar” siempre visible y con estilo de marca */
-.highlight { position: relative; }
-.copy-code-btn {
-  position: absolute; top: 10px; right: 10px;
-  background: #0f1720;
-  color: var(--text);
-  border: 1px solid var(--border);
-  padding: .25rem .55rem;
-  border-radius: 8px;
-  font-size: .8rem;
-  opacity: .95;
-}
-.copy-code-btn:hover { color: var(--brand); border-color: var(--brand-600); }
-
-/* 10) Listas, tablas, bloques */
-blockquote {
-  background: var(--panel-2);
-  border-left: 4px solid var(--brand-700);
-  color: var(--text);
-}
-table {
-  width: 100%;
-  border-collapse: collapse;
-  border: 1px solid var(--border);
-}
-th, td { padding: .6rem .7rem; border-bottom: 1px solid var(--border); }
-thead th {
-  background: linear-gradient(180deg, var(--panel), var(--panel-2));
-  color: var(--text);
+  padding: 12px 14px;
+  margin: 1rem 0;
+  overflow-x: auto;
 }
 
-/* 11) Footer discreto */
-.site-footer { color: var(--text-dim); }
-.site-footer a { color: var(--text-mute); }
-.site-footer a:hover { color: var(--brand); }
-
-/* 12) Logotipo en cabecera con glow muy suave (opcional) */
-.site-title, .site-title a {
-  color: var(--brand);
-  text-decoration: none;
-  letter-spacing: .5px;
-  text-shadow: 0 0 10px color-mix(in oklab, var(--brand) 25%, transparent);
+/* Quitar bordes/fondos de wrappers internos */
+.highlighter-rouge .highlight,
+.highlighter-rouge pre,
+.highlighter-rouge code {
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  box-shadow: none !important;
 }
 
-/* ==== FIX PACK (sin cambiar tu paleta) ==== */
-
-/* Cabecera: logo/menú no cambian de color en hover */
-.site-title, .site-title a, .site-nav .page-link { color: inherit !important; text-decoration: none !important; }
-.site-title:hover, .site-title a:hover, .site-nav .page-link:hover,
-.site-title:focus, .site-nav .page-link:focus {
-  color: inherit !important;
-  text-decoration: underline;
-  text-underline-offset: .2em;
-  text-decoration-thickness: 2px;
+/* Texto base dentro del bloque */
+.highlighter-rouge code {
+  color: #c9d1d9;
+  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+  font-size: 0.95em;
+  line-height: 1.55;
+  display: block;
+  white-space: pre;
 }
 
-/* Bloques de código: una sola caja (respetando tus colores) */
-.highlighter-rouge { position: relative; }
-.highlighter-rouge .highlight, .highlighter-rouge pre, .highlighter-rouge code {
-  background: transparent !important; border: 0 !important; padding: 0 !important; margin: 0 !important; box-shadow: none !important;
+/* Código en línea estilo GitHub Dark */
+:not(pre) > code,
+code:not(pre code) {
+  background: rgba(110, 118, 129, 0.4); /* gris translúcido GitHub Dark */
+  border: 1px solid #30363d;
+  color: #c9d1d9;         /* texto claro */
+  padding: 0.15em 0.35em; /* compacto */
+  border-radius: 6px;
+  font-size: 0.92em;      /* un pelín más pequeño que el texto */
+  box-shadow: none;
 }
-.highlighter-rouge code { display: block; white-space: pre; line-height: 1.55; }
 
-/* Código en línea: chip pequeño (no tocamos tu color) */
-:not(pre) > code, code:not(pre code) {
-  display: inline; padding: .1em .35em; border-radius: 6px; font-size: .92em; line-height: 1; box-shadow: none;
+/* ===== Paleta mínima de tokens ===== */
+/* Comentarios */
+.highlight .c,.highlight .c1,.highlight .cm{ color:#8b949e; font-style:italic; }
+/* Palabras clave */
+.highlight .k,.highlight .kr,.highlight .kn,.highlight .kc,.highlight .kd{ color:#ff7b72; }
+/* Strings */
+.highlight .s,.highlight .s1,.highlight .s2{ color:#a5d6ff; }
+/* Números */
+.highlight .m,.highlight .mi,.highlight .mf,.highlight .mh,.highlight .il{ color:#79c0ff; }
+/* Funciones / nombres */
+.highlight .nf,.highlight .nc,.highlight .nn,.highlight .na,.highlight .nt{ color:#d2a8ff; }
+/* Builtins */
+.highlight .nb{ color:#79c0ff; }
+/* Operadores */
+.highlight .o,.highlight .ow,.highlight .p{ color:#c9d1d9; }
+
+/* ===== Bash ===== */
+pre code.language-bash, pre code.language-shell{ color:#c9d1d9; }
+
+/* ===== Utilidades ===== */
+.center-img{
+  display:block; margin:1rem auto; max-width:640px; width:100%;
+  border:1px solid rgba(127,217,138,.25); border-radius:8px;
+  box-shadow:0 0 15px rgba(127,217,138,.12);
+}
+.home-section{ margin:2rem 0 2.5rem; padding-bottom:.5rem; border-bottom:1px dashed #2b3038; }
+
+/* Selección de texto */
+::selection{ background:rgba(126,199,255,.28); color:#fff; }
+
+/* ===== Responsive ===== */
+@media screen and (max-width:560px){
+  .highlighter-rouge {
+    padding: 10px 12px;
+    font-size: .92em;
+  }
+  .center-img{ max-width:100%; }
 }
 
-/* Botón “Copiar”: siempre visible (usa tus colores actuales) */
-.code-copy-btn { position: absolute; top: 8px; right: 8px; z-index: 2; cursor: pointer; opacity: 1; }
+/* Botón Copiar (visible al pasar el ratón) */
+.code-copy-btn{
+  position:absolute;
+  top:8px; right:8px;
+  background:#2d333b;
+  border:1px solid #444c56;
+  color:#c9d1d9;
+  font-size:.8rem;
+  padding:2px 8px;
+  border-radius:6px;
+  cursor:pointer;
+  opacity:0;                 /* oculto por defecto */
+  transition:opacity .2s;
+}
+.highlighter-rouge:hover .code-copy-btn,
+.highlight:hover .code-copy-btn,
+figure.highlight:hover .code-copy-btn { opacity:1; }
+.code-copy-btn:active{ background:#444c56; }
+
+/* Código en línea estilo GitHub (chips pequeños, no caja grande) */
+:not(pre) > code,
+code:not(pre code){
+  background:rgba(110,118,129,.4);
+  border:1px solid #30363d;
+  color:#c9d1d9;
+  padding:.15em .35em;
+  border-radius:6px;
+  font-size:.92em;
+  box-shadow:none;
+}
 
