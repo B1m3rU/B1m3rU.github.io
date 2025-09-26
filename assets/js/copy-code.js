@@ -1,34 +1,88 @@
+/* assets/js/copy-code.js
+   Añade un botón “Copiar” a cada bloque de código de Jekyll/Rouge (minima). */
+
 (function () {
-  function getBlocks() {
-    const all = Array.from(document.querySelectorAll(".highlighter-rouge, figure.highlight, div.highlight"));
-    const uniq = new Set(all.map(el => el.closest(".highlighter-rouge") || el));
-    return Array.from(uniq);
+  // Utilidad: normaliza el texto que vamos a copiar
+  function getCodeText(block) {
+    // Busca el <code> real dentro del bloque
+    const code = block.querySelector('code') || block;
+    // Extrae texto plano
+    let text = code.innerText || '';
+    // Quita prompts comunes ($, >, PS C:\), preservando identación
+    text = text
+      .split('\n')
+      .map(line => line.replace(/^(\s*)(\$|>|PS [^>]*>|\# )\s?/, '$1'))
+      .join('\n')
+      .trimEnd(); // evita salto extra al final
+    return text;
   }
-  function addBtn(block) {
-    if (block.querySelector(".code-copy-btn")) return;
-    if (getComputedStyle(block).position === "static") block.style.position = "relative";
-    const btn = document.createElement("button");
-    btn.type = "button";
-    btn.className = "code-copy-btn";
-    btn.textContent = "Copiar";
-    btn.addEventListener("click", async () => {
-      const codeEl = block.querySelector("pre, code");
-      const text = (codeEl ? codeEl.innerText : block.innerText).replace(/\s+$/, "");
-      try { await navigator.clipboard.writeText(text); }
-      catch {
-        const ta = document.createElement("textarea");
-        ta.value = text; ta.style.position = "fixed"; ta.style.top = "-9999px";
-        document.body.appendChild(ta); ta.focus(); ta.select(); document.execCommand("copy");
-        document.body.removeChild(ta);
-      }
-      const prev = btn.textContent;
-      btn.textContent = "¡Copiado!"; btn.disabled = true;
-      setTimeout(() => { btn.textContent = prev; btn.disabled = false; }, 1500);
+
+  // Crea un botón con estilo y comportamiento
+  function createCopyButton() {
+    const btn = document.createElement('button');
+    btn.className = 'copy-btn';
+    btn.type = 'button';
+    btn.setAttribute('aria-label', 'Copiar código');
+    btn.textContent = 'Copiar';
+    return btn;
+  }
+
+  // Lógica de copiado con fallback
+  async function copyToClipboard(text) {
+    if (navigator.clipboard && window.isSecureContext) {
+      await navigator.clipboard.writeText(text);
+      return true;
+    }
+    // Fallback para navegadores antiguos
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.top = '-1000px';
+    document.body.appendChild(ta);
+    ta.focus();
+    ta.select();
+    try {
+      const ok = document.execCommand('copy');
+      document.body.removeChild(ta);
+      return ok;
+    } catch (e) {
+      document.body.removeChild(ta);
+      return false;
+    }
+  }
+
+  // Inserta botones en todos los bloques de código
+  function enhanceAll() {
+    const blocks = document.querySelectorAll('pre.highlight, figure.highlight, pre > code');
+    blocks.forEach(block => {
+      const host = block.closest('figure.highlight, pre.highlight, pre') || block;
+      // Evita duplicados
+      if (host.querySelector('.copy-btn')) return;
+
+      // Asegura posicionamiento relativo del contenedor
+      host.classList.add('copy-host');
+
+      const btn = createCopyButton();
+      btn.addEventListener('click', async () => {
+        const text = getCodeText(host);
+        const ok = await copyToClipboard(text);
+        const old = btn.textContent;
+        btn.textContent = ok ? 'Copiado ✓' : 'Error';
+        btn.classList.toggle('copied', !!ok);
+        setTimeout(() => {
+          btn.textContent = old;
+          btn.classList.remove('copied');
+        }, 1400);
+      });
+
+      host.appendChild(btn);
     });
-    block.appendChild(btn);
   }
-  function init(){ getBlocks().forEach(addBtn); }
-  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init); else init();
-  window.addEventListener("load", init);
-  new MutationObserver(init).observe(document.documentElement, { childList: true, subtree: true });
+
+  // Ejecuta cuando el DOM está listo (tenemos defer, pero por si acaso)
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', enhanceAll);
+  } else {
+    enhanceAll();
+  }
 })();
