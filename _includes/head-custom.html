@@ -1,11 +1,9 @@
-{%- comment -%} Solo fragmentos dentro del <head> del tema minima {%- endcomment -%}
-
-<!-- Fuente monoespaciada para el código -->
+<!-- JetBrains Mono -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
 
-<!-- Favicons (ajusta rutas si los tienes en assets/img/) -->
+<!-- Favicons (rutas según tu carpeta ordenada) -->
 <link rel="icon" href="{{ '/assets/img/favicon.ico' | relative_url }}" type="image/x-icon">
 <link rel="apple-touch-icon" sizes="180x180" href="{{ '/assets/img/apple-touch-icon.png' | relative_url }}">
 <link rel="icon" type="image/png" sizes="32x32" href="{{ '/assets/img/favicon-32x32.png' | relative_url }}">
@@ -13,5 +11,5 @@
 <link rel="manifest" href="{{ '/assets/img/site.webmanifest' | relative_url }}">
 <meta name="theme-color" content="#151515">
 
-<!-- Tu JS del botón Copiar (defer recomendado) -->
+<!-- Tu JS (defer) -->
 <script defer src="{{ '/assets/js/copy-code.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>
