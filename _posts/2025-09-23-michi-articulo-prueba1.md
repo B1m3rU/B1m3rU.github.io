@@ -18,7 +18,7 @@ Subir un artículo de prueba e ir viendo como queda
 - **Herramientas**: Nmap 7.94, Wireshark
 
 ## 3. Prerrequisitos
-- Conectividad entre Vargi y una paqs Certificada (`ping`).
+- Conectividad entre Vargi y una paqs Certificada.
 - Permisos y ética: se trata de una vaca propia de laboratorio.
 
 ## 4. Procedimiento paso a paso
