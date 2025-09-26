@@ -22,9 +22,8 @@ minima:
 url: "https://b1m3ru.github.io/"
 
 plugins:
+  - jekyll-seo-tag
   - jekyll-sitemap
-
-url: "https://b1m3ru.github.io"
 
 markdown: kramdown
 kramdown:
