@@ -1,136 +1,62 @@
----
----
+/* ===== FIX PACK (no cambia tu paleta) ===== */
 
-@import "minima";
-
-/* ===== Paleta base ===== */
-:root{
-  --bg:#1e1f20;
-  --panel:#2a2d31;
-  --text:#e0e0e0;
-  --muted:#9aa6b2;
-
-  --green:#39ff14;           /* títulos */
-  --link:#22f6a8;            /* enlaces contenido */
-  --link-hover:#62ffd0;
-  --link-glow:rgba(34,246,168,.35);
-
-  --code-bg:#0d1117;         /* bloque de código */
-  --code-bd:#30363d;
+/* 1) Cabecera: que el logo/menú no cambien de color en hover */
+.site-title,
+.site-title a,
+.site-nav .page-link {
+  color: inherit !important;
+  text-decoration: none !important;
+}
+.site-title:hover,
+.site-title a:hover,
+.site-title:focus,
+.site-nav .page-link:hover,
+.site-nav .page-link:focus {
+  color: inherit !important;     /* mismo color que en reposo */
+  text-decoration: underline;    /* quita esta línea si no quieres subrayado */
+  text-underline-offset: .2em;
+  text-decoration-thickness: 2px;
 }
 
-/* ===== Global ===== */
-body{
-  background:var(--bg);
-  color:var(--text);
-  font: 17px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji",sans-serif;
-}
-
-/* Cabecera/Pie */
-.site-header,.site-footer{ background:var(--panel); border:none; }
-.site-title,.site-nav .page-link{ color:var(--text); }
-h1,h2,h3{ color:var(--green); }
-
-/* Separadores suaves de portada/listas */
-hr, .post-list + .post-list { border:0; height:1px; background:#323842; opacity:.6; }
-
-/* ===== Enlaces CABECERA (no cambian color) ===== */
-.site-title,.site-title a,.site-nav .page-link{
-  color:var(--text) !important;
-  text-decoration:none !important;
-}
-.site-title:hover,.site-title a:hover,.site-nav .page-link:hover{
-  color:var(--text) !important;
-  text-decoration:underline;
-  text-underline-offset:.2em;
-  text-decoration-thickness:2px;
-}
-
-/* ===== Enlaces CONTENIDO (verde logo) ===== */
-.page, .post, .home, .page-content {
-  a:not(.site-title):not(.page-link){
-    color:var(--link);
-    text-decoration:none;
-    text-decoration-color:transparent;
-    transition:color .15s, text-shadow .15s, text-decoration-color .15s;
-  }
-  a:not(.site-title):not(.page-link):hover,
-  a:not(.site-title):not(.page-link):focus{
-    color:var(--link-hover);
-    text-decoration:underline;
-    text-underline-offset:.18em;
-    text-decoration-thickness:2px;
-    text-shadow:0 0 6px var(--link-glow);
-  }
-  a:not(.site-title):not(.page-link):focus-visible{
-    outline:2px solid var(--link-hover);
-    outline-offset:2px;
-    border-radius:4px;
-  }
-}
-
-/* ===== Listas más legibles ===== */
-ul { padding-left: 1.2rem; }
-li { margin: .25rem 0; }
-
-/* ===== Tipografía monoespaciada ===== */
-code,kbd,samp,pre,.highlighter-rouge{
-  font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono","Courier New",monospace;
-  font-size:.95em;
-}
-
-/* ===== BLOQUES DE CÓDIGO (1 sola caja) ===== */
-.highlighter-rouge{
-  background:var(--code-bg) !important;
-  border:1px solid var(--code-bd);
-  border-radius:12px;
-  padding:12px 14px;
-  margin:1rem 0;
-  overflow-x:auto;
-  position:relative; /* botón Copiar */
-}
+/* 2) Bloques de código: una sola caja (respetando tus colores) */
+/* Aplica tu fondo/borde al contenedor externo que ya pinta Rouge/Minima */
+.highlighter-rouge { position: relative; }
+/* Limpia wrappers internos para evitar “doble/triple caja” */
 .highlighter-rouge .highlight,
 .highlighter-rouge pre,
-.highlighter-rouge code{
-  background:transparent !important;
-  border:none !important;
-  padding:0 !important;
-  margin:0 !important;
-  box-shadow:none !important;
+.highlighter-rouge code {
+  background: transparent !important;
+  border: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  box-shadow: none !important;
 }
-.highlighter-rouge code{
-  color:#c9d1d9;
-  line-height:1.55;
-  display:block;
-  white-space:pre;
-}
-
-/* ===== Código en línea (chip pequeño estilo GitHub) ===== */
-:not(pre)>code, code:not(pre code){
-  background:rgba(110,118,129,.4) !important;
-  border:1px solid #30363d !important;
-  color:#c9d1d9 !important;
-  padding:.1em .35em !important;
-  border-radius:6px !important;
-  font-size:.92em !important;
-  line-height:1;
-  display:inline !important;
-  box-shadow:none !important;
+/* Texto del bloque: solo tipografía/flujo, sin forzar color */
+.highlighter-rouge code {
+  display: block;
+  white-space: pre;
+  line-height: 1.55;
 }
 
-/* ===== Botón Copiar (siempre visible) ===== */
-.code-copy-btn{
-  position:absolute; top:8px; right:8px; z-index:2;
-  background:#2d333b; border:1px solid #444c56; color:#c9d1d9;
-  font-size:.8rem; padding:2px 8px; border-radius:6px; cursor:pointer; opacity:1;
+/* 3) Código en línea (chips pequeños) – sin forzar color/fondo */
+/* Usa lo que ya tengas definido; esto solo asegura tamaño/espaciado */
+:not(pre) > code,
+code:not(pre code) {
+  display: inline;
+  padding: .1em .35em;
+  border-radius: 6px;
+  font-size: .92em;
+  line-height: 1;
+  box-shadow: none;
 }
-.code-copy-btn:active{ background:#444c56; }
 
-/* ===== Utilidades ===== */
-.post-list>li,.post,.page,.site-nav{ background:transparent; border:none; }
-::selection{ background:rgba(126,199,255,.28); color:#fff; }
-
-/* ===== Responsive ===== */
-@media screen and (max-width:560px){
-  .highlighter-rouge{ padding:10px 12px; font-size:.92em; }
+/* 4) Botón “Copiar” (si ya lo tienes, solo asegura su posición) */
+.highlighter-rouge { position: relative; }  /* por si algún bloque no la tiene */
+.code-copy-btn {
+  position: absolute;
+  top: 8px; right: 8px;
+  z-index: 2;
+  cursor: pointer;
+  opacity: 1;                /* siempre visible */
+  /* No definimos colores: tu hoja actual los mantiene */
 }
