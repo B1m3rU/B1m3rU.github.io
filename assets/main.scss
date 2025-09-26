@@ -155,6 +155,34 @@ pre code.language-bash, pre code.language-shell{ color:#c9d1d9; }
   line-height: 1; display: inline !important; box-shadow: none !important;
 }
 
+/* ——— Enlaces de la CABECERA: no cambian de color en hover ——— */
+.site-title,
+.site-title:link,
+.site-title:visited,
+.site-title a,
+.site-title a:link,
+.site-title a:visited,
+.site-nav .page-link,
+.site-nav .page-link:link,
+.site-nav .page-link:visited {
+  color: var(--text) !important;
+  text-decoration: none !important;   /* sin subrayado por defecto */
+}
+
+/* En hover/focus mantenemos el MISMO color */
+.site-title:hover,
+.site-title a:hover,
+.site-title:focus,
+.site-title a:focus,
+.site-nav .page-link:hover,
+.site-nav .page-link:focus {
+  color: var(--text) !important;
+  /* Si quieres subrayado al pasar el ratón, deja esta línea; si no, bórrala */
+  text-decoration: underline;
+  text-underline-offset: .2em;
+  text-decoration-thickness: 2px;
+  text-decoration-color: currentColor;
+}
 
 
 
