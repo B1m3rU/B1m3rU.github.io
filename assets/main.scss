@@ -135,35 +135,40 @@ pre code.language-bash, pre code.language-shell{ color:#c9d1d9; }
   .center-img{ max-width:100%; }
 }
 
-/* Botón Copiar (visible al pasar el ratón) */
-.code-copy-btn{
-  position:absolute;
-  top:8px; right:8px;
-  background:#2d333b;
-  border:1px solid #444c56;
-  color:#c9d1d9;
-  font-size:.8rem;
-  padding:2px 8px;
-  border-radius:6px;
-  cursor:pointer;
-  opacity:0;                 /* oculto por defecto */
-  transition:opacity .2s;
-}
-.highlighter-rouge:hover .code-copy-btn,
-.highlight:hover .code-copy-btn,
-figure.highlight:hover .code-copy-btn { opacity:1; }
-.code-copy-btn:active{ background:#444c56; }
+/* ——— Botón “Copiar” ——— */
+.highlighter-rouge,
+figure.highlight,
+div.highlight { position: relative; } /* por si faltara */
 
-/* Código en línea estilo GitHub (chips pequeños, no caja grande) */
-:not(pre) > code,
-code:not(pre code){
-  background:rgba(110,118,129,.4);
-  border:1px solid #30363d;
-  color:#c9d1d9;
-  padding:.15em .35em;
-  border-radius:6px;
-  font-size:.92em;
-  box-shadow:none;
+.code-copy-btn{
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 2;
+  background: #2d333b;
+  border: 1px solid #444c56;
+  color: #c9d1d9;
+  font-size: 0.8rem;
+  padding: 2px 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  opacity: 1;                /* SIEMPRE visible */
 }
+.code-copy-btn:active { background: #444c56; }
+
+/* ——— Código en línea tipo GitHub (chip pequeñito) ——— */
+:not(pre) > code,
+code:not(pre code) {
+  background: rgba(110,118,129,.4);
+  border: 1px solid #30363d;
+  color: #c9d1d9;
+  padding: 0.1em 0.35em;     /* más compacto */
+  border-radius: 6px;
+  font-size: 0.92em;
+  line-height: 1;            /* se acopla mejor a la línea */
+  vertical-align: baseline;  /* evita subir/bajar */
+  box-shadow: none;
+}
+
 
 
