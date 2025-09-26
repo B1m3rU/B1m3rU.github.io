@@ -4,4 +4,5 @@
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
 
 <!-- Copiar código -->
-<script defer src="{{ '/assets/js/copy-code.js' | relative_url }}"></script>
+<script defer src="{{ '/assets/js/copy-code.js' | relative_url }}?v={{ site.github.build_revision | default: site.time | date: '%s' }}"></script>
+
