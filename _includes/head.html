@@ -1,6 +1,7 @@
 {%- comment -%}
-Este archivo sustituye al head del tema Minima y garantiza que
-cargamos nuestro CSS y JS propios (copy-code.js).
+Sustituye al <head> del tema Minima.
+Carga el CSS generado a partir de assets/main.scss y el JS de “copiar código”.
+Incluye cache-buster para forzar recarga tras cada deploy.
 {%- endcomment -%}
 <head>
   <meta charset="utf-8">
@@ -9,14 +10,20 @@ cargamos nuestro CSS y JS propios (copy-code.js).
 
   {%- seo -%}
 
-  <!-- CSS principal del sitio -->
-  <link rel="stylesheet" href="{{ '/assets/main.css' | relative_url }}">
+  <!-- CSS principal del sitio (con cache-buster) -->
+  <link
+    rel="stylesheet"
+    href="{{ '/assets/main.css' | relative_url }}?v={{ site.github.build_revision | default: site.time | date: '%s' }}"
+  >
 
-  <!-- Fuente monoespaciada -->
+  <!-- Fuente monoespaciada para código -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
 
-  <!-- Botón Copiar (forzamos recarga con cache-buster) -->
-  <script defer src="{{ '/assets/js/copy-code.js' | relative_url }}?v={{ site.github.build_revision | default: site.time | date: '%s' }}"></script>
+  <!-- Botón Copiar (JS con cache-buster) -->
+  <script
+    defer
+    src="{{ '/assets/js/copy-code.js' | relative_url }}?v={{ site.github.build_revision | default: site.time | date: '%s' }}"
+  ></script>
 </head>
