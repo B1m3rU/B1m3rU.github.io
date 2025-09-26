@@ -135,16 +135,14 @@ pre code.language-bash, pre code.language-shell{ color:#c9d1d9; }
   .center-img{ max-width:100%; }
 }
 
-/* ——— Botón “Copiar” ——— */
+/* Botón Copiar – siempre visible */
 .highlighter-rouge,
 figure.highlight,
-div.highlight { position: relative; } /* por si faltara */
+div.highlight { position: relative; }
 
 .code-copy-btn{
   position: absolute;
-  top: 8px;
-  right: 8px;
-  z-index: 2;
+  top: 8px; right: 8px; z-index: 2;
   background: #2d333b;
   border: 1px solid #444c56;
   color: #c9d1d9;
@@ -152,23 +150,23 @@ div.highlight { position: relative; } /* por si faltara */
   padding: 2px 8px;
   border-radius: 6px;
   cursor: pointer;
-  opacity: 1;                /* SIEMPRE visible */
+  opacity: 1; /* siempre visible */
 }
-.code-copy-btn:active { background: #444c56; }
 
-/* ——— Código en línea tipo GitHub (chip pequeñito) ——— */
+/* Código en línea estilo GitHub (chip pequeño) */
 :not(pre) > code,
-code:not(pre code) {
-  background: rgba(110,118,129,.4);
-  border: 1px solid #30363d;
-  color: #c9d1d9;
-  padding: 0.1em 0.35em;     /* más compacto */
-  border-radius: 6px;
-  font-size: 0.92em;
-  line-height: 1;            /* se acopla mejor a la línea */
-  vertical-align: baseline;  /* evita subir/bajar */
-  box-shadow: none;
+code:not(pre code){
+  background: rgba(110,118,129,.4) !important;
+  border: 1px solid #30363d !important;
+  color: #c9d1d9 !important;
+  padding: 0.1em 0.35em !important;
+  border-radius: 6px !important;
+  font-size: 0.92em !important;
+  line-height: 1;
+  display: inline;           /* por si algo lo hace block */
+  box-shadow: none !important;
 }
+
 
 
 
