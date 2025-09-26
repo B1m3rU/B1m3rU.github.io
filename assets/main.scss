@@ -149,6 +149,23 @@ pre code.language-bash, pre code.language-shell{ color:#c9d1d9; }
   opacity:0;                 /* oculto por defecto */
   transition:opacity .2s;
 }
+
+.copy-host { position: relative; }
+.copy-host .copy-btn {
+  position: absolute; top: 8px; right: 8px;
+  padding: 6px 10px; font-size: 12.5px; font-weight: 600;
+  background: #26313c; color: #e6edf3;
+  border: 1px solid #324052; border-radius: 6px; cursor: pointer;
+  opacity: .95; transition: transform .08s ease, opacity .2s ease;
+}
+.copy-host .copy-btn:hover, .copy-host .copy-btn:focus-visible {
+  opacity: 1; transform: translateY(-1px);
+  outline: 2px solid #7ec7ff; outline-offset: 2px;
+}
+.copy-host .copy-btn.copied {
+  background: #1f3b2a; border-color: #2e6b44; color: #9afc71;
+}
+
 .highlighter-rouge:hover .code-copy-btn,
 .highlight:hover .code-copy-btn,
 figure.highlight:hover .code-copy-btn { opacity:1; }
