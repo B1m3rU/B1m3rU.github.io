@@ -1,62 +1,211 @@
-/* ===== FIX PACK (no cambia tu paleta) ===== */
+---
+---
+@import "minima";
 
-/* 1) Cabecera: que el logo/menú no cambien de color en hover */
-.site-title,
-.site-title a,
-.site-nav .page-link {
-  color: inherit !important;
-  text-decoration: none !important;
+/* ====== Tema B1M3RU · Dark legible con acentos ciber ====== */
+
+/* 1) Tokens de color (HSL para matizar fácilmente) */
+:root {
+  /* Base oscura tipo GitHub Dark pero un poco más “nocturna” */
+  --bg:            #0e1116;  /* body */
+  --panel:         #121821;  /* cabecera, tarjetas, aside */
+  --panel-2:       #0b1017;  /* code, blockquote */
+  --border:        #232a36;
+  --shadow:        rgba(0,0,0,.35);
+
+  /* Texto */
+  --text:          #e6edf3;  /* principal */
+  --text-mute:     #9aa7b5;  /* secundario */
+  --text-dim:      #6b7785;
+
+  /* Marca (coherente con tu logo) */
+  --brand:         #18f3a4;  /* verde-teal neón */
+  --brand-600:     #12c883;  /* hover/activo */
+  --brand-700:     #0ea36a;  /* foco/fondo suave */
+  --cyan:          #33e1f7;  /* acento secundario */
+  --cyan-600:      #12b9d2;
+
+  /* Estado y utilidades */
+  --success:       #35d49a;
+  --warning:       #f5b14b;
+  --danger:        #ff6b72;
+  --link:          #5ce9c7;  /* enlaces legibles, no tan chillón */
+  --link-hover:    #8af1dc;
+  --visited:       #57c9ff;
+
+  /* Código (buen contraste sin deslumbrar) */
+  --code-bg:       #0b1420;
+  --code-border:   #1b2b3a;
+  --code-text:     #cfe7ff;
+  --code-kw:       #93c5fd;
+  --code-fn:       #7dd3fc;
+  --code-str:      #a7f3d0;
+  --code-num:      #fca5a5;
+  --code-com:      #6b7280;
 }
-.site-title:hover,
-.site-title a:hover,
-.site-title:focus,
-.site-nav .page-link:hover,
-.site-nav .page-link:focus {
-  color: inherit !important;     /* mismo color que en reposo */
-  text-decoration: underline;    /* quita esta línea si no quieres subrayado */
+
+/* 2) Base tipográfica */
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* 3) Contenedores y tarjetas (Minima overrides) */
+.site-header, .site-footer, .page-content .wrapper, .post, .posts, .home {
+  background: transparent;
+}
+.site-header, .site-nav, .post, .page-content .wrapper {
+  box-shadow: 0 8px 24px var(--shadow);
+  border: 1px solid var(--border);
+  background: var(--panel);
+  border-radius: 14px;
+}
+.site-header { backdrop-filter: saturate(120%) blur(6px); }
+
+/* 4) Títulos con acento sutil (no molesta en lectura) */
+h1, h2, h3 {
+  color: var(--text);
+  position: relative;
+}
+h1::after, h2::after {
+  content: "";
+  display: block;
+  width: 56px; height: 3px;
+  margin-top: .5rem;
+  border-radius: 3px;
+  background: linear-gradient(90deg, var(--brand), var(--cyan));
+  opacity: .9;
+}
+
+/* 5) Enlaces: siempre subrayados (accesibles), color marca */
+a {
+  color: var(--link);
+  text-decoration: underline;
+  text-decoration-thickness: .08em;
+  text-underline-offset: 2px;
+}
+a:hover { color: var(--link-hover); }
+a:visited { color: var(--visited); }
+
+/* 6) Navegación: quitar “cambio raro” al pasar el ratón */
+.site-nav .page-link {
+  color: var(--text);
+  transition: color .15s ease, text-shadow .2s ease;
+}
+.site-nav .page-link:hover {
+  color: var(--brand);
+  text-shadow: 0 0 12px color-mix(in oklab, var(--brand) 30%, transparent);
+}
+
+/* 7) Botones y etiquetas */
+button, .btn, .site-nav .page-link.current {
+  background: linear-gradient(135deg, color-mix(in oklab, var(--brand) 85%, #000 15%), var(--cyan));
+  color: #081014;
+  border: 0;
+  border-radius: 10px;
+  padding: .5rem .9rem;
+  font-weight: 600;
+  box-shadow: 0 6px 18px rgba(24, 243, 164, .18);
+}
+button:hover, .btn:hover {
+  filter: brightness(1.06);
+}
+button:focus-visible, .btn:focus-visible, a:focus-visible, .page-link:focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: 3px;
+  border-radius: 8px;
+}
+
+/* 8) Bloques de código (Rouge/Minima) */
+.highlight, pre, code {
+  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+pre, .highlight {
+  background: var(--code-bg);
+  border: 1px solid var(--code-border);
+  color: var(--code-text);
+  border-radius: 12px;
+  padding: 1rem 1rem;
+  overflow: auto;
+}
+/* tokens comunes de Rouge */
+.highlight .k, .highlight .kd, .highlight .kn, .highlight .kp { color: var(--code-kw); }
+.highlight .nf, .highlight .fm { color: var(--code-fn); }
+.highlight .s, .highlight .sb, .highlight .s2 { color: var(--code-str); }
+.highlight .mi, .highlight .m, .highlight .mh { color: var(--code-num); }
+.highlight .c, .highlight .c1, .highlight .cm { color: var(--code-com); font-style: italic; }
+
+/* 9) Botón “Copiar” siempre visible y con estilo de marca */
+.highlight { position: relative; }
+.copy-code-btn {
+  position: absolute; top: 10px; right: 10px;
+  background: #0f1720;
+  color: var(--text);
+  border: 1px solid var(--border);
+  padding: .25rem .55rem;
+  border-radius: 8px;
+  font-size: .8rem;
+  opacity: .95;
+}
+.copy-code-btn:hover { color: var(--brand); border-color: var(--brand-600); }
+
+/* 10) Listas, tablas, bloques */
+blockquote {
+  background: var(--panel-2);
+  border-left: 4px solid var(--brand-700);
+  color: var(--text);
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid var(--border);
+}
+th, td { padding: .6rem .7rem; border-bottom: 1px solid var(--border); }
+thead th {
+  background: linear-gradient(180deg, var(--panel), var(--panel-2));
+  color: var(--text);
+}
+
+/* 11) Footer discreto */
+.site-footer { color: var(--text-dim); }
+.site-footer a { color: var(--text-mute); }
+.site-footer a:hover { color: var(--brand); }
+
+/* 12) Logotipo en cabecera con glow muy suave (opcional) */
+.site-title, .site-title a {
+  color: var(--brand);
+  text-decoration: none;
+  letter-spacing: .5px;
+  text-shadow: 0 0 10px color-mix(in oklab, var(--brand) 25%, transparent);
+}
+
+/* ==== FIX PACK (sin cambiar tu paleta) ==== */
+
+/* Cabecera: logo/menú no cambian de color en hover */
+.site-title, .site-title a, .site-nav .page-link { color: inherit !important; text-decoration: none !important; }
+.site-title:hover, .site-title a:hover, .site-nav .page-link:hover,
+.site-title:focus, .site-nav .page-link:focus {
+  color: inherit !important;
+  text-decoration: underline;
   text-underline-offset: .2em;
   text-decoration-thickness: 2px;
 }
 
-/* 2) Bloques de código: una sola caja (respetando tus colores) */
-/* Aplica tu fondo/borde al contenedor externo que ya pinta Rouge/Minima */
+/* Bloques de código: una sola caja (respetando tus colores) */
 .highlighter-rouge { position: relative; }
-/* Limpia wrappers internos para evitar “doble/triple caja” */
-.highlighter-rouge .highlight,
-.highlighter-rouge pre,
-.highlighter-rouge code {
-  background: transparent !important;
-  border: 0 !important;
-  padding: 0 !important;
-  margin: 0 !important;
-  box-shadow: none !important;
+.highlighter-rouge .highlight, .highlighter-rouge pre, .highlighter-rouge code {
+  background: transparent !important; border: 0 !important; padding: 0 !important; margin: 0 !important; box-shadow: none !important;
 }
-/* Texto del bloque: solo tipografía/flujo, sin forzar color */
-.highlighter-rouge code {
-  display: block;
-  white-space: pre;
-  line-height: 1.55;
+.highlighter-rouge code { display: block; white-space: pre; line-height: 1.55; }
+
+/* Código en línea: chip pequeño (no tocamos tu color) */
+:not(pre) > code, code:not(pre code) {
+  display: inline; padding: .1em .35em; border-radius: 6px; font-size: .92em; line-height: 1; box-shadow: none;
 }
 
-/* 3) Código en línea (chips pequeños) – sin forzar color/fondo */
-/* Usa lo que ya tengas definido; esto solo asegura tamaño/espaciado */
-:not(pre) > code,
-code:not(pre code) {
-  display: inline;
-  padding: .1em .35em;
-  border-radius: 6px;
-  font-size: .92em;
-  line-height: 1;
-  box-shadow: none;
-}
+/* Botón “Copiar”: siempre visible (usa tus colores actuales) */
+.code-copy-btn { position: absolute; top: 8px; right: 8px; z-index: 2; cursor: pointer; opacity: 1; }
 
-/* 4) Botón “Copiar” (si ya lo tienes, solo asegura su posición) */
-.highlighter-rouge { position: relative; }  /* por si algún bloque no la tiene */
-.code-copy-btn {
-  position: absolute;
-  top: 8px; right: 8px;
-  z-index: 2;
-  cursor: pointer;
-  opacity: 1;                /* siempre visible */
-  /* No definimos colores: tu hoja actual los mantiene */
-}
