@@ -1,29 +1,17 @@
-{%- comment -%}
-Sustituye al <head> del tema Minima.
-Carga el CSS generado a partir de assets/main.scss y el JS de “copiar código”.
-Incluye cache-buster para forzar recarga tras cada deploy.
-{%- endcomment -%}
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+{%- comment -%} Solo fragmentos dentro del <head> del tema minima {%- endcomment -%}
 
-  {%- seo -%}
+<!-- Fuente monoespaciada para el código -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
 
-  <!-- CSS principal del sitio (con cache-buster) -->
-  <link
-    rel="stylesheet"
-    href="{{ '/assets/main.css' | relative_url }}?v={{ site.github.build_revision | default: site.time | date: '%s' }}"
-  >
+<!-- Favicons (ajusta rutas si los tienes en assets/img/) -->
+<link rel="icon" href="{{ '/assets/img/favicon.ico' | relative_url }}" type="image/x-icon">
+<link rel="apple-touch-icon" sizes="180x180" href="{{ '/assets/img/apple-touch-icon.png' | relative_url }}">
+<link rel="icon" type="image/png" sizes="32x32" href="{{ '/assets/img/favicon-32x32.png' | relative_url }}">
+<link rel="icon" type="image/png" sizes="16x16" href="{{ '/assets/img/favicon-16x16.png' | relative_url }}">
+<link rel="manifest" href="{{ '/assets/img/site.webmanifest' | relative_url }}">
+<meta name="theme-color" content="#151515">
 
-  <!-- Fuente monoespaciada para código -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
-
-  <!-- Botón Copiar (JS con cache-buster) -->
-  <script
-    defer
-    src="{{ '/assets/js/copy-code.js' | relative_url }}?v={{ site.github.build_revision | default: site.time | date: '%s' }}"
-  ></script>
-</head>
+<!-- Tu JS del botón Copiar (defer recomendado) -->
+<script defer src="{{ '/assets/js/copy-code.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>
