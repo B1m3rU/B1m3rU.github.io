@@ -1,34 +1,30 @@
 ---
 layout: page
-title: "tagss"
-permalink: /tagss/
+title: "Tags"
+permalink: /tags/
 ---
 
-Listado de tagss:
+Listado de tags:
 
 {% comment %}
-site.tagss es un hash: { "tags" => [posts...] }.
+site.tags es un hash: { "tag" => [posts...] }.
 Sacamos solo los nombres (clave 'first'), los ordenamos, y luego usamos el hash
 para obtener el tamaño.
 {% endcomment %}
 
-{% comment %} construir un array de nombres de tags y ordenarlo {% endcomment %}
-{% assign tags_names = "" | split: "" %}
+{% comment %} construir un array de nombres de tag y ordenarlo {% endcomment %}
+{% assign tag_names = "" | split: "" %}
 {% for pair in site.tags %}
-  {% assign tags_names = tags_names | push: pair[0] %}
+  {% assign tag_names = tag_names | push: pair[0] %}
 {% endfor %}
-{% assign tags_names = tags_names | uniq | sort_natural %}
+{% assign tag_names = tag_names | uniq | sort_natural %}
 
-<ul class="tags-cloud">
-  {% for t in tags_names %}
+<ul class="tag-cloud">
+  {% for t in tag_names %}
     <li>
-      <a href="{{ '/tags/' | append: t | slugify | append: '/' | relative_url }}">
-        {{ t }}
-      </a>
-      ({{ site.tagss[t].size }})
+      <a href="/tags/{{ t | slugify }}/">{{ t }}</a> ({{ site.tags[t].size }})
     </li>
   {% endfor %}
 </ul>
-
 
 
