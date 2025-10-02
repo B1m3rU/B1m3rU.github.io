@@ -1,6 +1,6 @@
 ---
 layout: tag
 title: "Tag: principiantes"
-permalink: /tag/principiantes/
+permalink: /tags/principiantes/
 tag: principiantes
 ---
