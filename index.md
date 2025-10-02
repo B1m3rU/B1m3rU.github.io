@@ -19,8 +19,10 @@ Mientras tanto, este es un espacio personal donde iré publicando pruebas y res�
 {% if machines_posts and machines_posts.size > 0 %}
 {% for post in machines_posts limit:5 -%}
 - [{{ post.title }}]({{ post.url | relative_url }}) — _{{ post.date | date: "%d %b %Y" }}_{% if post.tags and post.tags.size > 0 %}{% for t in post.tags %} <span class="tag-badge"><a href="{{ t | slugify | prepend: '/tags/' | append: '/' | relative_url }}">{{ t }}</a></span>{% endfor %}{% endif %}
-{%- endfor %}
-[Ver todas las máquinas →]({{ '/machines/' | relative_url }})
+{% endfor %}
+
+<p>[Ver todas las máquinas →]({{ '/machines/' | relative_url }})
+
 {% else %}
 _No hay entradas de máquinas aún._
 {% endif %}
@@ -32,8 +34,10 @@ _No hay entradas de máquinas aún._
 {% if general_posts and general_posts.size > 0 %}
 {% for post in general_posts limit:5 -%}
 - [{{ post.title }}]({{ post.url | relative_url }}) — _{{ post.date | date: "%d %b %Y" }}_{% if post.tags and post.tags.size > 0 %}{% for t in post.tags %} <span class="tag-badge"><a href="{{ t | slugify | prepend: '/tags/' | append: '/' | relative_url }}">{{ t }}</a></span>{% endfor %}{% endif %}
-{%- endfor %}
-[Ver todas las entradas →]({{ '/posts/' | relative_url }})
+{% endfor %}
+
+<p>[Ver todas las entradas →]({{ '/posts/' | relative_url }})
+
 {% else %}
 _No hay entradas aún._
 {% endif %}
