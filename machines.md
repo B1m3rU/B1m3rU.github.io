@@ -16,7 +16,9 @@ permalink: /machines/
     {% if post.tags and post.tags.size > 0 %}
       <span class="tag-list">
         {% for t in post.tags %}
-          <span class="tag-badge"><a href="/tag/{{ t | slugify }}/">{{ t }}</a></span>
+          <span class="tag-badge">
+            <a href="{{ t | slugify | prepend: '/tags/' | append: '/' | relative_url }}">{{ t }}</a>
+          </span>
         {% endfor %}
       </span>
     {% endif %}
