@@ -1,0 +1,539 @@
+---
+---
+
+@import "minima";
+
+:root {
+  /* === Cyber Dark Palette (green/cyan) – base cromática === */
+  --bg-base:#00111f;        /* fondo principal oscuro */
+  --bg-elevated:#131D20;    /* paneles */
+  --bg-teal-deep:#03231E;   /* profundidad */
+
+  --text-primary:#E6F7F2;   /* texto principal claro */
+  --text-secondary:#767C81; /* texto secundario */
+
+  --accent-green:#0ee253;   /* verde neón → CTAs, enlaces, highlights */
+  --accent-aqua:#00d6c1;    /* aqua → títulos principales */
+  --accent-jade:#008f86;    /* jade → subtítulos y detalles */
+  --accent-yellow:#ffc800;  /* amarillo neón → tags destacados */
+  --surface-hover:#04693f;  /* hover/pressed en fondos oscuros */
+
+  /* === Aliases de compatibilidad (NO rompen reglas existentes) === */
+  --bg: var(--bg-base);
+  --panel: var(--bg-elevated);
+  --text: var(--text-primary);
+  --muted: var(--text-secondary);
+  --green-neon: var(--accent-green);
+  --green: var(--accent-green);
+  --blue: var(--accent-aqua);
+
+  /* === Semánticas nuevas para jerarquía tipográfica (opcional) === */
+  --heading-primary: var(--accent-aqua);  /* H1/H2 sugerido */
+  --heading-secondary: var(--accent-jade);/* H3/H4 sugerido */
+  --link-color: var(--accent-green);      /* enlaces */
+  --border-soft: #203035;                 /* bordes sutiles */
+
+  /* === Código === */
+  --code-bg:#00111f;     /* fondo de bloques de código */
+  --code-bd:#203035;     /* borde sutil de bloques */
+
+  /* === Brillos/Glow === */
+  --ring-glow: 0 0 16px #0ee253, 0 0 32px rgba(14,226,83,.35);
+  --ring-glow-aqua: 0 0 16px #00d6c1, 0 0 32px rgba(0,214,193,.35);
+  --ring-glow-yellow: 0 0 16px #ffc800, 0 0 32px rgba(255,200,0,.35);
+
+}
+
+/* ===== Global ===== */
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji",sans-serif;
+  font-size:17px; line-height:1.6;
+}
+
+/* === Ajuste para listas (li) === */
+.page-content li, .post-content li {
+  line-height: 1.6; /* Mantener la altura original */
+}
+.page-content li > code, .post-content li > code {
+  /* Alineación específica para code dentro de listas */
+  vertical-align: -0.10em !important; /* Prueba a bajarlo un poco más */
+}
+
+.site-header,.site-footer{background:var(--panel);}
+.site-title,.site-nav .page-link{color:var(--text);}
+h1,h2,h3{color:var(--green);}
+
+/* ===== Enlaces ===== */
+a{
+  color:var(--blue); text-decoration:none;
+  transition:color .15s, text-decoration-color .15s;
+  text-decoration-color:transparent;
+}
+a:hover,a:focus{
+  color:var(--blue);
+  text-decoration:underline;
+  text-underline-offset:.2em;
+  text-decoration-thickness:2px;
+}
+a:focus-visible,.site-nav .page-link:focus-visible{
+  outline:2px solid var(--green-neon);
+  outline-offset:2px;
+  border-radius:4px;
+}
+
+.post-list>li,.post,.page,.site-nav{ background:transparent; border:none; }
+
+/* ===== Tipografía mono ===== */
+code,kbd,samp,pre,.highlighter-rouge{
+  font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono","Courier New",monospace;
+  font-size:.95em;
+}
+
+/* ===== BLOQUES DE CÓDIGO (una sola caja) ===== */
+.highlighter-rouge {
+  background: var(--code-bg) !important;
+  border: 1px solid var(--code-bd);
+  border-radius: 12px;
+  padding: 12px 14px;
+  margin: 1rem 0;
+  position: relative;
+  overflow-x: auto;
+}
+
+/* Quitar bordes/fondos de wrappers internos */
+.highlighter-rouge .highlight,
+.highlighter-rouge pre,
+.highlighter-rouge code {
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  box-shadow: none !important;
+}
+
+/* Texto base dentro del bloque */
+.highlighter-rouge code {
+  color: #c9d1d9;
+  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+  font-size: 0.95em;
+  line-height: 1.55;
+  display: block;
+  white-space: pre;
+}
+
+/* ===== Paleta mínima de tokens ===== */
+/* Comentarios */
+.highlight .c,.highlight .c1,.highlight .cm{ color:#8b949e; font-style:italic; }
+/* Palabras clave */
+.highlight .k,.highlight .kr,.highlight .kn,.highlight .kc,.highlight .kd{ color:#ff7b72; }
+/* Strings */
+.highlight .s,.highlight .s1,.highlight .s2{ color:#a5d6ff; }
+/* Números */
+.highlight .m,.highlight .mi,.highlight .mf,.highlight .mh,.highlight .il{ color:#79c0ff; }
+/* Funciones / nombres */
+.highlight .nf,.highlight .nc,.highlight .nn,.highlight .na,.highlight .nt{ color:#d2a8ff; }
+/* Builtins */
+.highlight .nb{ color:#79c0ff; }
+/* Operadores */
+.highlight .o,.highlight .ow,.highlight .p{ color:#c9d1d9; }
+
+/* ===== Bash ===== */
+pre code.language-bash, pre code.language-shell{ color:#c9d1d9; }
+
+/* ===== Utilidades ===== */
+
+/* Estilo general para imágenes rectangulares con borde brillante */
+.center-img{
+  display:block;
+  margin:1rem auto;
+  max-width:640px;
+  width:100%;
+  object-fit:cover;
+
+  border-radius:12px; /* esquinas suaves por defecto */
+  box-shadow:
+    0 0 0 2px rgba(127,217,138,.45),   /* anillo base verde */
+    0 0 24px rgba(0,214,193,.35);      /* glow aqua */
+
+}
+
+/* Imagen circular especial (avatar About, logos, etc.) */
+.avatar-ring{
+  display:block;
+  margin:1rem auto;
+  width: min(90vw, 520px);
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  object-fit: cover;
+
+  box-shadow:
+    0 0 0 2px rgba(127,217,138,.45),   /* anillo base verde */
+    0 0 24px rgba(0,214,193,.35);      /* glow aqua */
+
+}
+
+/* Líneas divisorias entre secciones de la portada */
+.home-section {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px dashed rgba(181, 232, 83, 0.5); /* verde terminal semitransparente */
+}
+
+/* Selección de texto */
+::selection{
+  background:rgba(126,199,255,.28);
+  color:#fff;
+}
+
+/* ===== Responsive ===== */
+@media screen and (max-width:560px){
+  .highlighter-rouge {
+    padding: 10px 12px;
+    font-size: .92em;
+  }
+  .center-img{ max-width:100%; }
+  .avatar-ring{ max-width:320px; } /* ejemplo de límite en móvil */
+}
+
+/* ====== Código: no tocar tu paleta, solo mejoras puntuales ====== */
+
+/* 1) Bloques <pre> (Rouge/Kramdown) — respeta tu fondo/colores */
+pre {
+  position: relative;
+  margin: 1rem 0;
+  padding: 1rem 1.25rem;
+  border-radius: 12px;
+  overflow: auto;
+  /* bordes/overlay suaves, neutros */
+  border: 1px solid rgba(255,255,255,.10);
+  box-shadow: 0 6px 18px rgba(0,0,0,.35);
+}
+
+.highlight,
+figure.highlight {
+  position: relative;
+}
+
+/* Asegúrate de que el <code> del bloque NO reciba pill */
+pre code,
+.highlighter-rouge pre code,
+figure.highlight pre code {
+  background: transparent !important;
+  border: 0 !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  white-space: pre;
+  display: inline;
+}
+
+ /*(menciones tipo `nmap` o `propios`)*/
+
+:where(.post-content, .page-content, .markdown-body) :not(pre) > code {
+  /* ... (se mantienen las propiedades de fuente, fondo, borde, etc.) ... */
+  font-family: ui-monospace, "JetBrains Mono", SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace !important;
+  font-size: .88em !important;
+  font-weight: 600 !important;
+  color: var(--accent-yellow) !important;
+  background: rgba(65, 202, 168, .10) !important;
+  border: 1px solid rgba(65, 202, 168, .25) !important;
+  border-radius: .4rem !important;
+  white-space: nowrap !important;
+  padding: .08em .35em !important;
+
+  /* 🔑 NUEVO MÉTODO DE ALINEACIÓN 🔑 */
+  position: relative !important;   /* Lo hacemos posicionable */
+  top: -0.1em !important;         /* Lo empujamos hacia abajo. Ajusta este valor (0.08em, 0.1em, etc.) */
+  
+  /* Desactivamos vertical-align para que no interfiera */
+  vertical-align: initial !important; 
+}
+
+.card, .post-list .post, .page-content, .highlight, pre, code {
+  background-color: var(--bg-elevated);
+  border-color: var(--code-bd);
+}
+
+a { color: var(--accent-aqua); }
+a:hover { text-shadow: 0 0 6px rgba(65,202,168,.6); }
+
+.btn, .button, button {
+  display:inline-flex; align-items:center; gap:.5rem;
+  padding:.6rem 1rem; border-radius:.75rem; font-weight:600;
+  border:1px solid transparent; transition:transform .08s ease, box-shadow .2s ease, background .2s ease;
+}
+
+.btn--primary, .button.primary {
+  color:#07110E; background:var(--accent-green); box-shadow: var(--ring-glow);
+}
+.btn--primary:hover, .button.primary:hover { transform: translateY(-1px); }
+
+.btn--secondary, .button.secondary {
+  color:#07110E; background:var(--accent-aqua); box-shadow: var(--ring-glow-aqua);
+}
+
+/* Inline code (not in pre): estilo estilo GitHub-like pero con tema */
+:not(pre) > code {
+  background: rgba(65,202,168,.10);
+  border: 1px solid rgba(65,202,168,.25);
+  color: var(--text-primary);
+  border-radius: .4rem;
+  padding: .08em .35em;
+  position: relative;
+  top: -0.1em;
+  vertical-align: initial;
+}
+
+/* Bloques de código */
+pre, .highlight {
+  background: var(--code-bg);
+  border: 1px solid var(--code-bd);
+}
+
+ /* Copy button (si existiera) */
+.code-copy-btn, .copy-btn, .btn-copy {
+   background: var(--bg-elevated);
+   border: 1px solid rgba(118,124,129,.25);
+   color: var(--text-primary);
+ }
+.code-copy-btn:hover, .copy-btn:hover, .btn-copy:hover {
+   border-color: rgba(115,252,90,.35);
+   box-shadow: var(--ring-glow);
+}
+
+/* El contenedor ancla (incluye el wrapper que crea el JS) */
+.codebox,
+.highlighter-rouge,
+.highlight,
+figure.highlight,
+pre {
+  position: relative;
+  padding-right: 3rem; /* deja hueco para el botón, no tapa texto */
+}
+
+/* Posición y caja del botón (sin tocar colores) */
+.code-copy-btn,
+.copy-btn,
+.btn-copy {
+  position: absolute;
+  top: .5rem;
+  right: .5rem;
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border-radius: 10px;
+  z-index: 10;
+  margin: 0;
+  transform: none !important; /* neutraliza herencias raras */
+}
+
+.code-copy-btn svg,
+.copy-btn svg,
+.btn-copy svg {
+  width: 16px;
+  height: 16px;
+  display: block;
+}
+
+/* Toast a la derecha del botón */
+.copy-toast {
+  position: absolute;
+  top: .5rem;
+  right: calc(.5rem + 34px);
+  opacity: 0;
+  transform: translateY(-4px);
+  pointer-events: none;
+  transition: opacity .15s ease, transform .15s ease;
+}
+.copy-toast.show { opacity: 1; transform: translateY(0); }
+
+@media (max-width: 720px){
+  .code-copy-btn, .copy-btn, .btn-copy { top: .5rem; right: .5rem; }
+  .copy-toast { top: .5rem; right: calc(.5rem + 34px); }
+}
+
+/* Algunos skins añaden bordes en contenedores: los anulamos */
+.site-nav,
+.page-content,
+.wrapper {
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+/* ====== Quitar la línea rara del borde superior ====== */
+html, body { border: 0 !important; }
+
+/* Elimina cualquier borde/sombra/pseudo-elemento que el tema ponga en la cabecera */
+.site-header, .site-header .wrapper,
+.site-footer .wrapper {
+  border-top: 0 !important;
+  box-shadow: none !important;
+  background-image: none !important;
+}
+.site-header::before, .site-header::after,
+.site-footer::before, .site-footer::after {
+  content: none !important;
+  display: none !important;
+}
+
+/* (por si el skin añade una línea en el body) */
+body::before {
+  content: none !important;
+  display: none !important;
+}
+
+/* Mantén SOLO tus separadores */ 
+.site-header 
+{ /* línea debajo del header */ 
+  border-bottom: 1.5px solid color-mix(in srgb, var(--accent-jade) 65%, transparent);
+} 
+
+.site-footer 
+{ /* línea encima del footer */ 
+  border-top: 1.5px solid color-mix(in srgb, var(--accent-jade) 65%, transparent); 
+}
+
+/* Contenedor más cómodo de leer */
+.wrapper { max-width: 920px; }        /* valor típico legible */
+.post-title, h1 { font-size: 2rem; }
+h2 { font-size: 1.5rem; }
+h3 { font-size: 1.25rem; }
+
+/* Separadores suaves en portada */
+.home-section { margin-top: 2rem; padding-top: .5rem; border-top: 1px dashed rgba(255,255,255,.15); }
+.intro { margin-bottom: 2rem; }
+
+/* ===== Chips de tags ===== */
+.tag-list { 
+  display: inline-block; 
+  margin-left: .5rem; 
+}
+
+.tag-badge {
+  display: inline-block;
+  font-size: .72rem;
+  line-height: 1;
+  padding: .22rem .5rem;
+  margin: 0 .25rem;
+  border-radius: .45rem;
+  border: 1px solid rgba(127,217,138,.45);  /* verde suave */
+  background: rgba(26,35,42,.85);           /* fondo oscuro translúcido */
+  color: #ffc800;                           /* amarillo neón */
+  white-space: nowrap;
+}
+
+/* Glow respirando para tags (Neón Amarillo) */
+@keyframes tag-breathe-yellow {
+  0%, 100% {
+    box-shadow:
+      0 0 0 2px rgba(127,217,138,.45),
+      0 0 18px rgba(255,200,0,.25);
+  }
+  50% {
+    box-shadow:
+      0 0 0 2px rgba(127,217,138,.45),
+      0 0 34px rgba(255,200,0,.35);
+  }
+}
+
+.tag-badge:hover {
+  animation: tag-breathe-yellow 1.6s ease-in-out infinite;
+  transform: translateY(-1px);
+}
+
+/* Respeto accesibilidad */
+@media (prefers-reduced-motion: reduce){
+  .tag-badge:hover {
+    animation: none;
+    box-shadow:
+      0 0 0 2px rgba(127,217,138,.45),
+      0 0 28px rgba(255,200,0,.25);
+  }
+}
+
+/* ===== Chips de tags (listados y portada) ===== */
+.tag-list { 
+  display: inline-block; 
+  margin-left: .5rem; 
+}
+.tag-badge {
+  display: inline-block;
+  font-size: .72rem;
+  line-height: 1;
+  padding: .22rem .5rem;
+  margin: 0 .25rem;
+  border-radius: .45rem;
+  border: 1px solid rgba(255,255,255,.18);
+  background: #1a232a;          /* o #1f2a1a si prefieres verde */
+  color: #63c0f5;               /* o var(--hacker-green) para verde */
+  white-space: nowrap;
+}
+.tag-badge a { color: inherit; text-decoration: none; }
+.tag-badge a:hover { text-decoration: underline; }
+
+/* ===== Tablas — sin líneas blancas + bordes redondeados ===== */
+:where(.post-content, .page-content, .markdown-body) table {
+  width: 100%;
+  /* Usamos 'separate' para que el border-radius funcione perfecto */
+  border-collapse: separate !important;
+  border-spacing: 0 !important;
+
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+  border: 1px solid rgba(0,214,193,.18); /* aqua 18% */
+  border-radius: 16px;                   /* ~15–25% visual */
+  overflow: hidden;                      /* recorta esquinas */
+  margin: 1.25rem 0;
+  font-size: .95rem;
+}
+
+/* Header normal, sin sticky */
+:where(.post-content, .page-content, .markdown-body) thead th {
+  background: rgba(0,214,193,.07);       /* aqua suave */
+  color: var(--text-primary);
+  font-weight: 700;
+  border-bottom: 2px solid rgba(0,143,134,.55); /* jade */
+  white-space: nowrap;
+}
+
+/* Quitamos TODOS los bordes de celdas que crean “líneas blancas” */
+:where(.post-content, .page-content, .markdown-body) th,
+:where(.post-content, .page-content, .markdown-body) td {
+  padding: .7rem .9rem;
+  border: 0 !important;                 /* <- clave para eliminar las líneas */
+  vertical-align: top;
+}
+
+/* Zebra oscura (nada de filas blancas) */
+:where(.post-content, .page-content, .markdown-body) tbody tr:nth-child(odd)  { 
+  background: transparent;               /* usa el fondo de la tabla */
+}
+:where(.post-content, .page-content, .markdown-body) tbody tr:nth-child(even) { 
+  background: rgba(0,214,193,.05);       /* contraste sutil en oscuro */
+}
+
+/* Separador horizontal discreto entre filas (sustituye a los bordes blancos) */
+:where(.post-content, .page-content, .markdown-body) tbody tr:not(:first-child) td {
+  border-top: 1px solid rgba(0,214,193,.10);
+}
+
+/* Hover suave opcional */
+:where(.post-content, .page-content, .markdown-body) tbody tr:hover {
+  background: rgba(14,226,83,.08);
+}
+
+/* Responsive: solo en móvil permitimos scroll horizontal si hace falta */
+@media (max-width: 640px) {
+  :where(.post-content, .page-content, .markdown-body) table {
+    display: block !important;
+    max-width: 100%;
+    overflow-x: auto;
+  }
+}
+
+
+

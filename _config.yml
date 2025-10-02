@@ -1,0 +1,33 @@
+title: "B1m3rU"
+description: "Portfolio, noticias y seguridad."
+theme: minima
+author: "Enrique Álvarez González"
+
+# Páginas del menú
+header_pages:
+  - posts.md
+  - machines.md
+  - tags.md
+  - about.md
+  - contact.md
+
+# Esquema de colores de Minima
+minima:
+  skin: dark
+  social_links:
+    - { platform: github,  user_url: "https://github.com/B1m3rU" }
+    - { platform: linkedin, user_url: "https://es.linkedin.com/in/enrique-alvarez-gonzalez" }
+
+# URL del sitio
+url: "https://b1m3ru.github.io/"
+
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+markdown: kramdown
+kramdown:
+  input: GFM
+highlighter: rouge
+
+permalink: /:categories/:title/

@@ -1,0 +1,37 @@
+---
+layout: default
+---
+
+<main class="page-content" aria-label="Content">
+  <div class="wrapper">
+    <h1>Tag: {{ page.tag }}</h1>
+
+    {% comment %}
+    En lugar de usar site.tags[page.tag] (hash), mejor filtramos site.posts por tag.
+    Esto devuelve un array de documentos y se puede ordenar sin errores.
+    {% endcomment %}
+    {% assign posts_for_tag = site.posts | where_exp: "p", "p.tags contains page.tag" | sort: "date" | reverse %}
+
+    {% if posts_for_tag and posts_for_tag.size > 0 %}
+      <ul>
+        {% for post in posts_for_tag %}
+          <li>
+            <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+            <small> — {{ post.date | date: "%d %b %Y" }}</small>
+            {% if post.tags and post.tags.size > 0 %}
+              <span class="tag-list">
+                {% for t in post.tags %}
+                  <span class="tag-badge"><a href="/tag/{{ t | slugify }}/">{{ t }}</a></span>
+                {% endfor %}
+              </span>
+            {% endif %}
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p>No hay entradas con este tag.</p>
+    {% endif %}
+
+    <p><a href="/tags/">← Ver todos los tags</a></p>
+  </div>
+</main>

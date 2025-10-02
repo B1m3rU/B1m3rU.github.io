@@ -1,0 +1,16 @@
+{%- comment -%}
+Override del <head> de Minima para inyectar custom-head.html
+{%- endcomment -%}
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  {%- seo -%}
+
+  <!-- CSS principal de Minima -->
+  <link rel="stylesheet" href="{{ '/assets/main.css' | relative_url }}">
+
+  <!-- Tus favicons, fuentes y JS (copy-code) -->
+  {%- include custom-head.html -%}
+</head>

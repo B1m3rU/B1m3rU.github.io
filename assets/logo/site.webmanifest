@@ -1,0 +1,30 @@
+{
+  "id": "/",
+  "name": "B1m3rU",
+  "short_name": "B1m3rU",
+  "description": "Blog y portfolio de ciberseguridad de B1m3rU.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#00111f",
+  "theme_color": "#00d6c1",
+  "lang": "es-ES",
+  "dir": "ltr",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "/assets/logo/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/logo/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["technology", "education", "portfolio"],
+  "prefer_related_applications": false
+}
