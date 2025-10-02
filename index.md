@@ -12,8 +12,7 @@ Mientras tanto, este es un espacio personal donde iré publicando pruebas y res�
 ![Michi descansando](/assets/img/Michi1.jpg){: .center-img }
 </section>
 
-<section class="home-section">
-
+<section class="home-section" markdown="1">
 ## Últimas — Máquinas
 {% assign machines_posts = site.categories.machines | default: empty %}
 {% if machines_posts and machines_posts.size > 0 %}
