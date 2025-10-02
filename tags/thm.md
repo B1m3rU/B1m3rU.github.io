@@ -1,6 +1,6 @@
 ---
 layout: tag
 title: "Tag: thm"
-permalink: /tag/thm/
+permalink: /tags/thm/
 tag: thm
 ---
