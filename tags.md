@@ -22,9 +22,13 @@ para obtener el tamaño.
 <ul class="tag-cloud">
   {% for t in tag_names %}
     <li>
-      <a href="/tag/{{ t | slugify }}/">{{ t }}</a> ({{ site.tag[t].size }})
+      <a href="{{ '/tag/' | append: t | slugify | append: '/' | relative_url }}">
+        {{ t }}
+      </a>
+      ({{ site.tags[t].size }})
     </li>
   {% endfor %}
 </ul>
+
 
 
