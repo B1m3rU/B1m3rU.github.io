@@ -1,6 +1,6 @@
 ---
 layout: tag
 title: "Tag: htb"
-permalink: /tags/htb/
+permalink: /tag/htb/
 tag: htb
 ---

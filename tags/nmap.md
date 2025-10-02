@@ -1,6 +1,6 @@
 ---
 layout: tag
 title: "Tag: nmap"
-permalink: /tags/nmap/
+permalink: /tag/nmap/
 tag: nmap
 ---

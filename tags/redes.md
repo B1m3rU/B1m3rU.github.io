@@ -1,6 +1,6 @@
 ---
 layout: tag
 title: "Tag: redes"
-permalink: /tags/redes/
+permalink: /tag/redes/
 tag: redes
 ---
