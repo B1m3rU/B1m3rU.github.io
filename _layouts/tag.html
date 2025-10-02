@@ -21,7 +21,7 @@ layout: default
             {% if post.tags and post.tags.size > 0 %}
               <span class="tag-list">
                 {% for t in post.tags %}
-                  <span class="tag-badge"><a href="/tag/{{ t | slugify }}/">{{ t }}</a></span>
+                  <a href="{{ '/tags/' | append: t | slugify | append: '/' | relative_url }}">
                 {% endfor %}
               </span>
             {% endif %}
