@@ -1,0 +1,16 @@
+{%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+<span class="post-meta">
+  {%- if page.date -%}
+    <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: date_format }}</time>
+  {%- endif -%}
+
+  {%- if page.tags and page.tags.size > 0 -%}
+    <span class="tag-list">
+      {%- for tag in page.tags -%}
+        <span class="tag-badge">
+          <a href="{{ '/tags/' | append: tag | slugify | append: '/' | relative_url }}">{{ tag }}</a>
+        </span>
+      {%- endfor -%}
+    </span>
+  {%- endif -%}
+</span>
