@@ -14,7 +14,7 @@ para obtener el tamaño.
 
 {% comment %} construir un array de nombres de tag y ordenarlo {% endcomment %}
 {% assign tag_names = "" | split: "" %}
-{% for pair in site.tags %}
+{% for pair in site.tag %}
   {% assign tag_names = tag_names | push: pair[0] %}
 {% endfor %}
 {% assign tag_names = tag_names | uniq | sort_natural %}
@@ -22,7 +22,7 @@ para obtener el tamaño.
 <ul class="tag-cloud">
   {% for t in tag_names %}
     <li>
-      <a href="/tags/{{ t | slugify }}/">{{ t }}</a> ({{ site.tags[t].size }})
+      <a href="/tag/{{ t | slugify }}/">{{ t }}</a> ({{ site.tag[t].size }})
     </li>
   {% endfor %}
 </ul>
