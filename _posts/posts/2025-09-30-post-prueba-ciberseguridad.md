@@ -8,6 +8,9 @@ author: "Enrique Álvarez González"
 ---
 
 ## Contenido
+{: .no_toc }   <!-- opcional: evita que este H2 aparezca en el TOC -->
+
+- Navegación
 {:toc}
 
 ## 1. Objetivo
