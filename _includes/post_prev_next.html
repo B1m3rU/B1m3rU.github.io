@@ -1,34 +1,21 @@
 {%- comment -%}
-Reutilizable para navegación "Anterior / Siguiente".
-- Si la página pertenece a la categoría 'machines', calcula prev/next SOLO dentro de esa categoría.
-- En caso contrario, usa page.previous / page.next de Jekyll (cronológico global).
+Navegación "Anterior / Siguiente".
+- Si la página tiene la categoría 'machines', calcula prev/next SOLO dentro de esa categoría (orden por fecha asc).
+- En el resto de posts, usa page.previous / page.next de Jekyll.
 {%- endcomment -%}
 
 <nav class="post-nav" aria-label="Navegación entre entradas">
   {%- if page.categories contains 'machines' -%}
     {%- assign machines = site.categories.machines | sort: 'date' -%}
     {%- assign current_index = nil -%}
-
     {%- for item in machines -%}
-      {%- if item.url == page.url -%}
-        {%- assign current_index = forloop.index0 -%}
-      {%- endif -%}
+      {%- if item.url == page.url -%}{%- assign current_index = forloop.index0 -%}{%- endif -%}
     {%- endfor -%}
-
     {%- if current_index != nil -%}
       {%- assign prev_index = current_index | minus: 1 -%}
       {%- assign next_index = current_index | plus: 1 -%}
-
-      {%- assign prev_machine = nil -%}
-      {%- assign next_machine = nil -%}
-
-      {%- if prev_index >= 0 -%}
-        {%- assign prev_machine = machines[prev_index] -%}
-      {%- endif -%}
-
-      {%- if next_index < machines.size -%}
-        {%- assign next_machine = machines[next_index] -%}
-      {%- endif -%}
+      {%- assign prev_machine = prev_index >= 0 ? machines[prev_index] : nil -%}
+      {%- assign next_machine = next_index < machines.size ? machines[next_index] : nil -%}
 
       {%- if prev_machine -%}
         <div class="post-nav__prev">
@@ -37,7 +24,6 @@ Reutilizable para navegación "Anterior / Siguiente".
           </a>
         </div>
       {%- endif -%}
-
       {%- if next_machine -%}
         <div class="post-nav__next">
           <a href="{{ next_machine.url | relative_url }}" title="Máquina siguiente: {{ next_machine.title | escape }}">
@@ -55,7 +41,6 @@ Reutilizable para navegación "Anterior / Siguiente".
         </a>
       </div>
     {%- endif -%}
-
     {%- if page.next -%}
       <div class="post-nav__next">
         <a href="{{ page.next.url | relative_url }}" title="Post siguiente: {{ page.next.title | escape }}">
