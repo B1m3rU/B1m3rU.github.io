@@ -13,8 +13,8 @@ author: "Enrique Álvarez González"
 - TOC
 {:toc}
 
-<section class="home-section" markdown="1">
-</section>
+---
+
 
 ## 1. Objetivo
 
@@ -22,16 +22,16 @@ Validar que el sistema de publicaciones renderiza correctamente **títulos**, **
 
 > **Nota:** Este post es educativo y **solo** debe ejecutarse en **tu propia red/laboratorio** o con autorización explícita.
 
-<section class="home-section" markdown="1">
-</section>
+---
+
 
 ## 2. Entorno de ejemplo
 - **SO anfitrión**: Windows 10/11 o GNU/Linux (Debian/Ubuntu).
 - **Herramientas**: Nmap ≥ 7.94, PowerShell (en Windows), `ip`/`ifconfig` (en Linux), y Wireshark (opcional).
 - **Topología**: Red local doméstica o de laboratorio (rango tipo `192.168.x.0/24`).
 
-<section class="home-section" markdown="1">
-</section>
+---
+
 
 ## 3. Conceptos clave (muy breves)
 - **Descubrimiento de hosts**: detectar qué equipos están activos en una red.
@@ -39,8 +39,8 @@ Validar que el sistema de publicaciones renderiza correctamente **títulos**, **
 - **Fingerprinting**: inferir sistema operativo/servicios (a alto nivel y con cautela).
 - **Ética**: nunca escanear redes ajenas sin permiso. **Legal y moralmente incorrecto**.
 
-<section class="home-section" markdown="1">
-</section>
+---
+
 
 ## 4. Procedimiento paso a paso
 
@@ -111,8 +111,8 @@ Ejecución:
 python3 quick_parse_nmap.py
 ```
 
-<section class="home-section" markdown="1">
-</section>
+---
+
 
 ## 5. Buenas prácticas mínimas
 - Mantén **tu sistema y router actualizados** (firmware/OS).
@@ -121,8 +121,8 @@ python3 quick_parse_nmap.py
 - Segmenta tu red (por ejemplo, **IoT** en una **VLAN** o SSID separado).
 - Activa el **cortafuegos** y registra eventos básicos (logs).
 
-<section class="home-section" markdown="1">
-</section>
+---
+
 
 ## 6. Tabla de referencia rápida (puertos comunes)
 
@@ -135,8 +135,8 @@ python3 quick_parse_nmap.py
 | SMB     | 445  | Compartición de archivos Windows |
 | DNS     | 53   | Resolución de nombres |
 
-<section class="home-section" markdown="1">
-</section>
+---
+
 
 ## 7. Problemas frecuentes y soluciones
 - **Nmap lento** en Wi‑Fi: reduce puertos (`--top-ports 100`), o usa cable.
@@ -144,14 +144,14 @@ python3 quick_parse_nmap.py
 - **Resultados vacíos**: el equipo objetivo puede tener cortafuegos estricto o no estar activo.
 - **IPs equivocadas**: confirma la subred (`192.168.0.0/24` vs `192.168.1.0/24`, etc.).
 
-<section class="home-section" markdown="1">
-</section>
+---
+
 
 ## 8. Conclusiones
 Has comprobado que el **render** de la web soporta bloques de código, listas, tablas y citas; además, conoces un flujo básico y responsable de **reconocimiento en red con Nmap**. En siguientes artículos, podemos profundizar en **Wireshark**, **hardening** de servicios y **automatización** con Python.
 
-<section class="home-section" markdown="1">
-</section>
+---
+
 
 ### Metadatos del proyecto (opcionales)
 - **Tiempo invertido**: 00:45
