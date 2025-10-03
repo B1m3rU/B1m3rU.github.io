@@ -567,15 +567,17 @@ h3 { font-size: 1.25rem; }
 /* ===== Índice de contenidos (TOC) ===== */
 :where(.post-content) #markdown-toc,
 :where(.post-content) .toc-box {
-  margin: 1rem 0 1.5rem; /* El valor del medio es el importante */
-  padding: .9rem 1rem;
-  border: 1px solid rgba(0,214,193,.30);
-  border-radius: .6rem;
-  background: rgba(3,35,30,.30);
-  box-shadow: 0 0 0 2px rgba(0,143,134,.10) inset;
+  /* Estilo base del contenedor */
+  margin: 1.5rem 0; /* Espacio vertical antes y después */
+  padding: 1.1rem 1.25rem;
+  background: var(--bg-elevated); /* Fondo oscuro, igual que los paneles */
+  border: 1px solid var(--border-soft); /* Borde sutil que combina con el fondo */
+  border-radius: 12px; /* Esquinas redondeadas, como los bloques de código */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, .25); /* Sombra para darle profundidad */
   font-size: .95rem;
 }
 
+/* Reglas para las listas y enlaces dentro del TOC */
 #markdown-toc, .toc-box,
 #markdown-toc ul, .toc-box ul {
   list-style: none;
@@ -586,36 +588,32 @@ h3 { font-size: 1.25rem; }
 #markdown-toc li, .toc-box li {
   margin: .35rem 0;
   padding-left: .5rem;
-  border-left: 2px solid transparent; /* Preparamos para el hover */
+  border-left: 2px solid transparent; /* Borde izquierdo para el efecto hover */
   transition: border-color .2s ease;
 }
 
 #markdown-toc a, .toc-box a {
   text-decoration: none;
-  color: var(--text-secondary); /* Color secundario, más apagado por defecto */
+  color: var(--text-secondary); /* Color de texto secundario por defecto */
   transition: color .2s ease;
 }
 
-/* --- Efecto Hover --- */
+/* Efecto hover: se ilumina el borde y el texto */
 #markdown-toc li:hover, .toc-box li:hover {
-  border-left-color: var(--accent-green); /* El borde se ilumina en verde neón */
+  border-left-color: var(--accent-green); /* El borde se vuelve verde neón */
 }
 
 #markdown-toc li:hover > a, .toc-box li:hover > a {
-  color: var(--text-primary); /* El texto se vuelve blanco y brillante al pasar el cursor */
+  color: var(--text-primary); /* El texto se vuelve más brillante */
 }
 
-/* Sangrías por nivel */
+/* Sangría para los sub-elementos */
 #markdown-toc ul ul li, .toc-box ul ul li {
   padding-left: 1rem;
 }
 
-/* ===== AJUSTE ESPACIO ÍNDICE VS SEPARADOR (HR) ===== */
-/*
-  Esta regla selecciona específicamente la línea horizontal (hr)
-  que viene INMEDIATAMENTE DESPUÉS del índice de contenidos.
-*/
+/* Arreglo final para el espaciado con la línea separadora */
 :where(.post-content) #markdown-toc + hr,
 :where(.post-content) .toc-box + hr {
-  margin-top: 2rem; /* <-- ¡Esta es la clave! */
+  margin-top: 2.5rem; /* Asegura un buen espacio sobre la línea horizontal */
 }
