@@ -67,15 +67,15 @@ layout: default
       <nav class="post-nav" aria-label="Post navigation">
         <div class="post-nav__prev">
           {%- if prev_item -%}
-            <a href="{{ prev_item.url | relative_url }}" rel="prev" title="{{ prev_item.title }}">
-              ← {{ primary == 'machines' | ternary: 'Máquina anterior', 'Post anterior' }}: {{ prev_item.title }}
+            <a href="{{ prev_item.url | relative_url }}" rel="prev" title="{{ prev_item.title | escape }}">
+              &larr; {{ prev_item.title }}
             </a>
           {%- endif -%}
         </div>
         <div class="post-nav__next">
           {%- if next_item -%}
-            <a href="{{ next_item.url | relative_url }}" rel="next" title="{{ next_item.title }}">
-              {{ primary == 'machines' | ternary: 'Siguiente máquina', 'Siguiente post' }}: {{ next_item.title }} →
+            <a href="{{ next_item.url | relative_url }}" rel="next" title="{{ next_item.title | escape }}">
+              {{ next_item.title }} &rarr;
             </a>
           {%- endif -%}
         </div>
