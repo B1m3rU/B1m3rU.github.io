@@ -1,0 +1,67 @@
+{%- comment -%}
+Reutilizable para navegación "Anterior / Siguiente".
+- Si la página pertenece a la categoría 'machines', calcula prev/next SOLO dentro de esa categoría.
+- En caso contrario, usa page.previous / page.next de Jekyll (cronológico global).
+{%- endcomment -%}
+
+<nav class="post-nav" aria-label="Navegación entre entradas">
+  {%- if page.categories contains 'machines' -%}
+    {%- assign machines = site.categories.machines | sort: 'date' -%}
+    {%- assign current_index = nil -%}
+
+    {%- for item in machines -%}
+      {%- if item.url == page.url -%}
+        {%- assign current_index = forloop.index0 -%}
+      {%- endif -%}
+    {%- endfor -%}
+
+    {%- if current_index != nil -%}
+      {%- assign prev_index = current_index | minus: 1 -%}
+      {%- assign next_index = current_index | plus: 1 -%}
+
+      {%- assign prev_machine = nil -%}
+      {%- assign next_machine = nil -%}
+
+      {%- if prev_index >= 0 -%}
+        {%- assign prev_machine = machines[prev_index] -%}
+      {%- endif -%}
+
+      {%- if next_index < machines.size -%}
+        {%- assign next_machine = machines[next_index] -%}
+      {%- endif -%}
+
+      {%- if prev_machine -%}
+        <div class="post-nav__prev">
+          <a href="{{ prev_machine.url | relative_url }}" title="Máquina anterior: {{ prev_machine.title | escape }}">
+            &larr; {{ prev_machine.title }}
+          </a>
+        </div>
+      {%- endif -%}
+
+      {%- if next_machine -%}
+        <div class="post-nav__next">
+          <a href="{{ next_machine.url | relative_url }}" title="Máquina siguiente: {{ next_machine.title | escape }}">
+            {{ next_machine.title }} &rarr;
+          </a>
+        </div>
+      {%- endif -%}
+    {%- endif -%}
+
+  {%- else -%}
+    {%- if page.previous -%}
+      <div class="post-nav__prev">
+        <a href="{{ page.previous.url | relative_url }}" title="Post anterior: {{ page.previous.title | escape }}">
+          &larr; {{ page.previous.title }}
+        </a>
+      </div>
+    {%- endif -%}
+
+    {%- if page.next -%}
+      <div class="post-nav__next">
+        <a href="{{ page.next.url | relative_url }}" title="Post siguiente: {{ page.next.title | escape }}">
+          {{ page.next.title }} &rarr;
+        </a>
+      </div>
+    {%- endif -%}
+  {%- endif -%}
+</nav>
