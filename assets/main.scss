@@ -564,5 +564,49 @@ h3 { font-size: 1.25rem; }
 .post-nav__prev { justify-self: start; }
 .post-nav__next { justify-self: end; text-align: right; }
 
+/* ===== Índice de contenidos (TOC) ===== */
+/* Kramdown genera un <ul id="markdown-toc">. También permitimos .toc-box por si se aplica clase. */
+:where(.post-content) #markdown-toc,
+:where(.post-content) .toc-box {
+  margin: 1rem 0 1.5rem;
+  padding: .9rem 1rem;
+  border: 1px solid rgba(0,214,193,.30);       /* accent-aqua */
+  border-radius: .6rem;
+  background: rgba(3,35,30,.30);               /* fondo teal oscuro translúcido */
+  box-shadow: 0 0 0 2px rgba(0,143,134,.10) inset; /* jade suave */
+  font-size: .95rem;
+}
+
+#markdown-toc, .toc-box,
+#markdown-toc ul, .toc-box ul {
+  list-style: none;
+  margin: 0; padding-left: 0;
+}
+
+#markdown-toc li, .toc-box li { margin: .28rem 0; }
+
+#markdown-toc a, .toc-box a {
+  text-decoration: none;
+  color: var(--accent-aqua, #00d6c1);
+  border-bottom: 1px dashed transparent;
+  transition: border-color .18s ease, color .18s ease;
+}
+#markdown-toc a:hover, .toc-box a:hover {
+  color: var(--accent-green, #0ee253);
+  border-color: currentColor;
+}
+
+/* Sangrías por nivel (más compacto) */
+#markdown-toc ul ul li, .toc-box ul ul li { padding-left: .75rem; opacity: .96; }
+
+/* Sticky en escritorio */
+@media (min-width: 992px) {
+  .toc--sticky { position: sticky; top: 1rem; max-height: calc(100vh - 2rem); overflow: auto; }
+}
+
+/* Que los anclajes no queden tapados por el header al hacer click */
+.post-content h2, .post-content h3, .post-content h4, .post-content h5 {
+  scroll-margin-top: 80px;   /* ajusta si tu header es más alto */
+}
 
 
