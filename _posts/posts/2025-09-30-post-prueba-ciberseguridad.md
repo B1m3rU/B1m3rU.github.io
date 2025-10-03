@@ -10,7 +10,6 @@ author: "Enrique Álvarez González"
 ## Contenido
 {: .no_toc }
 
-- Navegación
 {:toc}
 
 ---
