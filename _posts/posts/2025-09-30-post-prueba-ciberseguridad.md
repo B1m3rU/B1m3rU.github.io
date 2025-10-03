@@ -15,6 +15,7 @@ author: "Enrique Álvarez González"
 ---
 
 ## 1. Objetivo
+
 Validar que el sistema de publicaciones renderiza correctamente **títulos**, **subtítulos**, **listas**, **tablas** y **bloques de código**; y, de paso, introducir un flujo básico de **reconocimiento de red** para principiantes.
 
 > **Nota:** Este post es educativo y **solo** debe ejecutarse en **tu propia red/laboratorio** o con autorización explícita.
