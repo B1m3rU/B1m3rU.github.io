@@ -535,5 +535,34 @@ h3 { font-size: 1.25rem; }
   }
 }
 
+/* ===== Prev / Next ===== */
+.post-nav {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px dashed rgba(0,214,193,.35);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+.post-nav__prev a,
+.post-nav__next a {
+  display: inline-block;
+  padding: .6rem .8rem;
+  border-radius: .6rem;
+  background: rgba(0,143,134,.10);   /* jade */
+  border: 1px solid rgba(0,143,134,.32);
+  text-decoration: none;
+  color: #fff;
+  transition: box-shadow .2s ease, border-color .2s ease, transform .1s ease;
+}
+.post-nav__prev a:hover,
+.post-nav__next a:hover {
+  border-color: rgba(14,226,83,.45); /* green */
+  box-shadow: 0 0 0 2px rgba(0,214,193,.12);
+  transform: translateY(-1px);
+}
+.post-nav__prev { justify-self: start; }
+.post-nav__next { justify-self: end; text-align: right; }
+
 
 
