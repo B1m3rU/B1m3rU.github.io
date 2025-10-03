@@ -159,3 +159,5 @@ Has comprobado que el **render** de la web soporta bloques de código, listas, t
 - **Lecciones aprendidas**:
   - Entender `-sn` vs escaneo de puertos.
   - Guardar y parsear resultados (`-oA` + XML + Python).
+
+---
