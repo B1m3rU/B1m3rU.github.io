@@ -609,3 +609,13 @@ h3 { font-size: 1.25rem; }
 #markdown-toc ul ul li, .toc-box ul ul li {
   padding-left: 1rem;
 }
+
+/* ===== AJUSTE ESPACIO ÍNDICE VS SEPARADOR (HR) ===== */
+/*
+  Esta regla selecciona específicamente la línea horizontal (hr)
+  que viene INMEDIATAMENTE DESPUÉS del índice de contenidos.
+*/
+:where(.post-content) #markdown-toc + hr,
+:where(.post-content) .toc-box + hr {
+  margin-top: 2rem; /* <-- ¡Esta es la clave! */
+}
