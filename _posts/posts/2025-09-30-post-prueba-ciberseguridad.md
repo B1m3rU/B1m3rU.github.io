@@ -7,7 +7,9 @@ tags: [nmap, redes, principiantes]
 author: "Enrique Álvarez González"
 ---
 
-# Contenido
+## Contenido
+{: .no_toc }
+
 - Navegación
 {:toc}
 
