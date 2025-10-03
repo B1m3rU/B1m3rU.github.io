@@ -564,81 +564,48 @@ h3 { font-size: 1.25rem; }
 .post-nav__prev { justify-self: start; }
 .post-nav__next { justify-self: end; text-align: right; }
 
-/* ===== Índice de contenidos (TOC) ===== */
-/* Kramdown genera un <ul id="markdown-toc">. También permitimos .toc-box por si se aplica clase. */
-
+/* ===== Índice de contenidos (TOC) - Sugerencia Alternativa ===== */
 :where(.post-content) #markdown-toc,
 :where(.post-content) .toc-box {
-  margin: 1.2rem auto 2rem;             /* centrado horizontal */
-  max-width: 90%;                       /* no ocupa todo el ancho */
-  padding: 1.2rem 1.4rem;
-  border: 1px solid rgba(0,214,193,.30);   /* accent-aqua */
-  border-radius: .6rem;
-  background: rgba(3,35,30,.30);           /* fondo teal oscuro translúcido */
-  box-shadow: 0 0 0 2px rgba(0,143,134,.10) inset; /* jade suave */
+  margin: 1.5rem 0 2rem;
+  padding: 1.1rem 1.25rem;
+  background: var(--bg-elevated); /* Fondo oscuro, como los paneles */
+  border: 1px solid var(--border-soft); /* Borde muy sutil y oscuro */
+  border-radius: 12px; /* Esquinas más redondeadas, como los bloques de código */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, .25); /* Sombra suave para darle profundidad */
   font-size: .95rem;
-  position: relative;
 }
 
-/* ===== Título dentro de la caja ===== */
-:where(.post-content) #markdown-toc::before,
-:where(.post-content) .toc-box::before {
-  content: "Índice de contenidos";
-  display: block;
-  font-weight: 600;
-  margin-bottom: .6rem;
-  color: var(--accent-green, #0ee253);
-  border-bottom: 1px solid rgba(0,214,193,.25);
-  padding-bottom: .3rem;
-}
-
-/* Reset de listas */
 #markdown-toc, .toc-box,
 #markdown-toc ul, .toc-box ul {
   list-style: none;
-  margin: 0; padding-left: 0;
+  margin: 0;
+  padding-left: 0;
 }
 
 #markdown-toc li, .toc-box li {
   margin: .35rem 0;
+  padding-left: .5rem;
+  border-left: 2px solid transparent; /* Preparamos para el hover */
+  transition: border-color .2s ease;
 }
 
-/* Enlaces */
 #markdown-toc a, .toc-box a {
   text-decoration: none;
-  color: var(--accent-aqua, #00d6c1);
-  border-bottom: 1px dashed transparent;
-  transition: border-color .18s ease, color .18s ease, padding-left .2s;
-  display: inline-block;
-  padding-left: .1rem;
-}
-#markdown-toc a:hover, .toc-box a:hover {
-  color: var(--accent-green, #0ee253);
-  border-color: currentColor;
-  padding-left: .3rem; /* pequeño “slide” al hover */
+  color: var(--text-secondary); /* Color secundario, más apagado por defecto */
+  transition: color .2s ease;
 }
 
-/* Sangrías por nivel (más marcadas) */
+/* --- Efecto Hover --- */
+#markdown-toc li:hover, .toc-box li:hover {
+  border-left-color: var(--accent-green); /* El borde se ilumina en verde neón */
+}
+
+#markdown-toc li:hover > a, .toc-box li:hover > a {
+  color: var(--text-primary); /* El texto se vuelve blanco y brillante al pasar el cursor */
+}
+
+/* Sangrías por nivel */
 #markdown-toc ul ul li, .toc-box ul ul li {
-  padding-left: 1.4rem;  /* antes .75rem */
-  opacity: .96;
-}
-#markdown-toc ul ul ul li, .toc-box ul ul ul li {
-  padding-left: 2.2rem;  /* tercer nivel más adentro */
-  opacity: .9;
-}
-
-/* Sticky en escritorio */
-@media (min-width: 992px) {
-  .toc--sticky {
-    position: sticky;
-    top: 1rem;
-    max-height: calc(100vh - 2rem);
-    overflow: auto;
-  }
-}
-
-/* Que los anclajes no queden tapados por el header al hacer click */
-.post-content h2, .post-content h3, .post-content h4, .post-content h5 {
-  scroll-margin-top: 80px;   /* ajusta según altura de tu header */
+  padding-left: 1rem;
 }
