@@ -7,6 +7,9 @@ tags: [nmap, redes, principiantes]
 author: "Enrique Álvarez González"
 ---
 
+## Contenido
+{:toc}
+
 ## 1. Objetivo
 Validar que el sistema de publicaciones renderiza correctamente **títulos**, **subtítulos**, **listas**, **tablas** y **bloques de código**; y, de paso, introducir un flujo básico de **reconocimiento de red** para principiantes.
 
