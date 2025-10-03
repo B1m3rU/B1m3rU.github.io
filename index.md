@@ -12,7 +12,7 @@ Mientras tanto, este es un espacio personal donde iré publicando pruebas y res�
 ![Michi descansando](/assets/img/Michi1.jpg){: .center-img }
 </section>
 
-<hr />
+<section class="home-section" markdown="1">
 
 ## Últimas — Máquinas
 {% assign machines_posts = site.categories.machines | default: empty %}
@@ -26,7 +26,9 @@ Mientras tanto, este es un espacio personal donde iré publicando pruebas y res�
 _No hay entradas de máquinas aún._
 {% endif %}
 
-<hr />
+</section>
+
+<section class="home-section" markdown="1">
 
 ## Últimos — Posts
 {% assign general_posts = site.categories.posts | default: empty %}
@@ -40,4 +42,4 @@ _No hay entradas de máquinas aún._
 _No hay entradas aún._
 {% endif %}
 
-<hr />
+</section>
