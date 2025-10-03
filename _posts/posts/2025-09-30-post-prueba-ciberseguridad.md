@@ -13,7 +13,9 @@ author: "Enrique Álvarez González"
 - TOC
 {:toc}
 
----
+<section class="home-section" markdown="1">
+
+</section>
 
 ## 1. Objetivo
 
