@@ -564,15 +564,15 @@ h3 { font-size: 1.25rem; }
 .post-nav__prev { justify-self: start; }
 .post-nav__next { justify-self: end; text-align: right; }
 
-/* ===== Índice de contenidos (TOC) - Sugerencia Alternativa ===== */
+/* ===== Índice de contenidos (TOC) ===== */
 :where(.post-content) #markdown-toc,
 :where(.post-content) .toc-box {
-  margin: 1.5rem 0 2rem;
-  padding: 1.1rem 1.25rem;
-  background: var(--bg-elevated); /* Fondo oscuro, como los paneles */
-  border: 1px solid var(--border-soft); /* Borde muy sutil y oscuro */
-  border-radius: 12px; /* Esquinas más redondeadas, como los bloques de código */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, .25); /* Sombra suave para darle profundidad */
+  margin: 1rem 0 1.5rem; /* El valor del medio es el importante */
+  padding: .9rem 1rem;
+  border: 1px solid rgba(0,214,193,.30);
+  border-radius: .6rem;
+  background: rgba(3,35,30,.30);
+  box-shadow: 0 0 0 2px rgba(0,143,134,.10) inset;
   font-size: .95rem;
 }
 
