@@ -1,6 +1,7 @@
 ---
 layout: default
 title: "Inicio"
+image: /assets/img/og-default.png
 ---
 
 <section class="intro" markdown="1">
