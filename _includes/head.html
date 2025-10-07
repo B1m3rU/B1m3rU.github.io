@@ -1,21 +1,14 @@
-{%- comment -%}
-Override del <head> de Minima actualizado (2025)
-Incluye SEO, favicon, CSS y custom-head.
-{%- endcomment -%}
+{%- comment -%}Contenido del <head>; NO abrir/cerrar <head> aquí{%- endcomment -%}
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+{%- comment -%}SEO/OG/Twitter desde jekyll-seo-tag{%- endcomment -%}
+{% seo %}
+<meta name="twitter:card" content="summary_large_image">
 
-  <!-- SEO / Open Graph / Twitter -->
-  <title>{{ page.title | escape }} | {{ site.title | escape }}</title>
-  {% seo %}
-  <meta name="twitter:card" content="summary_large_image">
+{%- comment -%}CSS principal{%- endcomment -%}
+<link rel="stylesheet" href="{{ '/assets/main.css' | relative_url }}">
 
-  <!-- CSS principal -->
-  <link rel="stylesheet" href="{{ '/assets/main.css' | relative_url }}">
-
-  <!-- Favicons y scripts personalizados -->
-  {%- include custom-head.html -%}
-</head>
+{%- comment -%}Favicons / manifest / scripts{%- endcomment -%}
+{%- include custom-head.html -%}
