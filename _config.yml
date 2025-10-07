@@ -18,12 +18,20 @@ minima:
     - { platform: github,  user_url: "https://github.com/B1m3rU" }
     - { platform: linkedin, user_url: "https://es.linkedin.com/in/enrique-alvarez-gonzalez" }
 
+# Asegúrate también de que no tenga barra final:
 url: "https://b1m3ru.github.io"
+
+# Imagen OG por defecto para todo el sitio:
+defaults:
+  - scope:
+      path: ""
+    values:
+      image: /assets/img/og-default.png
+
 logo: /assets/img/og-default.png
 plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
-
 
 markdown: kramdown
 kramdown:
