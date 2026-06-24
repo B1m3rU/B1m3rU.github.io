@@ -8,7 +8,7 @@
 
   {%- comment -%} Título básico (jekyll-seo-tag también genera uno; no pasa nada si hay 2) {%- endcomment -%}
   <title>
-    {%- if page.title -%}{{ page.title | escape }} · {%- endif -%}{{ site.title | escape }}
+    {%- if page.title -%}{{ page.title | escape }}{%- else -%}{{ site.title | escape }}{%- endif -%}
   </title>
 
   {%- comment -%} Calculamos la imagen OG: page.image > site.logo {%- endcomment -%}
