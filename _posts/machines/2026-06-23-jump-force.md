@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Jump_Force — TFM CTF"
+title: "Jump_Force — TFM"
 description: "Command injection, SQL injection, acceso a MariaDB y pivoting entre contenedores con túnel inverso chisel."
 categories: [machines]
 tags: [tfm, sqli, pivoting, chisel]
