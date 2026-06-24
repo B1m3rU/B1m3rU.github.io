@@ -7,14 +7,6 @@ tags: [tfm, sqli, pivoting, chisel]
 author: "Enrique Álvarez González"
 ---
 
-## Contenido
-{: .no_toc }
-
-- TOC
-{:toc}
-
----
-
 > This is the most complex machine in the lab. Two containers on an internal Docker network — `jump_force_one` exposes services, `jump_force_two` is completely hidden. Getting the second flag requires pivoting through the first container using a reverse tunnel.
 
 ## Recon
