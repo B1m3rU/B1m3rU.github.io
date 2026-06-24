@@ -1,8 +1,16 @@
 # B1m3rU.github.io
 
-Blog/portafolio de proyectos de ciberseguridad.
-Este proyecto lo voy a realizar utilizando inteligencia artificial, para poder aprender todos los conocimientos de programación web, e ir arreglando y probando distintas ideas.
+Personal cybersecurity blog and portfolio built with Jekyll and hosted on GitHub Pages.
 
-Si ves muchos comentarios típicos de ChatGPT, Gemini, etc., los mantengo para poder entender cada uno de ellos e ir adaptándolo a mis ideas finales.
+## Content
 
-Prueba de commit desde repositorio local.
+- **Machines** — CTF and lab writeups documenting enumeration, exploitation and post-exploitation techniques
+- **Posts** — Technical notes on tools, concepts and security topics
+
+## Stack
+
+Jekyll · Minima (dark) · GitHub Pages · Rouge syntax highlighting
+
+## Live site
+
+[b1m3ru.github.io](https://b1m3ru.github.io)
