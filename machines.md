@@ -1,10 +1,10 @@
 ---
 layout: default
-title: "Máquinas"
+title: "Machines"
 permalink: /machines/
 ---
 
-# Máquinas
+# Machines
 
 {% assign machines_posts = site.categories.machines | default: empty %}
 {% if machines_posts and machines_posts.size > 0 %}
@@ -26,5 +26,5 @@ permalink: /machines/
   {% endfor %}
 </ul>
 {% else %}
-<p>No hay entradas de máquinas aún.</p>
+<p>No machine writeups yet.</p>
 {% endif %}

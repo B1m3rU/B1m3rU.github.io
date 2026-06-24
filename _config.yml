@@ -1,9 +1,8 @@
 title: "B1m3rU"
-description: "Portfolio, noticias y seguridad."
+description: "Cybersecurity portfolio — CTF writeups, pentesting notes and tools."
 theme: minima
 author: "Enrique Álvarez González"
 
-# Páginas del menú
 header_pages:
   - posts.md
   - machines.md
@@ -11,17 +10,14 @@ header_pages:
   - about.md
   - contact.md
 
-# Esquema de colores de Minima
 minima:
   skin: dark
   social_links:
     - { platform: github,  user_url: "https://github.com/B1m3rU" }
     - { platform: linkedin, user_url: "https://es.linkedin.com/in/enrique-alvarez-gonzalez" }
 
-# Asegúrate también de que no tenga barra final:
 url: "https://b1m3ru.github.io"
 
-# Imagen OG por defecto para todo el sitio:
 defaults:
   - scope:
       path: ""

@@ -4,15 +4,6 @@ title: "Tags"
 permalink: /tags/
 ---
 
-Listado de tags:
-
-{% comment %}
-site.tags es un hash: { "tag" => [posts...] }.
-Sacamos solo los nombres (clave 'first'), los ordenamos, y luego usamos el hash
-para obtener el tamaño.
-{% endcomment %}
-
-{% comment %} construir un array de nombres de tag y ordenarlo {% endcomment %}
 {% assign tag_names = "" | split: "" %}
 {% for pair in site.tags %}
   {% assign tag_names = tag_names | push: pair[0] %}
@@ -29,4 +20,3 @@ para obtener el tamaño.
     </li>
   {% endfor %}
 </ul>
-

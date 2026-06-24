@@ -1,11 +1,11 @@
 ---
 layout: page
-title: "Contacto"
+title: "Contact"
 permalink: /contacto/
 ---
 
-Puedes escribirme a: **alvarez.enrique@protonmail.com**  
-También estoy en [LinkedIn](https://es.linkedin.com/in/enrique-alvarez-gonzalez)
+Feel free to reach out:
 
-
-![avatar](/assets/img/Michi3.jpg){: .center-img}
+**Email:** alvarez.enrique@protonmail.com  
+**LinkedIn:** [enrique-alvarez-gonzalez](https://es.linkedin.com/in/enrique-alvarez-gonzalez)  
+**GitHub:** [B1m3rU](https://github.com/B1m3rU)
