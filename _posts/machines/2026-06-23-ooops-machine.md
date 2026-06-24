@@ -7,12 +7,6 @@ tags: [tfm, webshell, cve-2019-14287]
 author: "Enrique Álvarez González"
 ---
 
-## Contenido
-{: .no_toc }
-
-- TOC
-{:toc}
-
 ---
 
 ## Recon
