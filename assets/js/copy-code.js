@@ -48,13 +48,13 @@
     const btn = document.createElement('button');
     btn.className = 'copy-btn';
     btn.type = 'button';
-    btn.setAttribute('aria-label', 'Copiar al portapapeles');
+    btn.setAttribute('aria-label', 'Copy to clipboard');
     btn.innerHTML = ICON_CLIP;
 
     // Toast
     const toast = document.createElement('span');
     toast.className = 'copy-toast';
-    toast.textContent = '¡Copiado!';
+    toast.textContent = 'Copied!';
 
     container.appendChild(btn);
     container.appendChild(toast);
