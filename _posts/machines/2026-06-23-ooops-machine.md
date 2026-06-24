@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "OoOps_machine — TFM CTF"
+title: "OoOps_machine — TFM"
 description: "Anonymous FTP con acceso de escritura al webroot, webshell PHP y escalada de privilegios via CVE-2019-14287 (sudo UID -1 bypass)."
 categories: [machines]
 tags: [tfm, webshell, cve-2019-14287]
