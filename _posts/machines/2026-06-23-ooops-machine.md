@@ -10,7 +10,7 @@ author: "Enrique Álvarez González"
 ## Contenido
 {: .no_toc }
 
-1. TOC
+- TOC
 {:toc}
 
 ---
