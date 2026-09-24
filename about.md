@@ -2,29 +2,47 @@
 layout: page
 title: "About"
 permalink: /sobre/
+description: "Engineer completing an MSc in Cybersecurity, Junior Data Engineer, open to junior SOC or penetration testing roles."
+search: true
+search_keywords: "about cv resume experience skills certifications nmap nessus metasploit burp splunk python bash powershell sql soc pentesting ejpt oscp"
 ---
 
-Junior Data Engineer based in Tenerife, Spain, transitioning into offensive security.
+Engineer based in Tenerife, Spain, completing an MSc in Cybersecurity and working as a Junior Data Engineer. **Open to junior roles in SOC operations or penetration testing.**
+
+{% comment %}
+CV: para actualizarlo basta con reemplazar assets/cv_web.pdf (mismo nombre).
+El ?v= cambia en cada build, así el navegador no enseña una versión antigua de caché.
+{% endcomment %}
+<p><a class="btn btn--primary" href="{{ '/assets/cv_web.pdf' | relative_url }}?v={{ site.time | date: '%Y%m%d%H%M' }}">Download CV (PDF)</a></p>
 
 ## Now
 
-Working with Apache Airflow, Python, Bash and Linux, while building a portfolio in penetration testing and CTF challenges.
+Building and maintaining Apache Airflow pipelines on Linux servers, automating tasks with Python, Bash and PowerShell, and troubleshooting production incidents through log analysis — while building a portfolio in penetration testing and CTF challenges.
 
-## Background
+## Experience & education
 
 <ul class="timeline">
-  <li><span class="timeline__when">Degree</span> Industrial Electronics Engineering — Universidad de La Laguna (ULL)</li>
-  <li><span class="timeline__when">2026</span> Master's in Cybersecurity and Privacy — UOC. Thesis: <a href="{{ '/tfm/' | relative_url }}">pentesting a Dockerized CTF lab</a></li>
-  <li><span class="timeline__when">Now</span> Junior Data Engineer</li>
+  <li><span class="timeline__when">Nov 2024 — Present</span> <strong>Junior Data Engineer</strong> — Fundación General ULL (University of La Laguna Foundation)</li>
+  <li><span class="timeline__when">Sep 2023 — Jun 2026</span> <strong>Master's in Cybersecurity and Privacy</strong> — UOC. Thesis: <a href="{{ '/tfm/' | relative_url }}">penetration testing of a Dockerized CTF lab</a></li>
+  <li><span class="timeline__when">Jul 2023 — Aug 2024</span> <strong>Industrial Technical Engineer</strong> — B&amp;G Energy Solutions</li>
+  <li><span class="timeline__when">Sep 2016 — Jun 2021</span> <strong>Bachelor's in Industrial Electronics and Automation Engineering</strong> — Universidad de La Laguna</li>
 </ul>
 
 ## Skills
 
-- **Offensive:** reconnaissance and service enumeration, web fuzzing, command and SQL injection, privilege escalation on Linux, pivoting through internal networks, vulnerability reporting with CWE/CVSS.
-- **Tools:** `nmap`, `gobuster`, `curl`, `chisel`, `steghide`, Kali Linux, Docker.
-- **Engineering:** Python, Bash, Linux, Apache Airflow.
+- **Offensive security:** Nmap, Nessus, Metasploit, Burp Suite, Gobuster, Hashcat, John the Ripper, Hydra, Medusa — enumeration, web exploitation, privilege escalation, pivoting and reporting with CWE/CVSS.
+- **SOC & monitoring:** log analysis, incident triage, Splunk, TCP/IP, DNS, HTTP/S.
+- **Programming & scripting:** Python, Bash, PowerShell, SQL.
+- **Systems & tools:** Linux, Windows, Docker, Git, Apache Airflow, Apache Superset.
+- **Languages:** Spanish (native), English (B2).
 
-## Certification roadmap
+## Certifications & training
+
+- **Google Cybersecurity Professional Certificate** — Coursera
+- **Technical Cybersecurity Foundations** — INCIBE (Spanish National Cybersecurity Institute)
+- **Intensive Cybersecurity Course (250+ hours)** — The Valley Digital Business School, 2023
+
+### Roadmap
 
 <ul class="roadmap">
   <li><span class="roadmap__cert">eJPT</span> <span class="roadmap__year">2026</span></li>

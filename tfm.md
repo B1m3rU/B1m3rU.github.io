@@ -2,17 +2,20 @@
 layout: page
 title: "Master's Thesis"
 permalink: /tfm/
-description: "Master's thesis (UOC, 2026): black-box pentesting of a Dockerized CTF lab — four machines, methodology and combined findings."
+description: "Master's thesis (UOC, 2026): black-box pentesting of a Dockerized CTF lab — methodology, writeups and combined findings."
+search: true
+search_keywords: "master thesis tfm uoc methodology cwe cvss findings docker lab imagine jump_force odyssey ooops pivoting privilege escalation"
+lab_size: 5   # máquinas del lab según el TFM; las cifras de abajo cuentan solo los writeups publicados
 ---
 
 {% assign tfm = site.categories.machines | where_exp: "p", "p.tags contains 'tfm'" | sort: "date" %}
 {% assign total_flags = 0 %}{% assign total_findings = 0 %}
 {% for p in tfm %}{% assign total_flags = total_flags | plus: p.machine.flags %}{% assign total_findings = total_findings | plus: p.machine.findings %}{% endfor %}
 
-Final project of my **Master's in Cybersecurity and Privacy (UOC, 2026)**: a black-box penetration test of a lab of intentionally vulnerable machines, each one deployed as Docker containers with `docker-compose` and attacked from Kali Linux.
+Final project of my **Master's in Cybersecurity and Privacy (UOC, 2026)**: a black-box penetration test of a lab of {{ page.lab_size }} intentionally vulnerable machines, each one deployed as Docker containers with `docker-compose` and attacked from Kali Linux. {% if tfm.size < page.lab_size %}{{ tfm.size }} of the {{ page.lab_size }} writeups are published so far.{% endif %}
 
 <div class="stat-row">
-  <div class="stat"><span class="stat__value">{{ tfm.size }}</span><span class="stat__label">machines</span></div>
+  <div class="stat"><span class="stat__value">{{ tfm.size }}/{{ page.lab_size }}</span><span class="stat__label">machines documented</span></div>
   <div class="stat"><span class="stat__value">{{ total_flags }}</span><span class="stat__label">flags captured</span></div>
   <div class="stat"><span class="stat__value">{{ total_findings }}</span><span class="stat__label">documented findings</span></div>
 </div>

@@ -862,6 +862,79 @@ blockquote > :last-child { margin-bottom: 0; }
 .tag-section__hash { color: var(--accent-hover); margin-right: .15rem; }
 .tag-section:target h2 { color: var(--accent-hover); }
 
+/* Botones hechos con <a>: ganar a a:visited / a:hover (que pondrían texto claro sobre fondo claro) */
+a.btn--primary, a.btn--primary:visited, a.btn--primary:hover, a.btn--primary:focus {
+  color: var(--bg-primary);
+  text-decoration: none;
+}
+a.btn--secondary, a.btn--secondary:visited, a.btn--secondary:hover {
+  color: var(--text-primary);
+  text-decoration: none;
+}
+
+/* =====================================================
+   BUSCADOR (/search/)
+   ===================================================== */
+.search-form { margin: 0 0 1rem; }
+.search-form__label {
+  display: block;
+  margin-bottom: .5rem;
+  color: var(--text-secondary);
+  font-size: .875rem;
+}
+.search-form__input {
+  box-sizing: border-box;
+  width: 100%;
+  padding: .85rem 1rem;
+  font: inherit;
+  font-size: 1.05rem;
+  color: var(--text-primary);
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  transition: border-color var(--ease), box-shadow var(--ease);
+}
+.search-form__input::placeholder { color: var(--text-secondary); }
+.search-form__input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-muted);
+}
+.search-status { color: var(--text-secondary); font-size: .875rem; min-height: 1.5em; }
+
+.search-results {
+  list-style: none;
+  margin: 1rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: .75rem;
+}
+.search-results .search-result {
+  margin: 0;
+  padding: 1rem 1.25rem;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  transition: background var(--ease), border-color var(--ease);
+}
+.search-results .search-result:hover { background: var(--bg-surface-hover); border-color: var(--text-muted); }
+.search-result__title { color: var(--text-primary); font-weight: 600; }
+.search-result small { color: var(--text-secondary); font-size: .85rem; }
+.search-result__snippet {
+  margin: .5rem 0 0 !important;
+  color: var(--text-secondary);
+  font-size: .9rem;
+  line-height: 1.6;
+}
+.search-result mark {
+  color: var(--text-primary);
+  background: var(--accent-muted-strong);
+  border-radius: 3px;
+  padding: 0 .1em;
+}
+
 /* =====================================================
    RESPONSIVE
    ===================================================== */

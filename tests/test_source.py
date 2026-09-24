@@ -126,3 +126,15 @@ def test_no_hand_written_og_tags():
     for f in ["_includes/head.html", "_includes/custom-head.html", "_layouts/default.html"]:
         dup = re.findall(r'<meta[^>]+(?:og:[a-z:]+|twitter:(?!description)[a-z:]+)', (ROOT / f).read_text(encoding="utf-8"))
         assert not dup, f"{f}: meta OG/Twitter duplicada: {dup}"
+
+
+# ---------- CV ----------
+
+CV_PATH = ROOT / "assets" / "cv_web.pdf"
+
+
+def test_cv_web_exists_and_is_pdf():
+    """El CV se actualiza reemplazando assets/cv_web.pdf: tiene que existir con ese nombre exacto."""
+    assert CV_PATH.exists(), "Falta assets/cv_web.pdf (el enlace 'Download CV' daría 404)"
+    assert CV_PATH.read_bytes()[:5] == b"%PDF-", "assets/cv_web.pdf no es un PDF válido"
+    assert CV_PATH.stat().st_size < 5 * 1024 * 1024, "El CV pesa más de 5 MB"

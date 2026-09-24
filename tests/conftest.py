@@ -56,7 +56,7 @@ def posts():
 def pages():
     """Páginas (no posts) con front matter."""
     for p in source_files():
-        if p.suffix in {".md", ".html"} and "_posts" not in p.parts and front_matter(p):
+        if p.suffix in {".md", ".html", ".json", ".xml"} and "_posts" not in p.parts and front_matter(p):
             yield p
 
 

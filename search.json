@@ -1,0 +1,35 @@
+---
+layout: null
+permalink: /search.json
+sitemap: false
+---
+{%- comment -%}
+Índice del buscador (/search/). Se regenera en cada build: no hay que tocar nada al publicar.
+Incluye todos los posts (texto completo) y las páginas con `search: true` en su front matter
+(solo título + description: el contenido de una página puede no estar renderizado todavía).
+{%- endcomment -%}
+{%- assign indexed_pages = site.pages | where_exp: "p", "p.search == true" -%}
+[
+{%- for post in site.posts -%}
+  {
+    "title": {{ post.title | jsonify }},
+    "url": {{ post.url | relative_url | jsonify }},
+    "date": {{ post.date | date: "%d %b %Y" | jsonify }},
+    "type": {{ post.categories | first | default: "post" | jsonify }},
+    "tags": {{ post.tags | jsonify }},
+    "description": {{ post.description | default: "" | jsonify }},
+    "content": {{ post.content | strip_html | normalize_whitespace | jsonify }}
+  }{% unless forloop.last and indexed_pages.size == 0 %},{% endunless %}
+{%- endfor -%}
+{%- for p in indexed_pages -%}
+  {
+    "title": {{ p.title | jsonify }},
+    "url": {{ p.url | relative_url | jsonify }},
+    "date": "",
+    "type": "page",
+    "tags": [],
+    "description": {{ p.description | default: "" | jsonify }},
+    "content": {{ p.search_keywords | default: p.description | default: "" | jsonify }}
+  }{% unless forloop.last %},{% endunless %}
+{%- endfor -%}
+]

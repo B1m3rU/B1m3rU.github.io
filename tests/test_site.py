@@ -150,3 +150,23 @@ def test_rss_feed():
     assert status == 200 and "<feed" in body
     _, _, home = fetch(BASE + "/")
     assert 'type="application/atom+xml"' in home, "Falta {% feed_meta %} en el <head>"
+
+
+def test_search_index_and_page():
+    import json
+    status, _, body = fetch(BASE + "/search.json")
+    assert status == 200, "Falta /search.json"
+    entries = json.loads(body)
+    urls = {e["url"] for e in entries}
+    for machine in ("/machines/imagine/", "/machines/jump-force/", "/machines/odyssey/", "/machines/ooops-machine/"):
+        assert machine in urls, f"{machine} no está en el índice de búsqueda"
+    assert all(e["title"] and "{%" not in e["content"] for e in entries), "Entrada vacía o con Liquid sin renderizar"
+    _, _, page = fetch(BASE + "/search/")
+    assert 'id="search-input"' in page and "/assets/js/search.js" in page
+
+
+def test_cv_download():
+    status, ctype, body = fetch(BASE + "/assets/cv_web.pdf")
+    assert status == 200 and body.startswith("%PDF-"), "El CV no se sirve como PDF"
+    _, _, about = fetch(BASE + "/sobre/")
+    assert "/assets/cv_web.pdf" in about, "La página About no enlaza el CV"

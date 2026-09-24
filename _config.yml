@@ -38,6 +38,7 @@ header_pages:
   - tags.md
   - about.md
   - contact.md
+  - search.md
 
 markdown: kramdown
 kramdown:
