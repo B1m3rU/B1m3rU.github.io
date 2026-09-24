@@ -3,6 +3,16 @@
 {%- endcomment -%}
 <head>
   <meta charset="utf-8">
+
+  {%- comment -%}
+  Seguridad. GitHub Pages no permite cabeceras HTTP propias, así que van como <meta>.
+  - CSP: todo se sirve desde el propio dominio (fuentes incluidas, en /assets/fonts).
+    Si algún día añades un CDN, añádelo aquí Y pon integrity + crossorigin en su etiqueta.
+    frame-ancestors no funciona vía <meta>, por eso no aparece.
+  - X-Content-Type-Options no se incluye: los navegadores solo lo respetan como cabecera HTTP.
+  {%- endcomment %}
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; connect-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 

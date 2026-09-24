@@ -71,3 +71,34 @@ def test_default_layout_is_valid_html():
     assert len(re.findall(r"<head[\s>]", html)) == 1, "<head> anidado (default.html + head.html)"
     assert "<title>" not in html or "title=false" in html, \
         "Doble <title>: head.html escribe uno y {% seo %} genera otro"
+
+
+# ---------- Seguridad ----------
+
+def _html_sources():
+    for path in SCANNED:
+        if path.suffix in {".md", ".html"}:
+            yield path.relative_to(ROOT).as_posix(), path.read_text(encoding="utf-8")
+
+
+def test_target_blank_has_noopener():
+    """target="_blank" sin rel="noopener noreferrer" permite reverse tabnabbing."""
+    bad = []
+    for name, text in _html_sources():
+        for tag in re.findall(r"<a\b[^>]*target=[\"']_blank[\"'][^>]*>", text, re.I):
+            rel = re.search(r"rel=[\"']([^\"']*)[\"']", tag)
+            if not rel or not {"noopener", "noreferrer"} <= set(rel.group(1).split()):
+                bad.append(f"{name}: {tag}")
+    assert not bad, "Enlaces _blank sin noopener/noreferrer:\n" + "\n".join(bad)
+
+
+def test_external_resources_have_sri():
+    """Todo <script>/<link rel=stylesheet> externo necesita integrity + crossorigin."""
+    bad = []
+    for name, text in _html_sources():
+        for tag in re.findall(r"<(?:script|link)\b[^>]*>", text, re.I):
+            url = re.search(r"(?:src|href)=[\"'](https?:)?//", tag)
+            is_resource = tag.lower().startswith("<script") or "stylesheet" in tag.lower()
+            if url and is_resource and not ("integrity=" in tag and "crossorigin=" in tag):
+                bad.append(f"{name}: {tag}")
+    assert not bad, "Recursos externos sin SRI:\n" + "\n".join(bad)

@@ -99,3 +99,15 @@ def test_custom_404_page():
     status, _, body = fetch(BASE + "/esta-ruta-no-existe-xyz/")
     assert status == 404
     assert "Page not found" in body, "No se está sirviendo el 404.html personalizado"
+
+
+def test_csp_meta_is_first_in_head():
+    """La CSP vía <meta> solo protege lo que se carga DESPUÉS de ella."""
+    _, _, body = fetch(BASE + "/")
+    head = body.split("</head>")[0]
+    csp = re.search(r'<meta http-equiv="Content-Security-Policy" content="([^"]+)"', head)
+    assert csp, "Falta la meta Content-Security-Policy"
+    assert "'unsafe-inline'" not in csp.group(1)
+    first_resource = re.search(r"<(script|link)\b", head)
+    assert not first_resource or csp.start() < first_resource.start(), \
+        "La CSP debe ir antes de cualquier <script>/<link>"
