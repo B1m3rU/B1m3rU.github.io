@@ -5,6 +5,12 @@ description: "Command injection, SQL injection, acceso a MariaDB y pivoting entr
 categories: [machines]
 tags: [tfm, sqli, pivoting, chisel]
 author: "Enrique Álvarez González"
+machine:
+  platform: "TFM lab (Docker, 2 containers)"
+  os: "Linux (Debian)"
+  flags: 2
+  findings: 6
+  techniques: ["Command injection", "SQL injection", "MariaDB access", "Pivoting via chisel reverse tunnel"]
 ---
 
 ---

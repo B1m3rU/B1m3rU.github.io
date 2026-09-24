@@ -709,6 +709,160 @@ blockquote > :last-child { margin-bottom: 0; }
 ::selection { background: var(--selection); color: var(--text-primary); }
 
 /* =====================================================
+   FICHA DE MÁQUINA (writeups)
+   ===================================================== */
+.machine-card {
+  margin: 0 0 2.5rem;
+  padding: 1.25rem 1.5rem;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+.machine-card__facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 1rem 1.5rem;
+  margin: 0;
+}
+.machine-card__facts dt,
+.machine-card__label {
+  display: block;
+  margin-bottom: .2rem;
+  color: var(--text-secondary);
+  font-size: .75rem;
+  font-weight: 500;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+.machine-card__facts dd { margin: 0; color: var(--text-primary); font-weight: 500; }
+.machine-card__row {
+  margin-top: 1.1rem;
+  padding-top: 1.1rem;
+  border-top: 1px solid var(--border);
+}
+.machine-card__chips {
+  list-style: none;
+  margin: .35rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4rem;
+}
+.machine-card__chips li {
+  margin: 0;
+  padding: .25rem .6rem;
+  font-size: .8rem;
+  line-height: 1.5;
+  color: var(--text-primary);
+  background: var(--bg-surface-hover);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+}
+.machine-card__chips--cve li { font-family: var(--font-mono); background: var(--accent-muted); }
+.machine-card__chips--cve a { color: var(--accent-hover); }
+
+.reading-time { color: var(--text-secondary); }
+
+/* Título del índice automático (assets/js/toc.js) */
+.toc-box__title {
+  margin: 0 0 .5rem !important;
+  padding-left: .75rem;               /* alineado con los enlaces del índice */
+  color: var(--text-secondary);
+  font-size: .75rem;
+  font-weight: 500;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+
+/* Que los anclas no queden pegadas al borde al saltar */
+[id] { scroll-margin-top: 1.5rem; }
+
+/* =====================================================
+   PÁGINA TFM — cifras
+   ===================================================== */
+.stat-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1rem;
+  margin: 2rem 0 1rem;
+}
+.stat {
+  padding: 1.25rem 1.5rem;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+.stat__value {
+  display: block;
+  color: var(--text-primary);
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+.stat__label { color: var(--text-secondary); font-size: .875rem; }
+
+/* =====================================================
+   ABOUT — línea temporal y certificaciones
+   ===================================================== */
+.timeline {
+  list-style: none;
+  margin: 0 0 1.5rem;
+  padding: 0 0 0 1.25rem;
+  border-left: 2px solid var(--border);
+}
+.timeline li { position: relative; margin: 0 0 1rem; }
+.timeline li::before {
+  content: "";
+  position: absolute;
+  left: calc(-1.25rem - 6px);
+  top: .55em;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--bg-primary);
+  border: 2px solid var(--accent);
+}
+.timeline__when {
+  display: block;
+  color: var(--text-secondary);
+  font-size: .8rem;
+  font-weight: 500;
+}
+
+.roadmap {
+  list-style: none;
+  margin: 0 0 2rem;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .75rem;
+}
+.roadmap li {
+  margin: 0;
+  display: inline-flex;
+  align-items: baseline;
+  gap: .6rem;
+  padding: .6rem 1rem;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+.roadmap li + li::before { content: "→"; color: var(--text-muted); margin-right: .25rem; }
+.roadmap__cert { font-family: var(--font-mono); font-weight: 600; color: var(--text-primary); }
+.roadmap__year { color: var(--text-secondary); font-size: .875rem; }
+
+/* =====================================================
+   /tags/ — una sección por tag
+   ===================================================== */
+.tag-section { margin-top: 2.5rem; }
+.tag-section h2 { font-family: var(--font-mono); font-size: 1.15rem; }
+.tag-section__hash { color: var(--accent-hover); margin-right: .15rem; }
+.tag-section:target h2 { color: var(--accent-hover); }
+
+/* =====================================================
    RESPONSIVE
    ===================================================== */
 @media screen and (max-width: 720px) {

@@ -1,0 +1,42 @@
+{%- comment -%}
+Ficha resumen de un writeup. Se rellena desde el front matter del post:
+
+machine:
+  platform: "TFM lab (Docker)"
+  os: "Linux (Alpine)"
+  difficulty: "Medium"        # opcional
+  flags: 2
+  findings: 5                 # nº de filas de la tabla "Vulnerability Summary"
+  techniques: ["...", "..."]
+  cves: ["CVE-2019-14287"]    # opcional
+
+Cualquier campo que falte simplemente no se muestra.
+{%- endcomment -%}
+{%- assign m = page.machine -%}
+{%- if m -%}
+<aside class="machine-card" aria-label="Machine summary">
+  <dl class="machine-card__facts">
+    {%- if m.platform %}<div><dt>Platform</dt><dd>{{ m.platform }}</dd></div>{% endif -%}
+    {%- if m.os %}<div><dt>OS</dt><dd>{{ m.os }}</dd></div>{% endif -%}
+    {%- if m.difficulty %}<div><dt>Difficulty</dt><dd>{{ m.difficulty }}</dd></div>{% endif -%}
+    {%- if m.flags %}<div><dt>Flags</dt><dd>{{ m.flags }}</dd></div>{% endif -%}
+    {%- if m.findings %}<div><dt>Findings</dt><dd>{{ m.findings }}</dd></div>{% endif -%}
+  </dl>
+  {%- if m.techniques and m.techniques.size > 0 %}
+  <div class="machine-card__row">
+    <span class="machine-card__label">Techniques</span>
+    <ul class="machine-card__chips">
+      {%- for t in m.techniques %}<li>{{ t }}</li>{% endfor -%}
+    </ul>
+  </div>
+  {%- endif -%}
+  {%- if m.cves and m.cves.size > 0 %}
+  <div class="machine-card__row">
+    <span class="machine-card__label">CVEs</span>
+    <ul class="machine-card__chips machine-card__chips--cve">
+      {%- for c in m.cves %}<li><a href="https://nvd.nist.gov/vuln/detail/{{ c }}">{{ c }}</a></li>{% endfor -%}
+    </ul>
+  </div>
+  {%- endif %}
+</aside>
+{%- endif -%}

@@ -12,6 +12,10 @@ layout: default
       <time class="dt-published" datetime="{{ pdate }}" itemprop="datePublished">
         {{ pdate | date: date_format }}
       </time>
+      {%- assign words = content | number_of_words -%}
+      {%- assign minutes = words | divided_by: 200 | at_least: 1 %}
+      <span class="bullet-divider">•</span>
+      <span class="reading-time">{{ minutes }} min read</span>
       {%- if page.modified_date -%}
         <span class="bullet-divider">•</span>
         <span class="meta-label">Updated:</span>
@@ -31,6 +35,8 @@ layout: default
       {%- endif %}
     </div>
   </header>
+
+  {%- include machine-card.html %}
 
   <div class="post-content e-content" itemprop="articleBody">
     {{ content }}
