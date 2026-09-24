@@ -2,6 +2,7 @@ name: Build, test & deploy
 
 # Cualquier rama o PR: compila y pasa los tests.
 # Solo un push a main publica (y solo si los tests pasan).
+# Requiere Settings → Pages → Source: "GitHub Actions".
 on:
   push:
   pull_request:
@@ -9,10 +10,13 @@ on:
 
 permissions:
   contents: read
+  pages: write
+  id-token: write
 
+# No cancelar un despliegue a medias (igual que la plantilla oficial de GitHub)
 concurrency:
   group: pages-${{ github.ref }}
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   build:
@@ -20,16 +24,13 @@ jobs:
     steps:
       - uses: actions/checkout@v7
 
-      - uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: "3.3"
-          bundler-cache: true
-
+      # El mismo builder que usa el sistema clásico de GitHub Pages
+      # (github-pages gem: Jekyll 3.10, minima 2.5.1, jekyll-seo-tag…)
       - name: Build Jekyll
-        run: bundle exec jekyll build
-        env:
-          JEKYLL_ENV: production
-          JEKYLL_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: actions/jekyll-build-pages@v1
+        with:
+          source: ./
+          destination: ./_site
 
       - uses: actions/setup-python@v7
         with:
@@ -55,9 +56,6 @@ jobs:
     if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
     needs: build
     runs-on: ubuntu-latest
-    permissions:
-      pages: write
-      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
