@@ -5,13 +5,6 @@ description: "Anonymous FTP con acceso de escritura al webroot, webshell PHP y e
 categories: [machines]
 tags: [tfm, webshell, cve-2019-14287]
 author: "Enrique Álvarez González"
-machine:
-  platform: "TFM lab (Docker)"
-  os: "Linux (Ubuntu 18.04)"
-  flags: 2
-  findings: 5
-  techniques: ["Anonymous FTP upload", "PHP webshell", "Credentials in process list", "sudo UID -1 bypass"]
-  cves: ["CVE-2019-14287"]
 ---
 
 ---

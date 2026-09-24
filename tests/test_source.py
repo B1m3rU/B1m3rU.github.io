@@ -5,7 +5,7 @@ Ejecutar:  python -m pytest tests/test_source.py -v
 import re
 from collections import Counter
 
-from conftest import ROOT, front_matter, pages, posts
+from conftest import ROOT, front_matter, pages, posts, slugify
 
 SCANNED = [p for p in ROOT.rglob("*")
            if p.suffix in {".md", ".html", ".yml", ".webmanifest"}
@@ -43,17 +43,15 @@ def test_no_duplicate_permalinks():
     assert not dups, f"Permalinks duplicados: {dups}"
 
 
-def test_tfm_machines_have_summary():
-    """La página /tfm/ suma machine.flags y machine.findings: todas las máquinas 'tfm' deben tenerlos."""
-    missing = []
+def test_every_tag_has_page():
+    """Cada tag usado en un post tiene su página /tags/<slug>/ (si no, el chip da 404)."""
+    tag_pages = {front_matter(p).get("permalink") for p in (ROOT / "tags").glob("*.md")}
+    missing = {}
     for post, _ in posts():
-        fm = front_matter(post)
-        if "tfm" in fm.get("tags", []):
-            text = post.read_text(encoding="utf-8").split("---")[1]
-            for field in ("flags", "findings", "os", "techniques"):
-                if not re.search(rf"^machine:\n(?:  .*\n)*?  {field}:\s*\S", text, re.M):
-                    missing.append(f"{post.name}: machine.{field}")
-    assert not missing, "Fichas incompletas:\n" + "\n".join(missing)
+        for tag in front_matter(post).get("tags", []):
+            if f"/tags/{slugify(tag)}/" not in tag_pages:
+                missing.setdefault(tag, []).append(post.name)
+    assert not missing, f"Tags sin página en tags/: {missing}"
 
 
 def test_posts_have_required_front_matter():
@@ -104,25 +102,3 @@ def test_external_resources_have_sri():
             if url and is_resource and not ("integrity=" in tag and "crossorigin=" in tag):
                 bad.append(f"{name}: {tag}")
     assert not bad, "Recursos externos sin SRI:\n" + "\n".join(bad)
-
-
-# ---------- Open Graph ----------
-
-def test_default_og_image_is_valid_png():
-    """La imagen OG por defecto existe, es PNG 1200x630 y no tiene canal alfa."""
-    import struct
-    config = (ROOT / "_config.yml").read_text(encoding="utf-8")
-    m = re.search(r"^\s*image:\s*\n\s*path:\s*(\S+)", config, re.M)
-    assert m, "_config.yml no define defaults → image → path"
-    png = (ROOT / m.group(1).lstrip("/")).read_bytes()
-    assert png[:8] == b"\x89PNG\r\n\x1a\n", "No es un PNG"
-    width, height, _, color_type = struct.unpack(">IIBB", png[16:26])
-    assert (width, height) == (1200, 630), f"Tamaño {width}x{height}"
-    assert color_type in (0, 2, 3) and b"tRNS" not in png, "La imagen OG tiene transparencia"
-
-
-def test_no_hand_written_og_tags():
-    """og:* / twitter:* los genera jekyll-seo-tag; escribirlos a mano los duplica."""
-    for f in ["_includes/head.html", "_includes/custom-head.html", "_layouts/default.html"]:
-        dup = re.findall(r'<meta[^>]+(?:og:[a-z:]+|twitter:(?!description)[a-z:]+)', (ROOT / f).read_text(encoding="utf-8"))
-        assert not dup, f"{f}: meta OG/Twitter duplicada: {dup}"

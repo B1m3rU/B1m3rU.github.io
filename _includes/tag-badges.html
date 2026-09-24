@@ -1,8 +1,0 @@
-{%- comment -%}
-Chips de tags → enlazan a la sección del tag en /tags/ (generada automáticamente).
-Uso: {% include tag-badges.html tags=post.tags %}
-Sale en una sola línea para poder usarse dentro de listas Markdown.
-{%- endcomment -%}
-{%- if include.tags and include.tags.size > 0 -%}
-<span class="tag-list">{%- for t in include.tags -%}<span class="tag-badge"><a href="{{ '/tags/' | relative_url }}#{{ t | slugify }}">{{ t }}</a></span>{%- endfor -%}</span>
-{%- endif -%}

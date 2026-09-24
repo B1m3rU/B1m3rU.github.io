@@ -4,6 +4,13 @@ theme: minima
 author: "Enrique Álvarez González"
 lang: en
 
+header_pages:
+  - posts.md
+  - machines.md
+  - tags.md
+  - about.md
+  - contact.md
+
 # GitHub Pages usa minima 2.5.x: los enlaces sociales van en la raíz
 # (minima.skin / minima.social_links son de minima 3 y aquí se ignoran)
 github_username: B1m3rU
@@ -11,33 +18,16 @@ linkedin_username: enrique-alvarez-gonzalez
 
 url: "https://b1m3ru.github.io"
 
-# Imagen Open Graph / Twitter por defecto para todas las páginas.
-# jekyll-seo-tag genera og:image, og:image:width/height y twitter:image a partir de aquí;
-# un post puede sobrescribirla con su propio `image:` en el front matter.
 defaults:
   - scope:
       path: ""
     values:
-      image:
-        path: /assets/og-image.png
-        width: 1200
-        height: 630
-        alt: "B1m3rU — Cybersecurity portfolio"
+      image: /assets/img/og-default.png
 
-# Logo cuadrado para los datos estructurados (JSON-LD) de jekyll-seo-tag
-logo: /assets/logo/android-chrome-512x512.png
+logo: /assets/img/og-default.png
 plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
-  - jekyll-feed      # RSS en /feed.xml
-
-header_pages:
-  - posts.md
-  - machines.md
-  - tfm.md
-  - tags.md
-  - about.md
-  - contact.md
 
 markdown: kramdown
 kramdown:

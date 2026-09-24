@@ -16,25 +16,26 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  {%- comment -%}
-  <title>: la portada usa su título tal cual; el resto, "Título | B1m3rU".
-  (jekyll-seo-tag añadiría " | B1m3rU" también a la portada, por eso title=false)
-  {%- endcomment -%}
-  {%- if page.url == "/" or page.title == nil or page.title == "" -%}
-    {%- assign doc_title = page.title | default: site.title -%}
-  {%- else -%}
-    {%- assign doc_title = page.title | append: " | " | append: site.title -%}
-  {%- endif %}
-  <title>{{ doc_title | escape }}</title>
+  {%- comment -%} El <title> lo genera {% seo %} más abajo (solo puede haber uno) {%- endcomment -%}
 
-  {%- comment -%}
-  SEO / Open Graph / Twitter: todo lo genera jekyll-seo-tag desde el front matter y
-  _config.yml (title, description, image → og:*, twitter:*, canonical). No duplicar aquí.
-  twitter:description es lo único que el plugin no emite.
-  {%- endcomment %}
-  {% seo title=false %}
-  {% feed_meta %}
-  <meta name="twitter:description" content="{{ page.description | default: page.excerpt | default: site.description | strip_html | normalize_whitespace | escape }}">
+  {%- comment -%} Calculamos la imagen OG: page.image > site.logo {%- endcomment -%}
+  {%- assign og_image_path = page.image | default: site.logo -%}
+  {%- if og_image_path -%}
+    {%- assign og_image_url = og_image_path | absolute_url -%}
+  {%- endif -%}
+
+  {%- comment -%} Metas SEO automáticas (si el plugin está cargado) {%- endcomment -%}
+  {% seo %}
+
+  {%- comment -%} Fallback/forzado OG & Twitter (si el plugin no lo puso) {%- endcomment -%}
+  {%- if og_image_url -%}
+    <meta property="og:image" content="{{ og_image_url }}">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="{{ og_image_url }}">
+    <link rel="image_src" href="{{ og_image_url }}">
+  {%- endif -%}
 
   <!-- CSS principal -->
   <link rel="stylesheet" href="{{ '/assets/main.css' | relative_url }}">
