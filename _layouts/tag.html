@@ -2,8 +2,6 @@
 layout: default
 ---
 
-<main class="page-content" aria-label="Content">
-  <div class="wrapper">
     <h1>Tag: {{ page.tag }}</h1>
 
     {% comment %}
@@ -31,9 +29,7 @@ layout: default
         {% endfor %}
       </ul>
     {% else %}
-      <p>No hay entradas con este tag.</p>
+      <p>No posts with this tag yet.</p>
     {% endif %}
 
-    <p><a href="/tags/">← Ver todos los tags</a></p>
-  </div>
-</main>
+    <p><a href="{{ '/tags/' | relative_url }}">← All tags</a></p>

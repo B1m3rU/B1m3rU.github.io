@@ -6,10 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  {%- comment -%} Título básico (jekyll-seo-tag también genera uno; no pasa nada si hay 2) {%- endcomment -%}
-  <title>
-    {%- if page.title -%}{{ page.title | escape }}{%- else -%}{{ site.title | escape }}{%- endif -%}
-  </title>
+  {%- comment -%} El <title> lo genera {% seo %} más abajo (solo puede haber uno) {%- endcomment -%}
 
   {%- comment -%} Calculamos la imagen OG: page.image > site.logo {%- endcomment -%}
   {%- assign og_image_path = page.image | default: site.logo -%}

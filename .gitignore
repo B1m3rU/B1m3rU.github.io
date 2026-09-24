@@ -1,0 +1,15 @@
+# Jekyll
+_site/
+.jekyll-cache/
+.jekyll-metadata
+.sass-cache/
+vendor/
+
+# Python / tests
+__pycache__/
+.pytest_cache/
+.venv/
+
+# Claude Code (copias de trabajo y ajustes locales)
+.claude/worktrees/
+.claude/settings.local.json
