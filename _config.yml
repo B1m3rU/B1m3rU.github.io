@@ -31,14 +31,13 @@ plugins:
   - jekyll-sitemap
   - jekyll-feed      # RSS en /feed.xml
 
+# Menú superior (en este orden). El buscador vive dentro de Tags.
 header_pages:
   - posts.md
   - machines.md
-  - tfm.md
   - tags.md
   - about.md
   - contact.md
-  - search.md
 
 markdown: kramdown
 kramdown:

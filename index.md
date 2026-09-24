@@ -8,8 +8,6 @@ description: "CTF writeups, pentesting notes and tools by Enrique Álvarez Gonz�
 # Cybersecurity portfolio
 
 CTF writeups, pentesting notes and tools by Enrique Álvarez González — Junior Data Engineer transitioning into offensive security.
-
-[Master's thesis: pentesting a Dockerized CTF lab →]({{ '/tfm/' | relative_url }})
 </section>
 
 <section class="home-section" markdown="1">

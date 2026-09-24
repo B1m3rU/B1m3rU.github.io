@@ -4,6 +4,7 @@
   if (!input) return;
   const results = document.getElementById('search-results');
   const status = document.getElementById('search-status');
+  const browse = document.getElementById('tags-browse');   // nube + secciones de /tags/ (opcional)
   const MIN_CHARS = 2;
   const SNIPPET = 160;
   let index = null;
@@ -40,6 +41,15 @@
   });
   input.form.addEventListener('submit', e => { e.preventDefault(); run(); });
 
+  // Pulsar un #tag de la nube: salir de la búsqueda para que la sección sea visible
+  window.addEventListener('hashchange', () => {
+    if (!input.value) return;
+    input.value = '';
+    run();
+    const target = document.getElementById(decodeURIComponent(location.hash.slice(1)));
+    if (target) target.scrollIntoView();
+  });
+
   function count(haystack, needle) {
     let n = 0, i = 0;
     while ((i = haystack.indexOf(needle, i)) !== -1) { n++; i += needle.length; }
@@ -70,6 +80,7 @@
 
     results.replaceChildren();
     const terms = norm(raw).split(/\s+/).filter(t => t.length >= MIN_CHARS);
+    if (browse) browse.hidden = terms.length > 0;
     if (!terms.length) { status.textContent = ''; return; }
 
     const hits = index

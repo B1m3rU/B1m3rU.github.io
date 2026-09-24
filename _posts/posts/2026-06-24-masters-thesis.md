@@ -1,10 +1,10 @@
 ---
-layout: page
-title: "Master's Thesis"
-permalink: /tfm/
+layout: post
+title: "Master's Thesis — Pentesting a Dockerized CTF Lab"
 description: "Master's thesis (UOC, 2026): black-box pentesting of a Dockerized CTF lab — methodology, writeups and combined findings."
-search: true
-search_keywords: "master thesis tfm uoc methodology cwe cvss findings docker lab imagine jump_force odyssey ooops pivoting privilege escalation"
+categories: [posts]
+tags: [tfm]
+author: "Enrique Álvarez González"
 lab_size: 5   # máquinas del lab según el TFM; las cifras de abajo cuentan solo los writeups publicados
 ---
 

@@ -6,7 +6,7 @@ permalink: /machines/
 
 # Machines
 
-Machines tagged `tfm` belong to my Master's thesis lab — see the [overview]({{ '/tfm/' | relative_url }}) for the methodology and the combined findings.
+Machines tagged `tfm` belong to my Master's thesis lab — see the [overview]({{ '/posts/masters-thesis/' | relative_url }}) for the methodology and the combined findings.
 
 {% assign machines_posts = site.categories.machines | default: empty %}
 {% if machines_posts and machines_posts.size > 0 %}

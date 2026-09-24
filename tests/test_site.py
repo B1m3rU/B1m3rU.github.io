@@ -161,8 +161,9 @@ def test_search_index_and_page():
     for machine in ("/machines/imagine/", "/machines/jump-force/", "/machines/odyssey/", "/machines/ooops-machine/"):
         assert machine in urls, f"{machine} no está en el índice de búsqueda"
     assert all(e["title"] and "{%" not in e["content"] for e in entries), "Entrada vacía o con Liquid sin renderizar"
-    _, _, page = fetch(BASE + "/search/")
-    assert 'id="search-input"' in page and "/assets/js/search.js" in page
+    _, _, page = fetch(BASE + "/tags/")
+    assert 'id="search-input"' in page and "/assets/js/search.js" in page, "El buscador no está en /tags/"
+    assert 'id="tags-browse"' in page
 
 
 def test_cv_download():
@@ -170,3 +171,12 @@ def test_cv_download():
     assert status == 200 and body.startswith("%PDF-"), "El CV no se sirve como PDF"
     _, _, about = fetch(BASE + "/sobre/")
     assert "/assets/cv_web.pdf" in about, "La página About no enlaza el CV"
+
+
+def test_header_menu_order():
+    """Menú superior: Posts, Machines, Tags, About, Contact (el buscador va dentro de Tags)."""
+    _, _, home = fetch(BASE + "/")
+    nav = re.search(r'<div class="trigger">(.*?)</div>', home, re.S)
+    assert nav, "No encuentro el menú de minima"
+    items = [re.sub(r"\s+", " ", x).strip() for x in re.findall(r'class="page-link"[^>]*>([^<]+)<', nav.group(1))]
+    assert items == ["Posts", "Machines", "Tags", "About", "Contact"], items

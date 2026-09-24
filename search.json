@@ -4,7 +4,7 @@ permalink: /search.json
 sitemap: false
 ---
 {%- comment -%}
-Índice del buscador (/search/). Se regenera en cada build: no hay que tocar nada al publicar.
+Índice del buscador (el que está arriba de /tags/). Se regenera en cada build: no hay que tocar nada al publicar.
 Incluye todos los posts (texto completo) y las páginas con `search: true` en su front matter
 (solo título + description: el contenido de una página puede no estar renderizado todavía).
 {%- endcomment -%}

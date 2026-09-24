@@ -14,7 +14,7 @@ Jekyll · Minima (dark) · GitHub Pages · Rouge syntax highlighting
 ## Maintenance
 
 - **CV:** replace `assets/cv_web.pdf` with the new file, keeping the exact name, then commit and push. The "Download CV" link on the About page never needs to change, and it busts the browser cache on every build.
-- **Search:** the index (`/search.json`) is rebuilt automatically on every deploy. New posts are searchable with no extra steps. A page can be added to search with `search: true` (plus optional `search_keywords`) in its front matter.
+- **Search:** lives at the top of the Tags page (`/tags/?q=…`). The index (`/search.json`) is rebuilt automatically on every deploy. New posts are searchable with no extra steps. A page can be added to search with `search: true` (plus optional `search_keywords`) in its front matter.
 - **Tags:** just add them to a post's front matter; `/tags/` generates the sections by itself.
 
 ## Live site

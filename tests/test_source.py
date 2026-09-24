@@ -44,11 +44,11 @@ def test_no_duplicate_permalinks():
 
 
 def test_tfm_machines_have_summary():
-    """La página /tfm/ suma machine.flags y machine.findings: todas las máquinas 'tfm' deben tenerlos."""
+    """El post del TFM suma machine.flags y machine.findings: todas las máquinas 'tfm' deben tenerlos."""
     missing = []
     for post, _ in posts():
         fm = front_matter(post)
-        if "tfm" in fm.get("tags", []):
+        if "tfm" in fm.get("tags", []) and "machines" in fm.get("categories", []):
             text = post.read_text(encoding="utf-8").split("---")[1]
             for field in ("flags", "findings", "os", "techniques"):
                 if not re.search(rf"^machine:\n(?:  .*\n)*?  {field}:\s*\S", text, re.M):

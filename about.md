@@ -23,7 +23,7 @@ Building and maintaining Apache Airflow pipelines on Linux servers, automating t
 
 <ul class="timeline">
   <li><span class="timeline__when">Nov 2024 — Present</span> <strong>Junior Data Engineer</strong> — Fundación General ULL (University of La Laguna Foundation)</li>
-  <li><span class="timeline__when">Sep 2023 — Jun 2026</span> <strong>Master's in Cybersecurity and Privacy</strong> — UOC. Thesis: <a href="{{ '/tfm/' | relative_url }}">penetration testing of a Dockerized CTF lab</a></li>
+  <li><span class="timeline__when">Sep 2023 — Jun 2026</span> <strong>Master's in Cybersecurity and Privacy</strong> — UOC. Thesis: <a href="{{ '/posts/masters-thesis/' | relative_url }}">penetration testing of a Dockerized CTF lab</a></li>
   <li><span class="timeline__when">Jul 2023 — Aug 2024</span> <strong>Industrial Technical Engineer</strong> — B&amp;G Energy Solutions</li>
   <li><span class="timeline__when">Sep 2016 — Jun 2021</span> <strong>Bachelor's in Industrial Electronics and Automation Engineering</strong> — Universidad de La Laguna</li>
 </ul>

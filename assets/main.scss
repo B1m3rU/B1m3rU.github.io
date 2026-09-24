@@ -901,7 +901,8 @@ a.btn--secondary, a.btn--secondary:visited, a.btn--secondary:hover {
   border-color: var(--accent);
   box-shadow: 0 0 0 3px var(--accent-muted);
 }
-.search-status { color: var(--text-secondary); font-size: .875rem; min-height: 1.5em; }
+.search-status { color: var(--text-secondary); font-size: .875rem; }
+.search-status:empty, .search-results:empty { display: none; }   /* sin hueco cuando no hay búsqueda */
 
 .search-results {
   list-style: none;
